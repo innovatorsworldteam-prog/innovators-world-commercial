@@ -1,0 +1,21 @@
+{
+  "name": "Innovators World Website Design & Commercial Implementation Package",
+  "version": "1.0",
+  "platform": "Cloudflare",
+  "iwda": "free",
+  "razorpay": "excluded",
+  "character_authority": "latest approved Kiivo and Leera canonicals/assets",
+  "priority": [
+    "analytics",
+    "authentication",
+    "IWDA",
+    "My Innovators World",
+    "schools and colleges",
+    "lead management",
+    "merchandise",
+    "payment integration",
+    "admin dashboard",
+    "programmes",
+    "365-day journey"
+  ]
+}
