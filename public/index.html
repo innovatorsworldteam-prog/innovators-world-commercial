@@ -1,0 +1,1459 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Innovators World — See Differently. Think Differently. Create Differently.</title>
+
+  <meta
+    name="description"
+    content="Innovators World is a 365-day experience that helps young people see differently, think differently and create differently."
+  >
+
+  <link rel="icon" href="/assets/innovators-world-symbol.png">
+
+  <style>
+    :root {
+      --navy: #071b3a;
+      --navy-2: #0d2a55;
+      --gold: #d6aa4a;
+      --gold-light: #f0d58a;
+      --white: #ffffff;
+      --cream: #f7f5ef;
+      --text: #172033;
+      --muted: #667085;
+      --border: rgba(7, 27, 58, 0.12);
+      --shadow: 0 20px 60px rgba(7, 27, 58, 0.12);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      background: var(--gold);
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 48px;
+    }
+
+    .section-heading p {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.94rem;
+      border: 1px solid transparent;
+      transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        background 180ms ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      color: var(--navy);
+      background: var(--gold);
+      box-shadow: 0 10px 28px rgba(214, 170, 74, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    /* NAVIGATION */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand img {
+      width: 142px;
+      height: auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      color: var(--navy);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .mobile-menu {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--navy);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(214, 170, 74, 0.18), transparent 30%),
+        linear-gradient(135deg, var(--navy), var(--navy-2));
+      color: var(--white);
+    }
+
+    .hero-inner {
+      min-height: 700px;
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      align-items: center;
+      gap: 48px;
+      padding: 80px 0;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 6vw, 5.6rem);
+      max-width: 700px;
+    }
+
+    .hero-copy h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero-copy p {
+      max-width: 580px;
+      margin: 28px 0 34px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.15rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-orbit {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border: 1px solid rgba(214, 170, 74, 0.35);
+      border-radius: 50%;
+    }
+
+    .hero-orbit::before {
+      content: "";
+      position: absolute;
+      inset: 45px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 50%;
+    }
+
+    .character {
+      position: relative;
+      z-index: 2;
+      width: min(47%, 250px);
+      filter: drop-shadow(0 30px 35px rgba(0, 0, 0, 0.28));
+    }
+
+    .character.kiivo {
+      transform: translateY(10px);
+    }
+
+    .character.leera {
+      transform: translateY(-8px);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding: 72px 0;
+      }
+
+      .hero-visual {
+        min-height: 420px;
+      }
+
+      .hero-orbit {
+        width: 340px;
+        height: 340px;
+      }
+
+      .section {
+        padding: 76px 0;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .brand img {
+        width: 122px;
+      }
+
+      .hero-copy h1 {
+        font-size: 3rem;
+      }
+
+      .hero-copy p {
+        font-size: 1rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 330px;
+      }
+
+      .hero-orbit {
+        width: 280px;
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container nav">
+
+    <a class="brand" href="/">
+      <img
+        src="/assets/innovators-world-logo.png"
+        alt="Innovators World"
+      >
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#discover">Discover</a>
+      <a href="#iwda">IWDA</a>
+      <a href="#journey">Journey</a>
+      <a href="#programmes">Programmes</a>
+      <a href="#schools">Schools & Colleges</a>
+      <a href="#merchandise">Merchandise</a>
+      <a href="#about">About</a>
+      <a href="#signin">Sign In</a>
+    </nav>
+
+    <button class="mobile-menu" aria-label="Open navigation">
+      ☰
+    </button>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="discover">
+    <div class="container hero-inner">
+
+      <div class="hero-copy">
+
+        <div class="eyebrow">Innovators World</div>
+
+        <h1>
+          See differently.<br>
+          Think differently.<br>
+          <span>Create differently.</span>
+        </h1>
+
+        <p>
+          A 365-day experience designed to help young minds
+          observe, question, imagine, create, test and grow.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#iwda">
+            START FREE — IWDA
+          </a>
+
+          <a class="btn btn-secondary" href="#journey">
+            Explore Innovators World
+          </a>
+        </div>
+
+      </div>
+
+      <div class="hero-visual" aria-label="Kiivo and Leera">
+
+        <div class="hero-orbit"></div>
+
+        <img
+          class="character kiivo"
+          src="/assets/kiivo-hero.png"
+          alt="Kiivo"
+        >
+
+        <img
+          class="character leera"
+          src="/assets/leera-hero.png"
+          alt="Leera"
+        >
+
+      </div>
+
+    </div>
+  </section>   <section class="section" id="about">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">What is Innovators World?</div>
+
+        <h2>
+          Innovation is not a subject.
+          It is a way of seeing the world.
+        </h2>
+
+        <p>
+          Innovators World gives young people the space, tools and
+          experiences to develop the mindset behind meaningful innovation.
+        </p>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:22px;
+      ">
+
+        <article style="
+          padding:32px;
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          background:var(--white);
+          box-shadow:var(--shadow);
+        ">
+          <h3 style="font-size:1.35rem;margin-bottom:12px;">
+            Observe
+          </h3>
+
+          <p style="color:var(--muted);">
+            Notice what others overlook. Learn to look closely
+            before deciding what something means.
+          </p>
+        </article>
+
+        <article style="
+          padding:32px;
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          background:var(--white);
+          box-shadow:var(--shadow);
+        ">
+          <h3 style="font-size:1.35rem;margin-bottom:12px;">
+            Question
+          </h3>
+
+          <p style="color:var(--muted);">
+            Challenge assumptions, ask better questions and
+            explore possibilities beyond the obvious answer.
+          </p>
+        </article>
+
+        <article style="
+          padding:32px;
+          border:1px solid var(--border);
+          border-radius:var(--radius);
+          background:var(--white);
+          box-shadow:var(--shadow);
+        ">
+          <h3 style="font-size:1.35rem;margin-bottom:12px;">
+            Create
+          </h3>
+
+          <p style="color:var(--muted);">
+            Turn ideas into something real, test it, improve it
+            and learn from what happens.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section
+    class="section"
+    id="iwda"
+    style="background:var(--cream);"
+  >
+    <div class="container">
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:60px;
+        align-items:center;
+      ">
+
+        <div>
+
+          <div class="eyebrow">Free discovery assessment</div>
+
+          <h2>
+            Discover your
+            Innovation DNA.
+          </h2>
+
+          <p style="
+            margin-top:20px;
+            max-width:580px;
+            color:var(--muted);
+            font-size:1.08rem;
+          ">
+            IWDA helps you understand how you naturally observe,
+            question, imagine, create and approach new possibilities.
+          </p>
+
+          <div style="
+            display:flex;
+            flex-wrap:wrap;
+            gap:12px;
+            margin-top:30px;
+          ">
+            <a class="btn btn-primary" href="/iwda">
+              Start IWDA — Free
+            </a>
+
+            <a
+              class="btn"
+              href="#journey"
+              style="
+                color:var(--navy);
+                border-color:var(--border);
+                background:var(--white);
+              "
+            >
+              See the Journey
+            </a>
+          </div>
+
+        </div>
+
+
+        <div style="
+          padding:40px;
+          border-radius:var(--radius);
+          background:var(--navy);
+          color:var(--white);
+          box-shadow:var(--shadow);
+        ">
+
+          <div class="eyebrow">
+            Your starting point
+          </div>
+
+          <h3 style="
+            font-size:2rem;
+            margin-bottom:20px;
+          ">
+            No grades.<br>
+            No right personality.
+          </h3>
+
+          <p style="
+            color:rgba(255,255,255,.72);
+            margin-bottom:26px;
+          ">
+            The purpose is not to label you.
+            It is to help you understand yourself better
+            and identify opportunities to grow.
+          </p>
+
+          <div style="
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:12px;
+          ">
+
+            <div style="
+              padding:18px;
+              border:1px solid rgba(255,255,255,.12);
+              border-radius:16px;
+            ">
+              <strong>Observe</strong>
+            </div>
+
+            <div style="
+              padding:18px;
+              border:1px solid rgba(255,255,255,.12);
+              border-radius:16px;
+            ">
+              <strong>Question</strong>
+            </div>
+
+            <div style="
+              padding:18px;
+              border:1px solid rgba(255,255,255,.12);
+              border-radius:16px;
+            ">
+              <strong>Imagine</strong>
+            </div>
+
+            <div style="
+              padding:18px;
+              border:1px solid rgba(255,255,255,.12);
+              border-radius:16px;
+            ">
+              <strong>Create</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="section" id="journey">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">The Innovators World Journey</div>
+
+        <h2>
+          An experience that evolves with you.
+        </h2>
+
+        <p>
+          Innovators World is built around doing, experimenting and
+          improving — not simply consuming content.
+        </p>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(5,1fr);
+        gap:14px;
+      ">
+
+        <div style="
+          padding:24px 18px;
+          border-radius:20px;
+          background:var(--navy);
+          color:white;
+        ">
+          <strong style="color:var(--gold-light);">01</strong>
+          <h3 style="margin-top:12px;">Observe</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">02</strong>
+          <h3 style="margin-top:12px;">Question</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">03</strong>
+          <h3 style="margin-top:12px;">Imagine</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">04</strong>
+          <h3 style="margin-top:12px;">Design</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">05</strong>
+          <h3 style="margin-top:12px;">Build</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">06</strong>
+          <h3 style="margin-top:12px;">Test</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">07</strong>
+          <h3 style="margin-top:12px;">Improve</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">08</strong>
+          <h3 style="margin-top:12px;">Present</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">09</strong>
+          <h3 style="margin-top:12px;">Showcase</h3>
+        </div>
+
+        <div style="
+          padding:24px 18px;
+          border:1px solid var(--border);
+          border-radius:20px;
+        ">
+          <strong style="color:var(--gold);">10</strong>
+          <h3 style="margin-top:12px;">Celebrate</h3>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section
+    class="section"
+    style="
+      background:var(--navy);
+      color:var(--white);
+      overflow:hidden;
+    "
+  >
+    <div class="container">
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:60px;
+        align-items:center;
+      ">
+
+        <div>
+
+          <div class="eyebrow">
+            Meet the Innovators World guides
+          </div>
+
+          <h2>
+            Kiivo & Leera
+          </h2>
+
+          <p style="
+            margin-top:20px;
+            max-width:560px;
+            color:rgba(255,255,255,.72);
+            font-size:1.08rem;
+          ">
+            Two companions for a journey built around curiosity,
+            imagination, courage, kindness and the confidence to
+            explore an idea before knowing where it will lead.
+          </p>
+
+          <a
+            href="#journey"
+            class="btn btn-primary"
+            style="margin-top:30px;"
+          >
+            Meet Them
+          </a>
+
+        </div>
+
+        <div style="
+          position:relative;
+          min-height:420px;
+          display:flex;
+          align-items:flex-end;
+          justify-content:center;
+          gap:20px;
+        ">
+
+          <img
+            src="/assets/kiivo-hero.png"
+            alt="Kiivo"
+            style="
+              width:45%;
+              max-width:230px;
+              filter:drop-shadow(0 25px 30px rgba(0,0,0,.3));
+            "
+          >
+
+          <img
+            src="/assets/leera-hero.png"
+            alt="Leera"
+            style="
+              width:45%;
+              max-width:230px;
+              filter:drop-shadow(0 25px 30px rgba(0,0,0,.3));
+            "
+          >
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="section" id="programmes">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">365-day experience</div>
+
+        <h2>
+          There is always another question to explore.
+        </h2>
+
+        <p>
+          Innovators World is designed as an evolving journey rather
+          than a one-time activity. Each stage introduces new missions,
+          experiences and opportunities to create.
+        </p>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:22px;
+      ">
+
+        <article style="
+          padding:34px;
+          border-radius:var(--radius);
+          background:var(--navy);
+          color:var(--white);
+          min-height:300px;
+          display:flex;
+          flex-direction:column;
+          justify-content:space-between;
+        ">
+          <div>
+            <div class="eyebrow">01 · Discover</div>
+
+            <h3 style="
+              font-size:1.7rem;
+              margin-bottom:14px;
+            ">
+              Find your Innovation DNA
+            </h3>
+
+            <p style="color:rgba(255,255,255,.7);">
+              Start with IWDA and understand how you naturally
+              approach observation, questions and ideas.
+            </p>
+          </div>
+
+          <a
+            href="/iwda"
+            class="btn btn-primary"
+            style="align-self:flex-start;"
+          >
+            Start Free
+          </a>
+        </article>
+
+
+        <article style="
+          padding:34px;
+          border-radius:var(--radius);
+          background:var(--cream);
+          min-height:300px;
+          display:flex;
+          flex-direction:column;
+          justify-content:space-between;
+        ">
+          <div>
+            <div class="eyebrow">02 · Experience</div>
+
+            <h3 style="
+              font-size:1.7rem;
+              margin-bottom:14px;
+            ">
+              Take on real challenges
+            </h3>
+
+            <p style="color:var(--muted);">
+              Missions encourage participants to observe,
+              question, imagine, build, test and improve.
+            </p>
+          </div>
+
+          <a
+            href="#journey"
+            class="btn"
+            style="
+              align-self:flex-start;
+              color:var(--navy);
+              border-color:var(--border);
+              background:var(--white);
+            "
+          >
+            Explore Journey
+          </a>
+        </article>
+
+
+        <article style="
+          padding:34px;
+          border-radius:var(--radius);
+          background:var(--white);
+          border:1px solid var(--border);
+          min-height:300px;
+          display:flex;
+          flex-direction:column;
+          justify-content:space-between;
+          box-shadow:var(--shadow);
+        ">
+          <div>
+            <div class="eyebrow">03 · Grow</div>
+
+            <h3 style="
+              font-size:1.7rem;
+              margin-bottom:14px;
+            ">
+              Build a record of progress
+            </h3>
+
+            <p style="color:var(--muted);">
+              Save challenges, achievements, participation and
+              journey history inside My Innovators World.
+            </p>
+          </div>
+
+          <a
+            href="#signin"
+            class="btn"
+            style="
+              align-self:flex-start;
+              color:var(--navy);
+              border-color:var(--border);
+              background:var(--cream);
+            "
+          >
+            Sign In
+          </a>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section" id="schools" style="background:var(--cream);">
+    <div class="container">
+
+      <div style="
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:60px;
+        align-items:center;
+      ">
+
+        <div>
+          <div class="eyebrow">Schools & Colleges</div>
+
+          <h2>
+            Bring innovation into your institution.
+          </h2>
+
+          <p style="
+            margin-top:20px;
+            color:var(--muted);
+            font-size:1.08rem;
+            max-width:570px;
+          ">
+            Schools and colleges can work with Innovators World
+            through structured programmes, workshops, challenges
+            and innovation experiences.
+          </p>
+
+          <a
+            href="/schools"
+            class="btn btn-primary"
+            style="margin-top:28px;"
+          >
+            Discuss Your Institution
+          </a>
+        </div>
+
+
+        <div style="
+          padding:38px;
+          background:var(--white);
+          border-radius:var(--radius);
+          box-shadow:var(--shadow);
+        ">
+
+          <h3 style="
+            font-size:1.6rem;
+            margin-bottom:22px;
+          ">
+            Institutional possibilities
+          </h3>
+
+          <div style="
+            display:grid;
+            gap:14px;
+          ">
+
+            <div style="
+              padding:18px;
+              border-radius:16px;
+              border:1px solid var(--border);
+            ">
+              <strong>Innovation workshops</strong>
+              <p style="color:var(--muted);font-size:.92rem;">
+                Hands-on experiences designed around doing.
+              </p>
+            </div>
+
+            <div style="
+              padding:18px;
+              border-radius:16px;
+              border:1px solid var(--border);
+            ">
+              <strong>Student challenges</strong>
+              <p style="color:var(--muted);font-size:.92rem;">
+                Structured missions that encourage creative problem solving.
+              </p>
+            </div>
+
+            <div style="
+              padding:18px;
+              border-radius:16px;
+              border:1px solid var(--border);
+            ">
+              <strong>Long-term programmes</strong>
+              <p style="color:var(--muted);font-size:.92rem;">
+                Experiences that can continue beyond a single event.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <section class="section" id="merchandise">
+    <div class="container">
+
+      <div class="section-heading">
+        <div class="eyebrow">Innovators World Merchandise</div>
+
+        <h2>
+          Take the journey with you.
+        </h2>
+
+        <p>
+          A future catalogue of thoughtfully designed Innovators World
+          products connected to the experience, identity and community.
+        </p>
+      </div>
+
+      <div style="
+        display:grid;
+        grid-template-columns:repeat(3,1fr);
+        gap:22px;
+      ">
+
+        <article style="
+          overflow:hidden;
+          border-radius:var(--radius);
+          background:var(--white);
+          border:1px solid var(--border);
+          box-shadow:var(--shadow);
+        ">
+
+          <div style="
+            height:230px;
+            background:var(--navy);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+          ">
+            <img
+              src="/assets/innovators-world-symbol.png"
+              alt="Innovators World"
+              style="width:120px;"
+            >
+          </div>
+
+          <div style="padding:26px;">
+            <div class="eyebrow">Coming soon</div>
+
+            <h3 style="font-size:1.4rem;">
+              Innovators World Collection
+            </h3>
+
+            <p style="
+              color:var(--muted);
+              margin-top:10px;
+            ">
+              Official products for participants,
+              families and supporters.
+            </p>
+
+            <a
+              href="#merchandise-interest"
+              class="btn"
+              style="
+                margin-top:20px;
+                color:var(--navy);
+                background:var(--cream);
+                border-color:var(--border);
+              "
+            >
+              Register Interest
+            </a>
+          </div>
+
+        </article>
+
+
+        <article style="
+          overflow:hidden;
+          border-radius:var(--radius);
+          background:var(--white);
+          border:1px solid var(--border);
+          box-shadow:var(--shadow);
+        ">
+
+          <div style="
+            height:230px;
+            background:var(--cream);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+          ">
+            <img
+              src="/assets/innovators-world-logo.png"
+              alt="Innovators World"
+              style="width:190px;"
+            >
+          </div>
+
+          <div style="padding:26px;">
+            <div class="eyebrow">Coming soon</div>
+
+            <h3 style="font-size:1.4rem;">
+              Participant Essentials
+            </h3>
+
+            <p style="
+              color:var(--muted);
+              margin-top:10px;
+            ">
+              Practical products designed around the Innovators World
+              journey.
+            </p>
+
+            <a
+              href="#merchandise-interest"
+              class="btn"
+              style="
+                margin-top:20px;
+                color:var(--navy);
+                background:var(--cream);
+                border-color:var(--border);
+              "
+            >
+              Register Interest
+            </a>
+          </div>
+
+        </article>
+
+
+        <article style="
+          overflow:hidden;
+          border-radius:var(--radius);
+          background:var(--white);
+          border:1px solid var(--border);
+          box-shadow:var(--shadow);
+        ">
+
+          <div style="
+            height:230px;
+            background:var(--navy-2);
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+            padding:30px;
+          ">
+            <div>
+              <div style="
+                color:var(--gold-light);
+                font-weight:800;
+                letter-spacing:.12em;
+                text-transform:uppercase;
+                font-size:.75rem;
+              ">
+                Innovators World
+              </div>
+
+              <div style="
+                font-size:2rem;
+                font-weight:800;
+                margin-top:10px;
+              ">
+                Create.
+              </div>
+            </div>
+          </div>
+
+          <div style="padding:26px;">
+            <div class="eyebrow">Coming soon</div>
+
+            <h3 style="font-size:1.4rem;">
+              Limited Editions
+            </h3>
+
+            <p style="
+              color:var(--muted);
+              margin-top:10px;
+            ">
+              Special releases connected to programmes,
+              challenges and showcases.
+            </p>
+
+            <a
+              href="#merchandise-interest"
+              class="btn"
+              style="
+                margin-top:20px;
+                color:var(--navy);
+                background:var(--cream);
+                border-color:var(--border);
+              "
+            >
+              Register Interest
+            </a>
+          </div>
+
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <section
+    class="section"
+    id="signin"
+    style="
+      background:var(--navy);
+      color:var(--white);
+      text-align:center;
+    "
+  >
+    <div class="container">
+
+      <div class="eyebrow" style="justify-content:center;">
+        Your Innovators World
+      </div>
+
+      <h2>
+        Your journey starts with one idea.
+      </h2>
+
+      <p style="
+        max-width:620px;
+        margin:20px auto 30px;
+        color:rgba(255,255,255,.72);
+        font-size:1.08rem;
+      ">
+        Start free with IWDA, discover your Innovation DNA
+        and begin building your personal Innovators World journey.
+      </p>
+
+      <div style="
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:14px;
+      ">
+        <a class="btn btn-primary" href="/iwda">
+          START FREE — IWDA
+        </a>
+
+        <a class="btn btn-secondary" href="/signin">
+          Sign In
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer
+    style="
+      background:#041329;
+      color:rgba(255,255,255,.72);
+      padding:60px 0 30px;
+    "
+  >
+    <div class="container">
+
+      <div style="
+        display:grid;
+        grid-template-columns:1.4fr 1fr 1fr 1fr;
+        gap:40px;
+        padding-bottom:50px;
+      ">
+
+        <div>
+          <img
+            src="/assets/innovators-world-logo.png"
+            alt="Innovators World"
+            style="
+              width:145px;
+              background:white;
+              padding:8px;
+              border-radius:8px;
+            "
+          >
+
+          <p style="
+            margin-top:18px;
+            max-width:320px;
+            font-size:.92rem;
+          ">
+            See differently. Think differently.
+            Create differently.
+          </p>
+        </div>
+
+
+        <div>
+          <strong style="color:white;">Explore</strong>
+
+          <div style="
+            display:grid;
+            gap:10px;
+            margin-top:16px;
+            font-size:.9rem;
+          ">
+            <a href="#iwda">IWDA</a>
+            <a href="#journey">Journey</a>
+            <a href="#programmes">Programmes</a>
+            <a href="#merchandise">Merchandise</a>
+          </div>
+        </div>
+
+
+        <div>
+          <strong style="color:white;">Institutions</strong>
+
+          <div style="
+            display:grid;
+            gap:10px;
+            margin-top:16px;
+            font-size:.9rem;
+          ">
+            <a href="#schools">Schools & Colleges</a>
+            <a href="#schools">Institutional Enquiry</a>
+          </div>
+        </div>
+
+
+        <div>
+          <strong style="color:white;">Account</strong>
+
+          <div style="
+            display:grid;
+            gap:10px;
+            margin-top:16px;
+            font-size:.9rem;
+          ">
+            <a href="/signup">Sign Up</a>
+            <a href="/signin">Sign In</a>
+            <a href="/privacy">Privacy</a>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div style="
+        border-top:1px solid rgba(255,255,255,.1);
+        padding-top:24px;
+        display:flex;
+        justify-content:space-between;
+        gap:20px;
+        flex-wrap:wrap;
+        font-size:.82rem;
+      ">
+        <span>
+          © 2026 Innovators World. All rights reserved.
+        </span>
+
+        <span>
+          Built around curiosity, creativity and action.
+        </span>
+      </div>
+
+    </div>
+  </footer>
+</main>
+
+</body>
+</html>
