@@ -12,7 +12,9 @@
 	],
 	"assets": {
 		// The path to the directory containing the `index.html` file to be served at `/`
-		"directory": "./public"
+		"directory": "./public",
+		// The Worker uses this binding to serve static assets after API routing.
+		"binding": "ASSETS"
 	},
 	"observability": {
 		"enabled": true
@@ -34,7 +36,7 @@
 	 * Bindings
 	 * Bindings allow your Worker to interact with resources on the Cloudflare Developer Platform, including
 	 * databases, object storage, AI inference, real-time communication and more.
-	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
+	 * https://developers.cloudflare.com/workers/wrangler/configuration/#bindings
 	 */
 	/**
 	 * Environment Variables
@@ -47,5 +49,5 @@
 	 * Service Bindings (communicate between multiple Workers)
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#service-bindings
 	 */
-	// "services": [  {   "binding": "MY_SERVICE",   "service": "my-service"  } ]
+	// "services": [  {   "binding": "MY_SERVICE",   "service": "my-service" } ]
 }
