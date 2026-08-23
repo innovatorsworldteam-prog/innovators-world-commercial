@@ -10,13 +10,6 @@
   },
   "observability": { "enabled": true },
   "upload_source_maps": true,
-  "send_email": [
-    {
-      "name": "EMAIL",
-      "remote": true,
-      "allowed_sender_addresses": ["verify@innovatorsworld.org"]
-    }
-  ],
   "d1_databases": [
     {
       "binding": "DB",
