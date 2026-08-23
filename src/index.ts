@@ -18,23 +18,40 @@ import {
 type JsonBody = Record<string, unknown>;
 type IWDAResultRow = { id:string; attempt_id:string; user_id:string|null; innovation_readiness_index:number; traits:string|null; result_data:string|null; created_at:string };
 type ParticipantRow = { id:string; participant_type:"adult"|"minor"; full_name:string; email:string; phone:string; status:string; email_verified_at:string|null; phone_verified_at:string|null; guardian_authorized_at:string|null };
-type EnvWithEmail = Env & { RESEND_API_KEY?: string };
+type EnvWithEmail = Env & { EMAIL?: { send: (message: unknown) => Promise<void> } };
 
-async function sendResendEmail(env: EnvWithEmail, message: {to:string;from:string;subject:string;html:string;text:string}) {
-  if (!env.RESEND_API_KEY) throw new Error("RESEND_API_KEY is not configured");
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(message)
-  });
-  if (!response.ok) {
-    const detail = await response.text();
-    console.error("Resend delivery failed", response.status, detail.slice(0, 500));
-    throw new Error(`Resend returned ${response.status}`);
-  }
+function buildVerificationEmailMessage(from:string,to:string,subject:string,html:string,text:string) {
+  const boundary = `iw-${crypto.randomUUID()}`;
+  const escapeHeader = (v:string) => v.replace(/[\r\n]/g, "");
+  const body = [
+    `From: ${escapeHeader(from)}`,
+    `To: ${escapeHeader(to)}`,
+    `Subject: ${escapeHeader(subject)}`,
+    "MIME-Version: 1.0",
+    `Content-Type: multipart/alternative; boundary="${boundary}"`,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/plain; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    text,
+    "",
+    `--${boundary}`,
+    "Content-Type: text/html; charset=UTF-8",
+    "Content-Transfer-Encoding: 8bit",
+    "",
+    html,
+    "",
+    `--${boundary}--`,
+    ""
+  ].join("\r\n");
+  return new EmailMessage(from,to,body);
+}
+
+async function sendVerificationEmail(env: EnvWithEmail, message: {to:string;from:string;subject:string;html:string;text:string}) {
+  if (!env.EMAIL) throw new Error("Cloudflare EMAIL binding is not configured");
+  await env.EMAIL.send(buildVerificationEmailMessage(message.from,message.to,message.subject,message.html,message.text));
+  console.log("Cloudflare email delivery accepted", { to: message.to, subject: message.subject });
 }
 async function readJsonBody(request: Request): Promise<JsonBody> {
   try { const body: unknown = await request.json(); if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error(); return body as JsonBody; }
@@ -74,7 +91,7 @@ export default {
         if(!participantType||!fullName||!contactEmail||!consentVersion)return jsonError("participant_type, full_name, email and consent_version are required",400);
         if(!isValidEmail(contactEmail))return jsonError("A valid email address is required",400);
         if(participantType==="minor"&&!guardianName)return jsonError("Parent or guardian name is required for minors",400);
-        if(!env.RESEND_API_KEY)return jsonError("Email verification is not configured yet",503);
+        if(!env.EMAIL)return jsonError("Email verification is not configured yet",503);
 
         const existing=await env.DB.prepare("SELECT id,participant_type,full_name,email,phone,status,email_verified_at,phone_verified_at,guardian_authorized_at FROM participants WHERE lower(email)=?").bind(contactEmail).first<ParticipantRow>();
         let participantId:string;
@@ -100,7 +117,7 @@ export default {
         const expires=verificationExpiry();
         const challengeChannel=storedParticipantType==="minor"?"guardian_email":"email";
         await env.DB.prepare(`INSERT INTO identity_verification_challenges (id,participant_id,channel,destination,code_hash,expires_at,created_at) VALUES (?,?,?,?,?,?,?)`).bind(challengeId,participantId,challengeChannel,contactEmail,await hashToken(token),expires,now).run();
-        await sendResendEmail(env,{to:contactEmail,from:"Innovators World <verify@innovatorsworld.org>",subject:"Verify your Innovators World email",html:verificationEmailHtml(storedFullName,verificationUrl(request,token)),text:verificationEmailText(storedFullName,verificationUrl(request,token))});
+        await sendVerificationEmail(env,{to:contactEmail,from:"Innovators World <verify@innovatorsworld.org>",subject:"Verify your Innovators World email",html:verificationEmailHtml(storedFullName,verificationUrl(request,token)),text:verificationEmailText(storedFullName,verificationUrl(request,token))});
         return Response.json({status:"ok",participant_id:participantId,verification_required:true,expires_at:expires,existing:Boolean(existing)},{status:existing?200:201});
       }catch(error){console.error("Participant registration error",error);return jsonError("Unable to register participant",500)}
     }
