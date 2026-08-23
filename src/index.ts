@@ -14,13 +14,23 @@ import {
 
 type ParticipantType = "adult" | "minor";
 
-type WorkerEnv = {
+type EmailBinding = {
+  send(message: {
+    to: string;
+    from: string;
+    subject: string;
+    html?: string;
+    text?: string;
+  }): Promise<unknown>;
+};
+
+type Env = {
   DB: D1Database;
-  EMAIL?: { send(message: EmailMessage): Promise<void> };
+  EMAIL?: EmailBinding;
   ASSETS?: Fetcher;
 };
 
-type ParticipantRow = {
+type Participant = {
   id: string;
   participant_type: ParticipantType;
   full_name: string;
@@ -32,14 +42,14 @@ type ParticipantRow = {
   guardian_authorized_at: string | null;
 };
 
-type AttemptRow = {
+type Attempt = {
   id: string;
   user_id: string | null;
   participant_id: string | null;
   status: string;
 };
 
-type ResultRow = {
+type Result = {
   id: string;
   attempt_id: string;
   user_id: string | null;
@@ -51,123 +61,75 @@ type ResultRow = {
 
 type JsonObject = Record<string, unknown>;
 
-function json(data: unknown, status = 200): Response {
-  return Response.json(data, { status });
-}
+const json = (data: unknown, status = 200) =>
+  Response.json(data, { status });
 
-function errorResponse(message: string, status: number, details?: unknown): Response {
-  console.error(message, details ?? "");
+function fail(message: string, status = 400, details?: unknown) {
+  if (details) console.error(message, details);
   return json({ error: message }, status);
 }
 
-async function readJson(request: Request): Promise<JsonObject> {
-  try {
-    const value: unknown = await request.json();
-    if (!value || typeof value !== "object" || Array.isArray(value)) {
-      throw new Error("Body must be a JSON object");
-    }
-    return value as JsonObject;
-  } catch {
-    throw new Error("Invalid JSON request body");
+async function body(request: Request): Promise<JsonObject> {
+  const value: unknown = await request.json();
+  if (!value || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error("Request body must be a JSON object");
   }
+  return value as JsonObject;
 }
 
-function stringValue(body: JsonObject, key: string): string {
-  const value = body[key];
+function text(value: unknown): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function publicParticipant(row: ParticipantRow) {
+function participantPublic(p: Participant) {
   return {
-    id: row.id,
-    participant_type: row.participant_type,
-    full_name: row.full_name,
-    email: row.email,
-    status: row.status,
-    email_verified: Boolean(row.email_verified_at),
-    guardian_authorized: Boolean(row.guardian_authorized_at),
+    id: p.id,
+    participant_type: p.participant_type,
+    full_name: p.full_name,
+    email: p.email,
+    status: p.status,
+    email_verified: Boolean(p.email_verified_at),
+    guardian_authorized: Boolean(p.guardian_authorized_at),
   };
 }
 
-function publicResult(row: ResultRow) {
+function resultPublic(r: Result) {
   let resultData: unknown = null;
   let traits: unknown[] = [];
 
-  if (row.result_data) {
-    try {
-      resultData = JSON.parse(row.result_data);
-    } catch {
-      resultData = null;
-    }
+  try {
+    resultData = r.result_data ? JSON.parse(r.result_data) : null;
+  } catch {
+    resultData = null;
   }
 
-  if (row.traits) {
-    try {
-      const parsed = JSON.parse(row.traits);
-      traits = Array.isArray(parsed) ? parsed : [];
-    } catch {
-      traits = [];
-    }
+  try {
+    const parsed = r.traits ? JSON.parse(r.traits) : [];
+    traits = Array.isArray(parsed) ? parsed : [];
+  } catch {
+    traits = [];
   }
 
   return {
-    id: row.id,
-    attempt_id: row.attempt_id,
-    user_id: row.user_id,
-    innovation_readiness_index: row.innovation_readiness_index,
+    id: r.id,
+    attempt_id: r.attempt_id,
+    user_id: r.user_id,
+    innovation_readiness_index: r.innovation_readiness_index,
     traits,
     result_data: resultData,
-    created_at: row.created_at,
+    created_at: r.created_at,
   };
 }
 
-function buildVerificationMessage(
-  from: string,
-  to: string,
-  subject: string,
-  html: string,
-  text: string,
-): EmailMessage {
-  const boundary = `iwda-${crypto.randomUUID()}`;
-  const cleanHeader = (value: string) => value.replace(/[\r\n]/g, "");
-
-  const raw = [
-    `From: ${cleanHeader(from)}`,
-    `To: ${cleanHeader(to)}`,
-    `Subject: ${cleanHeader(subject)}`,
-    "MIME-Version: 1.0",
-    `Content-Type: multipart/alternative; boundary="${boundary}"`,
-    "",
-    `--${boundary}`,
-    "Content-Type: text/plain; charset=UTF-8",
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    text,
-    "",
-    `--${boundary}`,
-    "Content-Type: text/html; charset=UTF-8",
-    "Content-Transfer-Encoding: 8bit",
-    "",
-    html,
-    "",
-    `--${boundary}--`,
-    "",
-  ].join("\r\n");
-
-  return new EmailMessage(from, to, raw);
-}
-
-async function createAndSendChallenge(
-  env: WorkerEnv,
+async function sendVerificationEmail(
+  env: Env,
   request: Request,
-  participantId: string,
   participantName: string,
   participantType: ParticipantType,
+  participantId: string,
   destination: string,
 ): Promise<string> {
-  if (!env.EMAIL) {
-    throw new Error("Cloudflare EMAIL binding is not configured");
-  }
+  if (!env.EMAIL) throw new Error("EMAIL binding is not configured");
 
   const token = createVerificationToken();
   const now = new Date().toISOString();
@@ -192,62 +154,52 @@ async function createAndSendChallenge(
     )
     .run();
 
-  const message = buildVerificationMessage(
-    "Innovators World <verify@innovatorsworld.org>",
-    destination,
-    "Verify your Innovators World email",
-    verificationEmailHtml(participantName, verifyUrl),
-    verificationEmailText(participantName, verifyUrl),
-  );
-
   try {
-    await env.EMAIL.send(message);
-  } catch (sendError) {
-    console.error("Cloudflare Email send failed", sendError);
-    throw new Error("Verification email could not be sent");
+    await env.EMAIL.send({
+      to: destination,
+      from: "verify@innovatorsworld.org",
+      subject: "Verify your Innovators World email",
+      html: verificationEmailHtml(participantName, verifyUrl),
+      text: verificationEmailText(participantName, verifyUrl),
+    });
+  } catch (error) {
+    console.error("Cloudflare Email send failed", error);
+    throw new Error(`EMAIL_SEND_FAILED: ${error instanceof Error ? error.message : String(error)}`);
   }
 
   return expiresAt;
 }
 
-async function handleParticipantRegistration(
-  request: Request,
-  env: WorkerEnv,
-): Promise<Response> {
-  try {
-    const body = await readJson(request);
-    const rawType = stringValue(body, "participant_type");
-    const participantType: ParticipantType | "" =
-      rawType === "minor" || rawType === "adult" ? rawType : "";
-    const fullName = stringValue(body, "full_name");
-    const email = normalizeEmail(body.email);
-    const guardianEmail = normalizeEmail(body.parent_guardian_email);
-    const guardianName = stringValue(body, "parent_guardian_name");
-    const consentVersion = stringValue(body, "consent_version");
+async function register(request: Request, env: Env): Promise<Response> {
+  let stage = "start";
 
-    if (!participantType) {
-      return errorResponse("Please select Adult / 18+ or Under 18.", 400);
+  try {
+    const b = await body(request);
+    const participantType = text(b.participant_type) as ParticipantType;
+    const fullName = text(b.full_name);
+    const email = normalizeEmail(b.email);
+    const guardianName = text(b.parent_guardian_name);
+    const guardianEmail = normalizeEmail(b.parent_guardian_email);
+    const consentVersion = text(b.consent_version);
+
+    if (participantType !== "adult" && participantType !== "minor") {
+      return fail("Please select Adult / 18+ or Under 18.");
     }
-    if (!fullName) {
-      return errorResponse("Full name is required.", 400);
-    }
-    if (!consentVersion) {
-      return errorResponse("Assessment terms must be accepted.", 400);
-    }
+    if (!fullName) return fail("Full name is required.");
+    if (!consentVersion) return fail("Assessment terms must be accepted.");
 
     const destination = participantType === "minor" ? guardianEmail : email;
     if (!destination || !isValidEmail(destination)) {
-      return errorResponse("A valid email address is required.", 400);
+      return fail("A valid email address is required.");
     }
-
     if (participantType === "minor" && !guardianName) {
-      return errorResponse("Parent or guardian name is required for participants under 18.", 400);
+      return fail("Parent or guardian name is required for participants under 18.");
     }
-
     if (!env.EMAIL) {
-      return errorResponse("Email verification is not configured yet.", 503);
+      return fail("Email verification is not configured on the Worker.", 503);
     }
 
+    stage = "participant lookup";
     const existing = await env.DB.prepare(
       `SELECT id, participant_type, full_name, email, phone, status,
               email_verified_at, phone_verified_at, guardian_authorized_at
@@ -256,37 +208,42 @@ async function handleParticipantRegistration(
        LIMIT 1`,
     )
       .bind(destination)
-      .first<ParticipantRow>();
+      .first<Participant>();
 
     let participantId: string;
-    let storedType: ParticipantType = participantType;
-    let storedName = fullName;
 
     if (existing) {
-      participantId = existing.id;
-      const alreadyVerified =
+      const verified =
         Boolean(existing.email_verified_at) &&
         (existing.participant_type !== "minor" || Boolean(existing.guardian_authorized_at));
 
-      if (alreadyVerified && existing.status === "active") {
+      if (verified && existing.status === "active") {
         return json({
           status: "ok",
-          participant: publicParticipant(existing),
           participant_id: existing.id,
+          participant: participantPublic(existing),
           verification_required: false,
           verified: true,
           existing: true,
         });
       }
 
+      participantId = existing.id;
+      stage = "participant update";
       const now = new Date().toISOString();
+
       await env.DB.prepare(
         `UPDATE participants
-         SET participant_type = ?, full_name = ?,
-             parent_guardian_name = ?, parent_guardian_email = ?,
-             consent_version = ?, consent_at = ?,
-             email_verified_at = NULL, guardian_authorized_at = NULL,
-             status = 'pending_verification', updated_at = ?
+         SET participant_type = ?,
+             full_name = ?,
+             parent_guardian_name = ?,
+             parent_guardian_email = ?,
+             consent_version = ?,
+             consent_at = ?,
+             email_verified_at = NULL,
+             guardian_authorized_at = NULL,
+             status = 'pending_verification',
+             updated_at = ?
          WHERE id = ?`,
       )
         .bind(
@@ -300,13 +257,11 @@ async function handleParticipantRegistration(
           participantId,
         )
         .run();
-
-      storedType = participantType;
-      storedName = fullName;
     } else {
       participantId = crypto.randomUUID();
       const now = new Date().toISOString();
 
+      stage = "participant insert";
       await env.DB.prepare(
         `INSERT INTO participants
           (id, participant_type, full_name, email, phone, date_of_birth, age_band,
@@ -320,8 +275,8 @@ async function handleParticipantRegistration(
           fullName,
           destination,
           "",
-          typeof body.date_of_birth === "string" ? body.date_of_birth.trim() : null,
-          typeof body.age_band === "string" ? body.age_band.trim() : null,
+          text(b.date_of_birth) || null,
+          text(b.age_band) || null,
           participantType === "minor" ? guardianName : null,
           participantType === "minor" ? destination : null,
           "",
@@ -333,6 +288,7 @@ async function handleParticipantRegistration(
         )
         .run();
 
+      stage = "consent insert";
       await env.DB.prepare(
         `INSERT INTO participant_consents
           (id, participant_id, consent_type, version, granted_at)
@@ -348,12 +304,13 @@ async function handleParticipantRegistration(
         .run();
     }
 
-    const expiresAt = await createAndSendChallenge(
+    stage = "verification email";
+    const expiresAt = await sendVerificationEmail(
       env,
       request,
+      fullName,
+      participantType,
       participantId,
-      storedName,
-      storedType,
       destination,
     );
 
@@ -368,19 +325,17 @@ async function handleParticipantRegistration(
       existing ? 200 : 201,
     );
   } catch (error) {
-    console.error("Participant registration error", error);
-    return errorResponse("Unable to register participant", 500);
+    console.error("IWDA registration failed", { stage, error });
+    const message = error instanceof Error ? error.message : String(error);
+    return fail(`Unable to register participant. Stage: ${stage}. ${message}`, 500);
   }
 }
 
-async function handleVerification(request: Request, env: WorkerEnv): Promise<Response> {
-  const url = new URL(request.url);
-  const token = (url.searchParams.get("token") || "").trim();
-
-  if (!token) return new Response("Invalid verification link.", { status: 400 });
+async function verifyEmail(request: Request, env: Env): Promise<Response> {
+  const token = new URL(request.url).searchParams.get("token")?.trim() || "";
+  if (!token) return fail("Invalid verification link.", 400);
 
   try {
-    const tokenHash = await hashToken(token);
     const challenge = await env.DB.prepare(
       `SELECT id, participant_id, channel, expires_at, verified_at, attempts
        FROM identity_verification_challenges
@@ -388,7 +343,7 @@ async function handleVerification(request: Request, env: WorkerEnv): Promise<Res
        ORDER BY created_at DESC
        LIMIT 1`,
     )
-      .bind(tokenHash)
+      .bind(await hashToken(token))
       .first<{
         id: string;
         participant_id: string;
@@ -428,23 +383,23 @@ async function handleVerification(request: Request, env: WorkerEnv): Promise<Res
          SET email_verified_at = ?, status = 'active', updated_at = ?
          WHERE id = ?`,
       )
-        .bind(now, now, now, challenge.participant_id)
+        .bind(now, now, challenge.participant_id)
         .run();
     }
 
     return new Response(
-      "Email verified. You may now return to Innovators World and start IWDA.",
-      { status: 200, headers: { "content-type": "text/plain; charset=UTF-8" } },
+      "Email verified. Return to Innovators World and select 'I have verified my email'.",
+      { headers: { "content-type": "text/plain; charset=UTF-8" } },
     );
   } catch (error) {
-    console.error("Email verification error", error);
+    console.error("Email verification failed", error);
     return new Response("Unable to verify this email right now.", { status: 500 });
   }
 }
 
-async function handleParticipantStatus(request: Request, env: WorkerEnv): Promise<Response> {
+async function participantStatus(request: Request, env: Env): Promise<Response> {
   const id = new URL(request.url).searchParams.get("participant_id")?.trim() || "";
-  if (!id) return errorResponse("participant_id is required.", 400);
+  if (!id) return fail("participant_id is required.");
 
   try {
     const participant = await env.DB.prepare(
@@ -453,20 +408,21 @@ async function handleParticipantStatus(request: Request, env: WorkerEnv): Promis
        FROM participants WHERE id = ? LIMIT 1`,
     )
       .bind(id)
-      .first<ParticipantRow>();
+      .first<Participant>();
 
-    if (!participant) return errorResponse("Participant not found.", 404);
-    return json({ status: "ok", participant: publicParticipant(participant) });
+    if (!participant) return fail("Participant not found.", 404);
+    return json({ status: "ok", participant: participantPublic(participant) });
   } catch (error) {
-    return errorResponse("Unable to retrieve participant status.", 500, error);
+    console.error("Participant status failed", error);
+    return fail("Unable to retrieve participant status.", 500);
   }
 }
 
-async function handleStartIWDA(request: Request, env: WorkerEnv): Promise<Response> {
+async function startIWDA(request: Request, env: Env): Promise<Response> {
   try {
-    const body = await readJson(request);
-    const participantId = stringValue(body, "participant_id");
-    if (!participantId) return errorResponse("A verified participant_id is required to start IWDA.", 401);
+    const b = await body(request);
+    const participantId = text(b.participant_id);
+    if (!participantId) return fail("A verified participant_id is required.", 401);
 
     const participant = await env.DB.prepare(
       `SELECT id, status, email_verified_at, participant_type, guardian_authorized_at
@@ -481,14 +437,14 @@ async function handleStartIWDA(request: Request, env: WorkerEnv): Promise<Respon
         guardian_authorized_at: string | null;
       }>();
 
-    if (!participant) return errorResponse("Participant not found.", 404);
+    if (!participant) return fail("Participant not found.", 404);
 
     const verified =
       Boolean(participant.email_verified_at) &&
       (participant.participant_type !== "minor" || Boolean(participant.guardian_authorized_at));
 
     if (!verified || participant.status !== "active") {
-      return errorResponse("Participant email verification is incomplete.", 403);
+      return fail("Participant email verification is incomplete.", 403);
     }
 
     const existing = await env.DB.prepare(
@@ -499,9 +455,7 @@ async function handleStartIWDA(request: Request, env: WorkerEnv): Promise<Respon
       .bind(participantId)
       .first<{ id: string }>();
 
-    if (existing) {
-      return json({ status: "ok", attempt_id: existing.id, assessment: "IWDA", resumed: true });
-    }
+    if (existing) return json({ status: "ok", attempt_id: existing.id, assessment: "IWDA", resumed: true });
 
     const attemptId = crypto.randomUUID();
     await env.DB.prepare(
@@ -514,26 +468,21 @@ async function handleStartIWDA(request: Request, env: WorkerEnv): Promise<Respon
 
     return json({ status: "ok", attempt_id: attemptId, assessment: "IWDA", resumed: false });
   } catch (error) {
-    return errorResponse("Unable to start IWDA.", 500, error);
+    console.error("IWDA start failed", error);
+    return fail("Unable to start IWDA.", 500);
   }
 }
 
-async function handleAnswer(request: Request, env: WorkerEnv): Promise<Response> {
+async function answer(request: Request, env: Env): Promise<Response> {
   try {
-    const body = await readJson(request);
-    const attemptId = stringValue(body, "attempt_id");
-    const questionId = stringValue(body, "question_id");
-    const answer = stringValue(body, "answer").toUpperCase();
+    const b = await body(request);
+    const attemptId = text(b.attempt_id);
+    const questionId = text(b.question_id);
+    const value = text(b.answer).toUpperCase();
 
-    if (!attemptId || !questionId || !answer) {
-      return errorResponse("attempt_id, question_id and answer are required.", 400);
-    }
-    if (!IWDA_QUESTIONS.some((question) => question.id === questionId)) {
-      return errorResponse("Invalid question_id.", 400);
-    }
-    if (!["A", "B", "C", "D"].includes(answer)) {
-      return errorResponse("answer must be A, B, C or D.", 400);
-    }
+    if (!attemptId || !questionId || !value) return fail("attempt_id, question_id and answer are required.");
+    if (!IWDA_QUESTIONS.some((q) => q.id === questionId)) return fail("Invalid question_id.");
+    if (!["A", "B", "C", "D"].includes(value)) return fail("answer must be A, B, C or D.");
 
     const attempt = await env.DB.prepare(
       `SELECT id, status FROM iwda_attempts WHERE id = ? LIMIT 1`,
@@ -541,8 +490,8 @@ async function handleAnswer(request: Request, env: WorkerEnv): Promise<Response>
       .bind(attemptId)
       .first<{ id: string; status: string }>();
 
-    if (!attempt) return errorResponse("IWDA attempt not found.", 404);
-    if (attempt.status !== "started") return errorResponse("IWDA attempt is not active.", 409);
+    if (!attempt) return fail("IWDA attempt not found.", 404);
+    if (attempt.status !== "started") return fail("IWDA attempt is not active.", 409);
 
     await env.DB.prepare(
       `DELETE FROM iwda_answers WHERE attempt_id = ? AND question_id = ?`,
@@ -555,54 +504,40 @@ async function handleAnswer(request: Request, env: WorkerEnv): Promise<Response>
       `INSERT INTO iwda_answers (id, attempt_id, question_id, answer, created_at)
        VALUES (?, ?, ?, ?, datetime('now'))`,
     )
-      .bind(answerId, attemptId, questionId, answer)
+      .bind(answerId, attemptId, questionId, value)
       .run();
 
-    return json({
-      status: "ok",
-      recorded: true,
-      answer_id: answerId,
-      attempt_id: attemptId,
-      question_id: questionId,
-    });
+    return json({ status: "ok", recorded: true, answer_id: answerId });
   } catch (error) {
-    return errorResponse("Unable to record answer.", 500, error);
+    console.error("IWDA answer failed", error);
+    return fail("Unable to record answer.", 500);
   }
 }
 
-async function handleComplete(request: Request, env: WorkerEnv): Promise<Response> {
+async function complete(request: Request, env: Env): Promise<Response> {
   try {
-    const body = await readJson(request);
-    const attemptId = stringValue(body, "attempt_id");
-    if (!attemptId) return errorResponse("attempt_id is required.", 400);
+    const b = await body(request);
+    const attemptId = text(b.attempt_id);
+    if (!attemptId) return fail("attempt_id is required.");
 
     const existing = await env.DB.prepare(
-      `SELECT id, attempt_id, user_id, innovation_readiness_index,
-              traits, result_data, created_at
+      `SELECT id, attempt_id, user_id, innovation_readiness_index, traits, result_data, created_at
        FROM iwda_results WHERE attempt_id = ? LIMIT 1`,
     )
       .bind(attemptId)
-      .first<ResultRow>();
+      .first<Result>();
 
-    if (existing) {
-      return json({
-        status: "ok",
-        completed: true,
-        scoring_status: "complete",
-        result: publicResult(existing),
-      });
-    }
+    if (existing) return json({ status: "ok", completed: true, scoring_status: "complete", result: resultPublic(existing) });
 
     const attempt = await env.DB.prepare(
-      `SELECT id, user_id, participant_id, status
-       FROM iwda_attempts WHERE id = ? LIMIT 1`,
+      `SELECT id, user_id, participant_id, status FROM iwda_attempts WHERE id = ? LIMIT 1`,
     )
       .bind(attemptId)
-      .first<AttemptRow>();
+      .first<Attempt>();
 
-    if (!attempt) return errorResponse("IWDA attempt not found.", 404);
-    if (attempt.status !== "started") return errorResponse("IWDA attempt is not active.", 409);
-    if (!attempt.participant_id) return errorResponse("This IWDA attempt is not linked to a participant.", 409);
+    if (!attempt) return fail("IWDA attempt not found.", 404);
+    if (attempt.status !== "started") return fail("IWDA attempt is not active.", 409);
+    if (!attempt.participant_id) return fail("This IWDA attempt is not linked to a participant.", 409);
 
     const answers = await env.DB.prepare(
       `SELECT question_id, answer FROM iwda_answers WHERE attempt_id = ? ORDER BY created_at`,
@@ -610,20 +545,13 @@ async function handleComplete(request: Request, env: WorkerEnv): Promise<Respons
       .bind(attemptId)
       .all<{ question_id: string; answer: string }>();
 
-    const answerRows = answers.results ?? [];
-    const uniqueQuestionIds = new Set(answerRows.map((row) => row.question_id));
-
-    if (uniqueQuestionIds.size !== IWDA_QUESTIONS.length) {
-      return errorResponse(
-        `IWDA requires all ${IWDA_QUESTIONS.length} questions to be answered before completion.`,
-        400,
-      );
+    const rows = answers.results ?? [];
+    const unique = new Set(rows.map((r) => r.question_id));
+    if (unique.size !== IWDA_QUESTIONS.length) {
+      return fail(`IWDA requires all ${IWDA_QUESTIONS.length} questions to be answered before completion.`);
     }
 
-    const result = calculateIWDAResult(
-      answerRows.map((row) => ({ question_id: row.question_id, answer: row.answer })),
-    );
-
+    const calculated = calculateIWDAResult(rows.map((r) => ({ question_id: r.question_id, answer: r.answer })));
     const resultId = crypto.randomUUID();
     const now = new Date().toISOString();
 
@@ -636,9 +564,9 @@ async function handleComplete(request: Request, env: WorkerEnv): Promise<Respons
         resultId,
         attemptId,
         attempt.user_id,
-        result.innovation_readiness_index,
-        JSON.stringify(result.traits),
-        JSON.stringify(result.result_data),
+        calculated.innovation_readiness_index,
+        JSON.stringify(calculated.traits),
+        JSON.stringify(calculated.result_data),
         now,
       )
       .run();
@@ -649,56 +577,57 @@ async function handleComplete(request: Request, env: WorkerEnv): Promise<Respons
       .bind(now, attemptId)
       .run();
 
-    const saved: ResultRow = {
+    const saved: Result = {
       id: resultId,
       attempt_id: attemptId,
       user_id: attempt.user_id,
-      innovation_readiness_index: result.innovation_readiness_index,
-      traits: JSON.stringify(result.traits),
-      result_data: JSON.stringify(result.result_data),
+      innovation_readiness_index: calculated.innovation_readiness_index,
+      traits: JSON.stringify(calculated.traits),
+      result_data: JSON.stringify(calculated.result_data),
       created_at: now,
     };
 
-    return json({
-      status: "ok",
-      completed: true,
-      scoring_status: "complete",
-      result: publicResult(saved),
-    });
+    return json({ status: "ok", completed: true, scoring_status: "complete", result: resultPublic(saved) });
   } catch (error) {
-    return errorResponse("Unable to complete IWDA.", 500, error);
+    console.error("IWDA completion failed", error);
+    return fail("Unable to complete IWDA.", 500);
   }
 }
 
-async function handleHealth(env: WorkerEnv): Promise<Response> {
+async function health(env: Env): Promise<Response> {
   try {
-    const row = await env.DB.prepare("SELECT 1 AS ok").first<{ ok: number }>();
+    await env.DB.prepare("SELECT 1 AS ok").first();
+    const checks = await Promise.all(
+      ["participants", "identity_verification_challenges", "participant_consents", "iwda_attempts"].map(async (table) => {
+        try {
+          await env.DB.prepare(`SELECT 1 FROM ${table} LIMIT 1`).first();
+          return [table, true] as const;
+        } catch {
+          return [table, false] as const;
+        }
+      }),
+    );
     return json({
       status: "ok",
-      database: row?.ok === 1,
+      database: true,
       email_configured: Boolean(env.EMAIL),
+      tables: Object.fromEntries(checks),
       service: "innovators-world-commercial",
     });
   } catch (error) {
-    return errorResponse("Database unavailable.", 503, error);
+    console.error("Health check failed", error);
+    return fail("Database unavailable.", 503);
   }
 }
 
 export default {
-  async fetch(request: Request, env: WorkerEnv): Promise<Response> {
+  async fetch(request: Request, env: Env): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.pathname === "/api/health" && request.method === "GET") {
-      return handleHealth(env);
-    }
-
-    if (url.pathname === "/api/participants" && request.method === "POST") {
-      return handleParticipantRegistration(request, env);
-    }
-
-    if (url.pathname === "/api/participants/status" && request.method === "GET") {
-      return handleParticipantStatus(request, env);
-    }
+    if (url.pathname === "/api/health" && request.method === "GET") return health(env);
+    if (url.pathname === "/api/participants" && request.method === "POST") return register(request, env);
+    if (url.pathname === "/api/participants/status" && request.method === "GET") return participantStatus(request, env);
+    if (url.pathname === "/verify-email" && request.method === "GET") return verifyEmail(request, env);
 
     if (url.pathname === "/api/iwda/questions" && request.method === "GET") {
       return json({
@@ -706,41 +635,22 @@ export default {
         assessment: "IWDA",
         version: "1.0",
         question_count: IWDA_QUESTIONS.length,
-        questions: IWDA_QUESTIONS.map(({ id, prompt }) => ({
-          id,
-          prompt,
-          options: ["A", "B", "C", "D"],
-        })),
+        questions: IWDA_QUESTIONS.map(({ id, prompt }) => ({ id, prompt, options: ["A", "B", "C", "D"] })),
       });
     }
 
-    if (url.pathname === "/api/iwda/start" && request.method === "POST") {
-      return handleStartIWDA(request, env);
-    }
-
-    if (url.pathname === "/api/iwda/answer" && request.method === "POST") {
-      return handleAnswer(request, env);
-    }
-
-    if (url.pathname === "/api/iwda/complete" && request.method === "POST") {
-      return handleComplete(request, env);
-    }
-
-    if (url.pathname === "/verify-email" && request.method === "GET") {
-      return handleVerification(request, env);
-    }
+    if (url.pathname === "/api/iwda/start" && request.method === "POST") return startIWDA(request, env);
+    if (url.pathname === "/api/iwda/answer" && request.method === "POST") return answer(request, env);
+    if (url.pathname === "/api/iwda/complete" && request.method === "POST") return complete(request, env);
 
     if (url.pathname === "/api/events" && request.method === "POST") {
       try {
-        const body = await readJson(request);
-        const eventType = stringValue(body, "event_type");
-        if (!eventType) return errorResponse("event_type is required.", 400);
-
-        const metadata =
-          body.metadata && typeof body.metadata === "object" && !Array.isArray(body.metadata)
-            ? JSON.stringify(body.metadata)
-            : null;
-
+        const b = await body(request);
+        const eventType = text(b.event_type);
+        if (!eventType) return fail("event_type is required.");
+        const metadata = b.metadata && typeof b.metadata === "object" && !Array.isArray(b.metadata)
+          ? JSON.stringify(b.metadata)
+          : null;
         await env.DB.prepare(
           `INSERT INTO events
             (id, user_id, anonymous_session_id, event_type, page, metadata, created_at)
@@ -748,24 +658,21 @@ export default {
         )
           .bind(
             crypto.randomUUID(),
-            stringValue(body, "user_id") || null,
-            stringValue(body, "anonymous_session_id") || null,
+            text(b.user_id) || null,
+            text(b.anonymous_session_id) || null,
             eventType,
-            stringValue(body, "page") || null,
+            text(b.page) || null,
             metadata,
           )
           .run();
-
         return json({ status: "ok", recorded: true });
       } catch (error) {
-        return errorResponse("Unable to record event.", 500, error);
+        console.error("Event recording failed", error);
+        return fail("Unable to record event.", 500);
       }
     }
 
-    if (env.ASSETS) {
-      return env.ASSETS.fetch(request);
-    }
-
+    if (env.ASSETS) return env.ASSETS.fetch(request);
     return new Response("Not found", { status: 404 });
   },
 };
