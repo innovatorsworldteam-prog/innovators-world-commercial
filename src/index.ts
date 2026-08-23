@@ -13,14 +13,29 @@ import {
   verificationExpiry,
   verificationUrl,
   MAX_ATTEMPTS,
-  type EmailSender,
 } from "./identity";
 
 type JsonBody = Record<string, unknown>;
 type IWDAResultRow = { id:string; attempt_id:string; user_id:string|null; innovation_readiness_index:number; traits:string|null; result_data:string|null; created_at:string };
 type ParticipantRow = { id:string; participant_type:"adult"|"minor"; full_name:string; email:string; phone:string; status:string; email_verified_at:string|null; phone_verified_at:string|null; guardian_authorized_at:string|null };
-type EnvWithEmail = Env & { EMAIL?: EmailSender };
+type EnvWithEmail = Env & { RESEND_API_KEY?: string };
 
+async function sendResendEmail(env: EnvWithEmail, message: {to:string;from:string;subject:string;html:string;text:string}) {
+  if (!env.RESEND_API_KEY) throw new Error("RESEND_API_KEY is not configured");
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(message)
+  });
+  if (!response.ok) {
+    const detail = await response.text();
+    console.error("Resend delivery failed", response.status, detail.slice(0, 500));
+    throw new Error(`Resend returned ${response.status}`);
+  }
+}
 async function readJsonBody(request: Request): Promise<JsonBody> {
   try { const body: unknown = await request.json(); if (!body || typeof body !== "object" || Array.isArray(body)) throw new Error(); return body as JsonBody; }
   catch { throw new Error("Invalid JSON request body"); }
@@ -48,19 +63,45 @@ export default {
     }
     if(url.pathname==="/api/participants"&&request.method==="POST"){
       try{
-        const body=await readJsonBody(request);const participantType=body.participant_type==="minor"?"minor":body.participant_type==="adult"?"adult":"";const fullName=typeof body.full_name==="string"?body.full_name.trim():"";const email=normalizeEmail(body.email);const guardianEmail=normalizeEmail(body.parent_guardian_email);const contactEmail=participantType==="minor"?guardianEmail:email;const consentVersion=typeof body.consent_version==="string"?body.consent_version.trim():"";const guardianName=typeof body.parent_guardian_name==="string"?body.parent_guardian_name.trim():"";
+        const body=await readJsonBody(request);
+        const participantType=body.participant_type==="minor"?"minor":body.participant_type==="adult"?"adult":"";
+        const fullName=typeof body.full_name==="string"?body.full_name.trim():"";
+        const email=normalizeEmail(body.email);
+        const guardianEmail=normalizeEmail(body.parent_guardian_email);
+        const contactEmail=participantType==="minor"?guardianEmail:email;
+        const consentVersion=typeof body.consent_version==="string"?body.consent_version.trim():"";
+        const guardianName=typeof body.parent_guardian_name==="string"?body.parent_guardian_name.trim():"";
         if(!participantType||!fullName||!contactEmail||!consentVersion)return jsonError("participant_type, full_name, email and consent_version are required",400);
         if(!isValidEmail(contactEmail))return jsonError("A valid email address is required",400);
         if(participantType==="minor"&&!guardianName)return jsonError("Parent or guardian name is required for minors",400);
+        if(!env.RESEND_API_KEY)return jsonError("Email verification is not configured yet",503);
+
         const existing=await env.DB.prepare("SELECT id,participant_type,full_name,email,phone,status,email_verified_at,phone_verified_at,guardian_authorized_at FROM participants WHERE lower(email)=?").bind(contactEmail).first<ParticipantRow>();
-        if(existing&&existing.status!=="deleted")return Response.json({status:"ok",participant:publicParticipant(existing),existing:true});
-        const participantId=crypto.randomUUID(),now=new Date().toISOString();
-        await env.DB.prepare(`INSERT INTO participants (id,participant_type,full_name,email,phone,date_of_birth,age_band,parent_guardian_name,parent_guardian_email,parent_guardian_phone,consent_version,consent_at,status,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(participantId,participantType,fullName,contactEmail,"",typeof body.date_of_birth==="string"?body.date_of_birth.trim():null,typeof body.age_band==="string"?body.age_band.trim():null,participantType==="minor"?guardianName:null,participantType==="minor"?contactEmail:null,"",consentVersion,now,"pending_verification",now,now).run();
-        await env.DB.prepare(`INSERT INTO participant_consents (id,participant_id,consent_type,version,granted_at) VALUES (?,?,?,?,?)`).bind(crypto.randomUUID(),participantId,participantType==="minor"?"guardian_authorization":"assessment",consentVersion,now).run();
-        if(!env.EMAIL)return jsonError("Email verification is not configured yet",503);
-        const token=createVerificationToken(),challengeId=crypto.randomUUID(),expires=verificationExpiry();await env.DB.prepare(`INSERT INTO identity_verification_challenges (id,participant_id,channel,destination,code_hash,expires_at,created_at) VALUES (?,?,?,?,?,?,?)`).bind(challengeId,participantId,participantType==="minor"?"guardian_email":"email",contactEmail,await hashToken(token),expires,now).run();
-        try{await env.EMAIL.send({to:contactEmail,from:"verify@innovatorsworld.org",subject:"Verify your Innovators World email",html:verificationEmailHtml(fullName,verificationUrl(request,token)),text:verificationEmailText(fullName,verificationUrl(request,token))})}catch(error){console.error("Email verification delivery error",error);return jsonError("Unable to send verification email",503)}
-        return Response.json({status:"ok",participant_id:participantId,verification_required:true,expires_at:expires},{status:201});
+        let participantId:string;
+        let storedParticipantType:"adult"|"minor"=participantType;
+        let storedFullName=fullName;
+
+        if(existing&&existing.status!=="deleted"){
+          participantId=existing.id;
+          storedParticipantType=existing.participant_type;
+          storedFullName=existing.full_name;
+          const alreadyVerified=Boolean(existing.email_verified_at&&(existing.participant_type!=="minor"||existing.guardian_authorized_at));
+          if(alreadyVerified)return Response.json({status:"ok",participant:publicParticipant(existing),existing:true,verified:true});
+        }else{
+          participantId=crypto.randomUUID();
+          const now=new Date().toISOString();
+          await env.DB.prepare(`INSERT INTO participants (id,participant_type,full_name,email,phone,date_of_birth,age_band,parent_guardian_name,parent_guardian_email,parent_guardian_phone,consent_version,consent_at,status,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`).bind(participantId,participantType,fullName,contactEmail,"",typeof body.date_of_birth==="string"?body.date_of_birth.trim():null,typeof body.age_band==="string"?body.age_band.trim():null,participantType==="minor"?guardianName:null,participantType==="minor"?contactEmail:null,"",consentVersion,now,"pending_verification",now,now).run();
+          await env.DB.prepare(`INSERT INTO participant_consents (id,participant_id,consent_type,version,granted_at) VALUES (?,?,?,?,?)`).bind(crypto.randomUUID(),participantId,participantType==="minor"?"guardian_authorization":"assessment",consentVersion,now).run();
+        }
+
+        const now=new Date().toISOString();
+        const token=createVerificationToken();
+        const challengeId=crypto.randomUUID();
+        const expires=verificationExpiry();
+        const challengeChannel=storedParticipantType==="minor"?"guardian_email":"email";
+        await env.DB.prepare(`INSERT INTO identity_verification_challenges (id,participant_id,channel,destination,code_hash,expires_at,created_at) VALUES (?,?,?,?,?,?,?)`).bind(challengeId,participantId,challengeChannel,contactEmail,await hashToken(token),expires,now).run();
+        await sendResendEmail(env,{to:contactEmail,from:"Innovators World <verify@innovatorsworld.org>",subject:"Verify your Innovators World email",html:verificationEmailHtml(storedFullName,verificationUrl(request,token)),text:verificationEmailText(storedFullName,verificationUrl(request,token))});
+        return Response.json({status:"ok",participant_id:participantId,verification_required:true,expires_at:expires,existing:Boolean(existing)},{status:existing?200:201});
       }catch(error){console.error("Participant registration error",error);return jsonError("Unable to register participant",500)}
     }
     if(url.pathname==="/verify-email"&&request.method==="GET"){
