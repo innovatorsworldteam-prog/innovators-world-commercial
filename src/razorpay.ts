@@ -11,8 +11,8 @@ const json = (data: unknown, status = 200) => Response.json(data, { status });
 const fail = (message: string, status = 400) => json({ error: message }, status);
 const text = (value: unknown): string => typeof value === "string" ? value.trim() : "";
 
-const PREMIUM_AMOUNT = 149900;
-const PREMIUM_CURRENCY = "INR";
+const PREMIUM_AMOUNT = 1995;
+const PREMIUM_CURRENCY = "USD";
 const PREMIUM_PRODUCT = "complete_innovation_profile";
 
 async function parseBody(request: Request): Promise<JsonObject> {
@@ -97,7 +97,7 @@ export async function createRazorpayOrder(request: Request, env: PaymentEnv): Pr
 
     if (!attemptId) return fail("attempt_id is required.");
     if (!Number.isInteger(requestedAmount) || requestedAmount < 100) return fail("amount must be at least 100 paise.");
-    if (requestedAmount !== PREMIUM_AMOUNT || currency !== PREMIUM_CURRENCY) return fail("Complete Innovation Profile orders must be ₹1,499 INR.", 400);
+    if (requestedAmount !== PREMIUM_AMOUNT || currency !== PREMIUM_CURRENCY) return fail("Complete Innovation Profile orders must be $19.95 USD.", 400);
     if (receipt.length < 1 || receipt.length > 40) return fail("Invalid receipt.");
 
     const result = await env.DB.prepare("SELECT id FROM iwda_results WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{ id: string }>();
