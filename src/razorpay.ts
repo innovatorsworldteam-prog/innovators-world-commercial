@@ -92,8 +92,6 @@ export async function createRazorpayOrder(request: Request, env: PaymentEnv): Pr
     const attemptId = text(body.attempt_id);
     const requestedAmount = Number(body.amount ?? PREMIUM_AMOUNT);
     const currency = text(body.currency) || PREMIUM_CURRENCY;
-    // Razorpay receipts are limited to 40 characters. Keep the receipt short and opaque;
-    // the verified attempt_id remains the authoritative application-level reference.
     const suppliedReceipt = text(body.receipt);
     const receipt = suppliedReceipt || `iwda_${crypto.randomUUID().replace(/-/g, "").slice(0, 34)}`;
 
@@ -105,16 +103,24 @@ export async function createRazorpayOrder(request: Request, env: PaymentEnv): Pr
     const result = await env.DB.prepare("SELECT id FROM iwda_results WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{ id: string }>();
     if (!result) return fail("A completed IWDA result is required before purchase.", 404);
 
+    let auth: string;
+    try {
+      auth = razorpayAuth(env);
+    } catch (error) {
+      console.error("Razorpay credential configuration error", error);
+      return fail("Razorpay server credentials are not configured.", 500);
+    }
+
     let response: Response;
     try {
       response = await fetch("https://api.razorpay.com/v1/orders", {
         method: "POST",
-        headers: { "Authorization": razorpayAuth(env), "Content-Type": "application/json" },
+        headers: { "Authorization": auth, "Content-Type": "application/json" },
         body: JSON.stringify({ amount: requestedAmount, currency, receipt }),
       });
     } catch (error) {
       console.error("Razorpay order request failed", error);
-      return fail("Unable to reach Razorpay.", 500);
+      return fail("Unable to reach Razorpay.", 502);
     }
 
     if (response.status === 401) return fail("Razorpay authentication failed.", 401);
