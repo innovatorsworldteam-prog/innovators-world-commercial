@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS innovation_profile_entitlements (
   amount_paise INTEGER NOT NULL,
   currency TEXT NOT NULL DEFAULT 'INR',
   status TEXT NOT NULL DEFAULT 'paid',
+  access_token_hash TEXT NOT NULL,
   created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (attempt_id) REFERENCES iwda_attempts(id)
 );
