@@ -92,7 +92,10 @@ export async function createRazorpayOrder(request: Request, env: PaymentEnv): Pr
     const attemptId = text(body.attempt_id);
     const requestedAmount = Number(body.amount ?? PREMIUM_AMOUNT);
     const currency = text(body.currency) || PREMIUM_CURRENCY;
-    const receipt = text(body.receipt) || `iwda_${attemptId || crypto.randomUUID()}`;
+    // Razorpay receipts are limited to 40 characters. Keep the receipt short and opaque;
+    // the verified attempt_id remains the authoritative application-level reference.
+    const suppliedReceipt = text(body.receipt);
+    const receipt = suppliedReceipt || `iwda_${crypto.randomUUID().replace(/-/g, "").slice(0, 34)}`;
 
     if (!attemptId) return fail("attempt_id is required.");
     if (!Number.isInteger(requestedAmount) || requestedAmount < 100) return fail("amount must be at least 100 paise.");
