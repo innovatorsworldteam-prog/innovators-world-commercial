@@ -1,18 +1,36 @@
 # Innovators World Assessment Platform — Live Schema Reconciliation v1.0
 
-## Scope
+## Status
 
-This reconciliation compares the canonical assessment-platform schema with the database structures currently represented by the repository migrations and Worker code.
+**Repository reconciliation: complete.**
 
-## D1 configuration
+**Production D1 inspection: complete.**
 
-The Worker is configured with D1 binding `DB` pointing to database `innovators-world-commercial-db`. The repository configuration records the production database ID in `wrangler.jsonc`.
+**Migration 0007: prepared but not yet applied to production.**
 
-## Existing schema families
+## Production D1
+
+The Worker configuration points `DB` to:
+
+- Database: `innovators-world-commercial-db`
+- Database ID: `fd8313c6-ceac-4112-a299-791169061dd1`
+
+The remote D1 migration ledger was inspected directly on 26 August 2026.
+
+Remote applied migrations are:
+
+1. `0001_initial.sql`
+2. `0002_iwda.sql`
+3. `0002_participants_and_identity.sql`
+4. `0006_complete_innovation_profile.sql`
+
+Wrangler reports **No migrations to apply** against the local checkout only when the local migration directory is at the same state as production. The local checkout originally lacked the newly prepared `0007` file; the canonical repository now contains it.
+
+## Verified live schema
+
+The remote database was queried directly through `sqlite_master`. Existing production tables include:
 
 ### Existing platform tables
-
-The original platform migration defines:
 
 - users
 - events
@@ -22,41 +40,29 @@ The original platform migration defines:
 - orders
 - payments
 
-These remain separate platform/commercial tables.
+### Existing participant/identity tables
+
+- participants
+- participant_consents
+- identity_verification_challenges
 
 ### Existing IWDA tables
-
-The existing IWDA migration defines:
 
 - iwda_attempts
 - iwda_answers
 - iwda_results
 - iwda_insights
 
-The participant/identity migration subsequently adds `participant_id` to `iwda_attempts`.
-
-### Participant identity tables
-
-Existing participant infrastructure includes:
-
-- participants
-- identity_verification_challenges
-- participant_consents
-
-These remain the canonical participant identity layer.
-
 ### Existing paid IWDA profile tables
-
-The complete innovation profile migration defines:
 
 - innovation_profile_entitlements
 - complete_innovation_profiles
 
-These remain product/entitlement-specific and are not duplicated by the generic assessment result tables.
+The live database also contains the corresponding existing indexes and SQLite autoindexes.
 
 ## Reconciliation decision
 
-The generic assessment platform is **additive**. Existing IWDA tables are not dropped, renamed, or rewritten in v1.0.
+The generic assessment platform is **additive**. Existing IWDA production tables and data will not be dropped, renamed, or rewritten by migration 0007.
 
 The new generic layer is:
 
@@ -70,29 +76,39 @@ The new generic layer is:
 - assessment_results
 - assessment_dimension_scores
 
-The generic layer is intended to become the canonical storage model for new assessments and, after validation, the migration target for future IWDA consolidation.
+The generic layer is intended to become the canonical storage model for new assessments. Historical IWDA data remains in its current schema until a separately validated consolidation strategy is approved.
 
-## Migration numbering correction
+## Migration numbering
 
-The first assessment-platform migration was initially created as `0001_assessment_platform_v1.sql`. The repository already contained `0001_initial.sql`, so the duplicate migration number was unsafe.
-
-It has been removed and recreated as:
+The assessment migration is:
 
 `migrations/0007_assessment_platform_v1.sql`
 
 This preserves the existing migration sequence through `0006_complete_innovation_profile.sql`.
 
-## Important live-D1 limitation
+The migration uses `CREATE TABLE IF NOT EXISTS`, `CREATE INDEX IF NOT EXISTS`, and idempotent seed inserts. It does not alter existing IWDA tables.
 
-Repository inspection can establish the intended/current schema represented by version-controlled migrations and the Worker queries. It cannot independently prove the exact live D1 state without executing a Cloudflare D1 command against the configured database.
+## Seeded assessment definitions
 
-The Worker already contains a health check that probes the key participant/IWDA tables. Before applying `0007`, the production D1 migration state must therefore be checked with Wrangler against the configured D1 database.
+Migration 0007 registers:
 
-**No destructive migration should be run until that check confirms the live state.**
+- `IWDA` / version `1.0` as active
+- `CAREER_DISCOVERY` / version `1.0` as draft
 
-## Generic data-access layer
+Career Discovery v1.0 contains six canonical dimensions:
 
-`src/db/assessment.ts` now provides typed D1 access for:
+| Code | Dimension | Weight |
+|---|---|---:|
+| INT | Interests | 25% |
+| ACT | Activities | 15% |
+| VAL | Values | 15% |
+| ENV | Environments | 15% |
+| SKL | Skill Inclinations | 15% |
+| FUT | Future Curiosity | 15% |
+
+## Generic TypeScript data-access layer
+
+`src/db/assessment.ts` provides typed D1 persistence operations for:
 
 - assessment lookup
 - version lookup
@@ -106,10 +122,22 @@ The Worker already contains a health check that probes the key participant/IWDA 
 - result persistence
 - dimension-score persistence
 
-The layer deliberately contains persistence operations only. Assessment methodology and scoring remain outside the data-access layer.
+`src/db/index.ts` re-exports the assessment data-access layer.
 
-## Next reconciliation gate
+The layer deliberately contains persistence operations only. Assessment methodology, scoring and career matching remain separate concerns.
 
-Run the production D1 migration/status inspection, compare the result with migrations `0001`–`0006`, then apply `0007` only if the schema is compatible.
+## Production gate
 
-After successful migration, wire IWDA and Career Discovery routes to the generic data-access layer incrementally. Existing IWDA routes should remain operational throughout the transition.
+Migration 0007 has **not** been applied remotely at the time of this document revision.
+
+Before production application, the local checkout must first synchronize with `origin/main` so Wrangler can see `migrations/0007_assessment_platform_v1.sql`.
+
+Then run the remote migration and verify:
+
+1. `0007_assessment_platform_v1.sql` appears in `d1_migrations`.
+2. All nine generic assessment tables exist.
+3. IWDA and Career Discovery seed records exist.
+4. The six Career Discovery dimensions exist with the canonical weights.
+5. Existing IWDA/participant tables remain intact.
+
+Only after that verification should application routes be wired to the generic layer.
