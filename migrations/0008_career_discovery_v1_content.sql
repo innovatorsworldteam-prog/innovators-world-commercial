@@ -4,80 +4,84 @@
 
 PRAGMA foreign_keys = ON;
 
-INSERT OR IGNORE INTO assessment_questions (id, assessment_version_id, code, age_min, age_max, question_type, prompt, helper_text, required, display_order, scoring_config_json, created_at, updated_at) VALUES
+-- 24 canonical questions: one per dimension per developmental band.
+-- The cognitive task changes by band: concrete choice -> comparison -> trade-off -> realistic future-work context.
+INSERT OR IGNORE INTO assessment_questions
+(id, assessment_version_id, code, age_min, age_max, question_type, prompt, helper_text, required, display_order, scoring_config_json, created_at, updated_at)
+VALUES
 ('cd-q-001','assessment-career-discovery-v1','CD_EXP_INT_01',8,10,'single_choice','What would you most like to discover on a new adventure?',NULL,1,1,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-002','assessment-career-discovery-v1','CD_EXP_INT_02',8,10,'single_choice','Which mystery would you be most curious to investigate?',NULL,1,2,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-003','assessment-career-discovery-v1','CD_EXP_INT_03',8,10,'single_choice','If you could open one new door today, what would you choose to explore?',NULL,1,3,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-004','assessment-career-discovery-v1','CD_EXP_ACT_01',8,10,'single_choice','If you had a free afternoon to make something happen, what would you choose to do?',NULL,1,4,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-005','assessment-career-discovery-v1','CD_EXP_ACT_02',8,10,'single_choice','Which activity would you most enjoy doing with a small team?',NULL,1,5,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-006','assessment-career-discovery-v1','CD_EXP_ACT_03',8,10,'single_choice','If you were given a box of materials, what would you most likely do first?',NULL,1,6,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-007','assessment-career-discovery-v1','CD_EXP_VAL_01',8,10,'single_choice','When people work together on something, what feels most important to you?',NULL,1,7,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-008','assessment-career-discovery-v1','CD_EXP_VAL_02',8,10,'single_choice','If you could improve one thing about a group project, what would matter most?',NULL,1,8,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-009','assessment-career-discovery-v1','CD_EXP_VAL_03',8,10,'single_choice','What would make you feel proud of something your team created?',NULL,1,9,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-010','assessment-career-discovery-v1','CD_EXP_ENV_01',8,10,'single_choice','Where would you most enjoy spending time while solving a puzzle?',NULL,1,10,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-011','assessment-career-discovery-v1','CD_EXP_ENV_02',8,10,'single_choice','Which setting would make you most eager to start a project?',NULL,1,11,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-012','assessment-career-discovery-v1','CD_EXP_ENV_03',8,10,'single_choice','Where would you feel most comfortable trying something new?',NULL,1,12,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-013','assessment-career-discovery-v1','CD_EXP_SKL_01',8,10,'single_choice','Which ability would you most like to get better at?',NULL,1,13,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-014','assessment-career-discovery-v1','CD_EXP_SKL_02',8,10,'single_choice','When something is difficult, which ability would you like to practise?',NULL,1,14,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-015','assessment-career-discovery-v1','CD_EXP_SKL_03',8,10,'single_choice','If a mentor could teach you one skill, which would you choose?',NULL,1,15,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-016','assessment-career-discovery-v1','CD_EXP_FUT_01',8,10,'single_choice','Which future possibility sounds most exciting to imagine?',NULL,1,16,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-017','assessment-career-discovery-v1','CD_EXP_FUT_02',8,10,'single_choice','What new kind of place or technology would you most like to see?',NULL,1,17,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-018','assessment-career-discovery-v1','CD_EXP_FUT_03',8,10,'single_choice','If you could peek at one part of the future, what would you choose?',NULL,1,18,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-019','assessment-career-discovery-v1','CD_DIS_INT_01',11,13,'single_choice','Which kind of challenge would you most want to spend an afternoon exploring?',NULL,1,19,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-020','assessment-career-discovery-v1','CD_DIS_INT_02',11,13,'single_choice','Which question would you be most likely to keep thinking about after school?',NULL,1,20,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-021','assessment-career-discovery-v1','CD_DIS_INT_03',11,13,'single_choice','Which new topic would you most want to investigate for yourself?',NULL,1,21,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-022','assessment-career-discovery-v1','CD_DIS_ACT_01',11,13,'single_choice','Which activity would you most enjoy choosing for a project?',NULL,1,22,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-023','assessment-career-discovery-v1','CD_DIS_ACT_02',11,13,'single_choice','If a group gave you one free hour, which activity would you prefer to lead or join?',NULL,1,23,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-024','assessment-career-discovery-v1','CD_DIS_ACT_03',11,13,'single_choice','Which kind of project would you most enjoy completing from start to finish?',NULL,1,24,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-025','assessment-career-discovery-v1','CD_DIS_VAL_01',11,13,'single_choice','When choosing between two projects, what would matter most to you?',NULL,1,25,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-026','assessment-career-discovery-v1','CD_DIS_VAL_02',11,13,'single_choice','What makes a project feel worthwhile to you?',NULL,1,26,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-027','assessment-career-discovery-v1','CD_DIS_VAL_03',11,13,'single_choice','If a team succeeds, which result would matter most to you?',NULL,1,27,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-028','assessment-career-discovery-v1','CD_DIS_ENV_01',11,13,'single_choice','Which setting would you prefer for a challenging project?',NULL,1,28,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-029','assessment-career-discovery-v1','CD_DIS_ENV_02',11,13,'single_choice','Where do you think you would do your best thinking?',NULL,1,29,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-030','assessment-career-discovery-v1','CD_DIS_ENV_03',11,13,'single_choice','Which kind of place would make you want to keep working on a difficult task?',NULL,1,30,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-031','assessment-career-discovery-v1','CD_DIS_SKL_01',11,13,'single_choice','Which ability would you most like to strengthen through a project?',NULL,1,31,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-032','assessment-career-discovery-v1','CD_DIS_SKL_02',11,13,'single_choice','When learning something new, which kind of ability would you enjoy developing?',NULL,1,32,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-033','assessment-career-discovery-v1','CD_DIS_SKL_03',11,13,'single_choice','Which skill would you most like to become noticeably better at?',NULL,1,33,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-034','assessment-career-discovery-v1','CD_DIS_FUT_01',11,13,'single_choice','Which future development would you most want to learn about?',NULL,1,34,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-035','assessment-career-discovery-v1','CD_DIS_FUT_02',11,13,'single_choice','Which emerging idea would you most like to explore?',NULL,1,35,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-036','assessment-career-discovery-v1','CD_DIS_FUT_03',11,13,'single_choice','If you could visit one future workplace, which would you choose?',NULL,1,36,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-037','assessment-career-discovery-v1','CD_PAT_INT_01',14,16,'single_choice','Which kind of problem would you willingly spend extra time understanding?',NULL,1,37,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-038','assessment-career-discovery-v1','CD_PAT_INT_02',14,16,'single_choice','When you encounter a new subject, which direction most pulls your attention?',NULL,1,38,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-039','assessment-career-discovery-v1','CD_PAT_INT_03',14,16,'single_choice','Which type of question is most likely to make you want to go deeper?',NULL,1,39,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-040','assessment-career-discovery-v1','CD_PAT_ACT_01',14,16,'single_choice','Which kind of activity would you choose when you have meaningful free time?',NULL,1,40,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-041','assessment-career-discovery-v1','CD_PAT_ACT_02',14,16,'single_choice','Which project role would you be most comfortable taking on?',NULL,1,41,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-042','assessment-career-discovery-v1','CD_PAT_ACT_03',14,16,'single_choice','Which kind of task would you willingly practise until you improved?',NULL,1,42,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-043','assessment-career-discovery-v1','CD_PAT_VAL_01',14,16,'single_choice','When comparing possible future activities, which principle matters most to you?',NULL,1,43,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-044','assessment-career-discovery-v1','CD_PAT_VAL_02',14,16,'single_choice','What would make you consider a project genuinely worthwhile?',NULL,1,44,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-045','assessment-career-discovery-v1','CD_PAT_VAL_03',14,16,'single_choice','If two opportunities were equally interesting, what would help you choose?',NULL,1,45,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-046','assessment-career-discovery-v1','CD_PAT_ENV_01',14,16,'single_choice','Which working environment would you choose for a demanding project?',NULL,1,46,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-047','assessment-career-discovery-v1','CD_PAT_ENV_02',14,16,'single_choice','In which setting would you expect to stay focused for longer?',NULL,1,47,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-048','assessment-career-discovery-v1','CD_PAT_ENV_03',14,16,'single_choice','Which combination of people, tools and surroundings would suit you best?',NULL,1,48,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-049','assessment-career-discovery-v1','CD_PAT_SKL_01',14,16,'single_choice','Which capability would you most willingly develop through repeated practice?',NULL,1,49,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-050','assessment-career-discovery-v1','CD_PAT_SKL_02',14,16,'single_choice','Which kind of skill would you like to use more often in projects?',NULL,1,50,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-051','assessment-career-discovery-v1','CD_PAT_SKL_03',14,16,'single_choice','Which ability would you most like to have stronger evidence of by the end of a project?',NULL,1,51,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-052','assessment-career-discovery-v1','CD_PAT_FUT_01',14,16,'single_choice','Which emerging field would you most like to understand before it becomes familiar?',NULL,1,52,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-053','assessment-career-discovery-v1','CD_PAT_FUT_02',14,16,'single_choice','Which future change would you most want to experiment with?',NULL,1,53,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-054','assessment-career-discovery-v1','CD_PAT_FUT_03',14,16,'single_choice','Which new technology or social development would you most want to investigate?',NULL,1,54,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-055','assessment-career-discovery-v1','CD_LAU_INT_01',17,19,'single_choice','Which kind of work problem would you most willingly investigate in depth?',NULL,1,55,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-056','assessment-career-discovery-v1','CD_LAU_INT_02',17,19,'single_choice','Which subject area would you be most willing to explore beyond what is required?',NULL,1,56,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-057','assessment-career-discovery-v1','CD_LAU_INT_03',17,19,'single_choice','Which kind of unresolved question is most likely to hold your attention?',NULL,1,57,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-058','assessment-career-discovery-v1','CD_LAU_ACT_01',17,19,'single_choice','Which kind of activity would you most want included in a real project?',NULL,1,58,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-059','assessment-career-discovery-v1','CD_LAU_ACT_02',17,19,'single_choice','Which role would you most willingly take responsibility for in a team project?',NULL,1,59,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-060','assessment-career-discovery-v1','CD_LAU_ACT_03',17,19,'single_choice','Which type of work would you choose to practise outside formal requirements?',NULL,1,60,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-061','assessment-career-discovery-v1','CD_LAU_VAL_01',17,19,'single_choice','When evaluating a possible field of work, which consideration matters most to you?',NULL,1,61,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-062','assessment-career-discovery-v1','CD_LAU_VAL_02',17,19,'single_choice','What would make a long-term project worth committing to?',NULL,1,62,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-063','assessment-career-discovery-v1','CD_LAU_VAL_03',17,19,'single_choice','If two paths offered similar learning, what principle would influence your choice most?',NULL,1,63,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-064','assessment-career-discovery-v1','CD_LAU_ENV_01',17,19,'single_choice','Which environment would you prefer for sustained project work?',NULL,1,64,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-065','assessment-career-discovery-v1','CD_LAU_ENV_02',17,19,'single_choice','Where would you be most likely to do your strongest work?',NULL,1,65,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-066','assessment-career-discovery-v1','CD_LAU_ENV_03',17,19,'single_choice','Which working arrangement would you choose for a complex task?',NULL,1,66,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-067','assessment-career-discovery-v1','CD_LAU_SKL_01',17,19,'single_choice','Which capability would you most want to develop for future work?',NULL,1,67,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-068','assessment-career-discovery-v1','CD_LAU_SKL_02',17,19,'single_choice','Which skill would you most willingly invest sustained effort in?',NULL,1,68,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-069','assessment-career-discovery-v1','CD_LAU_SKL_03',17,19,'single_choice','Which ability would you most want to demonstrate in a serious project?',NULL,1,69,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-070','assessment-career-discovery-v1','CD_LAU_FUT_01',17,19,'single_choice','Which emerging field would you most willingly explore as a possible direction?',NULL,1,70,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-071','assessment-career-discovery-v1','CD_LAU_FUT_02',17,19,'single_choice','Which future development would you most want practical experience with?',NULL,1,71,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
-('cd-q-072','assessment-career-discovery-v1','CD_LAU_FUT_03',17,19,'single_choice','Which frontier problem would you most want to understand before choosing a path?',NULL,1,72,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now'));
+('cd-q-002','assessment-career-discovery-v1','CD_EXP_ACT_01',8,10,'single_choice','If you had a free afternoon to make something happen, what would you choose to do?',NULL,1,2,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-003','assessment-career-discovery-v1','CD_EXP_VAL_01',8,10,'single_choice','When people work together on something, what feels most important to you?',NULL,1,3,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-004','assessment-career-discovery-v1','CD_EXP_ENV_01',8,10,'single_choice','Where would you most enjoy spending time while solving a puzzle?',NULL,1,4,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-005','assessment-career-discovery-v1','CD_EXP_SKL_01',8,10,'single_choice','If a mentor could teach you one skill, which would you choose?',NULL,1,5,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-006','assessment-career-discovery-v1','CD_EXP_FUT_01',8,10,'single_choice','Which future possibility sounds most exciting to imagine?',NULL,1,6,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-007','assessment-career-discovery-v1','CD_DIS_INT_01',11,13,'single_choice','Which kind of challenge would you most want to spend an afternoon exploring?',NULL,1,7,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-008','assessment-career-discovery-v1','CD_DIS_ACT_01',11,13,'single_choice','Which activity would you most enjoy choosing for a project?',NULL,1,8,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-009','assessment-career-discovery-v1','CD_DIS_VAL_01',11,13,'single_choice','When choosing between two projects, what would matter most to you?',NULL,1,9,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-010','assessment-career-discovery-v1','CD_DIS_ENV_01',11,13,'single_choice','Which setting would you prefer for a challenging project?',NULL,1,10,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-011','assessment-career-discovery-v1','CD_DIS_SKL_01',11,13,'single_choice','Which ability would you most like to strengthen through a project?',NULL,1,11,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-012','assessment-career-discovery-v1','CD_DIS_FUT_01',11,13,'single_choice','Which future development would you most want to learn about?',NULL,1,12,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-013','assessment-career-discovery-v1','CD_PAT_INT_01',14,16,'single_choice','Which kind of problem would you willingly spend extra time understanding?',NULL,1,13,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-014','assessment-career-discovery-v1','CD_PAT_ACT_01',14,16,'single_choice','Which kind of activity would you choose when you have meaningful free time?',NULL,1,14,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-015','assessment-career-discovery-v1','CD_PAT_VAL_01',14,16,'single_choice','If two opportunities were equally interesting, what would help you choose?',NULL,1,15,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-016','assessment-career-discovery-v1','CD_PAT_ENV_01',14,16,'single_choice','Which working environment would you choose for a demanding project?',NULL,1,16,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-017','assessment-career-discovery-v1','CD_PAT_SKL_01',14,16,'single_choice','Which capability would you most willingly develop through repeated practice?',NULL,1,17,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-018','assessment-career-discovery-v1','CD_PAT_FUT_01',14,16,'single_choice','Which emerging field would you most like to understand before it becomes familiar?',NULL,1,18,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-019','assessment-career-discovery-v1','CD_LAU_INT_01',17,19,'single_choice','Which kind of work problem would you most willingly investigate in depth?',NULL,1,19,'{"dimension":"INT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-020','assessment-career-discovery-v1','CD_LAU_ACT_01',17,19,'single_choice','Which kind of activity would you most want included in a real project?',NULL,1,20,'{"dimension":"ACT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-021','assessment-career-discovery-v1','CD_LAU_VAL_01',17,19,'single_choice','When evaluating a possible field of work, which consideration matters most to you?',NULL,1,21,'{"dimension":"VAL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-022','assessment-career-discovery-v1','CD_LAU_ENV_01',17,19,'single_choice','Which environment would you prefer for sustained project work?',NULL,1,22,'{"dimension":"ENV","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-023','assessment-career-discovery-v1','CD_LAU_SKL_01',17,19,'single_choice','Which capability would you most want to develop for future work?',NULL,1,23,'{"dimension":"SKL","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now')),
+('cd-q-024','assessment-career-discovery-v1','CD_LAU_FUT_01',17,19,'single_choice','Which emerging field would you most willingly explore as a possible direction?',NULL,1,24,'{"dimension":"FUT","scale":"1-4","algorithm_version":"CD_SCORING_1.0"}',datetime('now'),datetime('now'));
 
--- Four ordered response options per question. Scores 1-4 on the primary dimension;
--- metadata carries broad Career World signals for the later matching engine.
-INSERT OR IGNORE INTO assessment_options (id, question_id, code, label, display_order, scoring_json, metadata_json, created_at, updated_at) VALUES
+-- Four response levels. The primary score is 1-4. Career-world signals are deliberately broad;
+-- they are exploration signals, not deterministic career assignments.
+WITH levels(level, label) AS (
+  VALUES
+    (1,'I would probably skip it.'),
+    (2,'I might try it briefly.'),
+    (3,'I would want to explore it.'),
+    (4,'I would keep exploring it and ask more questions.')
+),
+signals(dimension, level, s1, s2) AS (
+  VALUES
+    ('INT',1,'CULTURE','MEDIA'),('INT',2,'SCI','LIFE'),('INT',3,'TECH','SPACE'),('INT',4,'DESIGN','FOOD'),
+    ('ACT',1,'TRADES','ENG'),('ACT',2,'DESIGN','CULTURE'),('ACT',3,'TECH','SCI'),('ACT',4,'BUS','EDUC'),
+    ('VAL',1,'HEALTH','SOCIETY'),('VAL',2,'LIFE','ENV'),('VAL',3,'BUS','FIN'),('VAL',4,'EDUC','CULTURE'),
+    ('ENV',1,'TECH','FIN'),('ENV',2,'SCI','ENG'),('ENV',3,'HEALTH','EDUC'),('ENV',4,'MEDIA','CULTURE'),
+    ('SKL',1,'TECH','SCI'),('SKL',2,'ENG','TRADES'),('SKL',3,'DESIGN','MEDIA'),('SKL',4,'BUS','SOCIETY'),
+    ('FUT',1,'TECH','SPACE'),('FUT',2,'LIFE','ENV'),('FUT',3,'HEALTH','SCI'),('FUT',4,'BUS','FIN')
+)
+INSERT OR IGNORE INTO assessment_options
+(id, question_id, code, label, display_order, scoring_json, metadata_json, created_at, updated_at)
+SELECT
+  q.id || '-o' || levels.level,
+  q.id,
+  'O' || levels.level,
+  CASE q.code
+    WHEN 'CD_EXP_ACT_01' THEN CASE levels.level WHEN 1 THEN 'I would rather watch or help.' WHEN 2 THEN 'I would try part of it.' WHEN 3 THEN 'I would happily do it.' ELSE 'I would choose to do it and keep improving it.' END
+    WHEN 'CD_EXP_VAL_01' THEN CASE levels.level WHEN 1 THEN 'It would matter a little.' WHEN 2 THEN 'It would matter somewhat.' WHEN 3 THEN 'It would matter a lot.' ELSE 'It would be one of my strongest reasons for choosing.' END
+    WHEN 'CD_EXP_ENV_01' THEN CASE levels.level WHEN 1 THEN 'I could work there if needed.' WHEN 2 THEN 'I could enjoy it sometimes.' WHEN 3 THEN 'I would prefer it.' ELSE 'I would actively choose that setting.' END
+    WHEN 'CD_EXP_SKL_01' THEN CASE levels.level WHEN 1 THEN 'I am not very drawn to developing this.' WHEN 2 THEN 'I would be willing to practise it.' WHEN 3 THEN 'I would like to become good at it.' ELSE 'I would actively want to develop this strength.' END
+    WHEN 'CD_EXP_FUT_01' THEN CASE levels.level WHEN 1 THEN 'Not very curious.' WHEN 2 THEN 'Somewhat curious.' WHEN 3 THEN 'Very curious.' ELSE 'I would actively investigate it.' END
+    ELSE levels.label
+  END,
+  levels.level,
+  json_object(json_extract(q.scoring_config_json,'$.dimension'),levels.level),
+  json_object('career_world_signals',json_array(signals.s1,signals.s2)),
+  datetime('now'),datetime('now')
+FROM assessment_questions q
+JOIN levels
+JOIN signals ON signals.dimension=json_extract(q.scoring_config_json,'$.dimension') AND signals.level=levels.level
+WHERE q.assessment_version_id='assessment-career-discovery-v1';
+
+-- Activate only after the complete v1.0 question and option seed has been inserted.
+UPDATE assessment_versions
+SET status='active',
+    published_at=COALESCE(published_at,datetime('now')),
+    updated_at=datetime('now')
+WHERE id='assessment-career-discovery-v1';
+
+UPDATE assessments
+SET status='active', updated_at=datetime('now')
+WHERE id='assessment-career-discovery';
