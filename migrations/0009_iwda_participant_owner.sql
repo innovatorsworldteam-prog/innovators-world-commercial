@@ -1,10 +1,10 @@
 -- Innovators World Discovery Assessment — participant ownership extension
--- Migration 0009: align the legacy IWDA runtime with the canonical participant model.
--- Additive only. Existing attempts and results are preserved.
-
-PRAGMA foreign_keys = ON;
-
-ALTER TABLE iwda_attempts ADD COLUMN participant_id TEXT;
-
-CREATE INDEX IF NOT EXISTS idx_iwda_attempts_participant
-  ON iwda_attempts(participant_id);
+-- Migration 0009: compatibility placeholder.
+--
+-- participant_id was already introduced by the canonical participant
+-- foundation migration 0002_participants_and_identity.sql. Migration 0009
+-- previously attempted to add the same column again, which caused fresh D1
+-- migration runs to fail with "duplicate column name: participant_id".
+--
+-- This migration is intentionally a no-op so existing migration numbering is
+-- preserved and both fresh and previously migrated databases remain valid.
