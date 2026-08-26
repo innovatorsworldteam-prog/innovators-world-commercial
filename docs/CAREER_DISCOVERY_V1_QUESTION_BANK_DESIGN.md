@@ -29,7 +29,7 @@ The same assessment version uses four distinct cognitive bands. The task changes
 | Pathfinders | 14–16 | preference trade-offs, sustained interests, capability development |
 | Launchers | 17–19 | realistic work/project contexts, commitment and future exploration |
 
-Each band contains 18 questions: three per dimension. Total v1.0 question bank: **72 questions**.
+The v1.0 seed uses **24 questions: one per dimension per age band**. This is an initial production content set, intentionally small enough to validate the complete assessment pipeline before expanding the bank. Each participant receives six questions for their age band.
 
 ## Response model
 Every question is single-choice with four ordered response levels. The response levels represent strength of attraction/interest, not ability or intelligence.
@@ -57,7 +57,7 @@ The canonical Career Catalogue contains 15 worlds including Technology & Computi
 8. The assessment is a starting point for experimentation; the catalogue explicitly recommends exploring, connecting, questioning and experimenting before narrowing choices. fileciteturn34file2L169-L185
 
 ## Database content
-Migration `0008_career_discovery_v1_content.sql` seeds the 72 questions and 288 response options. The Career Discovery v1.0 version is activated only after its question and option content is inserted by the migration.
+Migration `0008_career_discovery_v1_content.sql` seeds **24 questions and 96 response options**. The Career Discovery v1.0 version is activated only after its question and option content is inserted by the migration.
 
 ## Versioning
 - Methodology: `1.0`
