@@ -1,0 +1,43 @@
+name: Repair CI defects
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor == 'innovatorsworldteam-prog'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch backend defects
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('src/index.ts')
+          s = p.read_text()
+          old = 'questions:IWDA_QUESTIONS.map(({id,prompt})=>({id,prompt,options:["A","B","C","D"]}))'
+          new = 'questions:IWDA_QUESTIONS.map(({id,prompt,options})=>({id,prompt,options}))'
+          if old not in s:
+              raise SystemExit('IWDA question endpoint pattern not found')
+          s = s.replace(old, new, 1)
+          old_route = 'if(url.pathname==="/api/participants"&&request.method==="POST")return register(request,env);'
+          new_route = 'if((url.pathname==="/api/participants"||url.pathname==="/api/participants/register")&&request.method==="POST")return register(request,env);'
+          if old_route not in s:
+              raise SystemExit('participant registration route pattern not found')
+          s = s.replace(old_route, new_route, 1)
+          p.write_text(s)
+          PY
+      - name: Commit repaired backend
+        shell: bash
+        run: |
+          git config user.name "innovatorsworldteam-prog"
+          git config user.email "innovatorsworldteam@gmail.com"
+          git add src/index.ts .github/workflows/repair-ci.yml
+          git commit -m "fix: correct IWDA options and participant registration route" || exit 0
+          git push origin HEAD:main
+          rm -f .github/workflows/repair-ci.yml
