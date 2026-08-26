@@ -1,10 +1,12 @@
 -- Innovators World Discovery Assessment — participant ownership extension
--- Migration 0009: compatibility placeholder.
+-- Migration 0009: compatibility index.
 --
--- participant_id was already introduced by the canonical participant
--- foundation migration 0002_participants_and_identity.sql. Migration 0009
--- previously attempted to add the same column again, which caused fresh D1
--- migration runs to fail with "duplicate column name: participant_id".
---
--- This migration is intentionally a no-op so existing migration numbering is
--- preserved and both fresh and previously migrated databases remain valid.
+-- participant_id is already introduced by the canonical participant
+-- foundation migration 0002_participants_and_identity.sql. The original
+-- 0009 migration attempted to add the same column again and failed on fresh
+-- databases. Keep migration numbering intact, but make this migration a
+-- valid, idempotent schema operation that benefits both fresh and existing
+-- databases.
+
+CREATE INDEX IF NOT EXISTS idx_iwda_attempts_participant
+ON iwda_attempts(participant_id);
