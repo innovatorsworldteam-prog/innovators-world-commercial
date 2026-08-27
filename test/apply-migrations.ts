@@ -26,12 +26,14 @@ if (!hasAttemptsTable && !hasParticipantsTable) {
 } else if (!hasAttemptsTable) {
         // Partial legacy database: the participant foundation already exists,
         // so replaying the full migration set would re-run its ALTER TABLE.
-        // Recreate only the missing IWDA core schema from migration 0002_iwda.
+        // Recreate only the missing IWDA core schema from migration 0002_iwda,
+        // including participant ownership which is part of the canonical model.
         await testEnv.DB
                 .exec(`
 CREATE TABLE IF NOT EXISTS iwda_attempts (
   id TEXT PRIMARY KEY,
   user_id TEXT,
+  participant_id TEXT,
   anonymous_session_id TEXT,
   status TEXT NOT NULL DEFAULT 'started',
   started_at TEXT NOT NULL,
