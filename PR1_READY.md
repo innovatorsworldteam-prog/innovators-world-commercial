@@ -1,0 +1,1 @@
+PR1 SEO Foundation Layer 1 is integrated into src/index.ts. Validation and CI are required before merge.
