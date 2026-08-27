@@ -1,0 +1,1 @@
+Worker entry integration is present in src/index.ts before existing career and API routing.
