@@ -1,1 +1,0 @@
-SEO Layer 1 integration marker. Worker entry point wires canonical redirect and SEO endpoints before existing application routing. No D1 migrations changed.
