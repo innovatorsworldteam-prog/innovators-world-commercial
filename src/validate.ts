@@ -1,5 +1,6 @@
 import { calculateIWDAResult } from "./iwda/scoring";
 import { IWDA_QUESTIONS } from "./iwda/questions";
+import { handleCareerRecommendations } from "./api/careers/recommend";
 
 type Env = { DB: D1Database; ASSETS?: Fetcher };
 type JsonObject = Record<string, unknown>;
@@ -21,6 +22,9 @@ const VALIDATION_EVENTS = new Set([
 
 export async function handleValidation(request: Request, env: Env): Promise<Response | null> {
   const url = new URL(request.url);
+
+  const recommendationResponse = await handleCareerRecommendations(request, env);
+  if (recommendationResponse) return recommendationResponse;
 
   if (url.pathname === "/validate" && request.method === "GET") {
     if (!env.ASSETS) return json({ error: "Validation page is not configured." }, 503);

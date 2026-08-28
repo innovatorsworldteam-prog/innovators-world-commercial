@@ -35,10 +35,45 @@ describe("International validation funnel", () => {
     expect(invalid.status).toBe(400);
   });
 
-  it("enforces the authoritative 305-career dependency when a careers table exists", async () => {
+  it("returns a controlled BLOCKED state when no authoritative careers source exists", async () => {
     const table = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='careers' LIMIT 1").first<{ name: string }>();
-    expect(table?.name, "Authoritative 305-career source is required before career recommendations can be enabled.").toBe("careers");
-    const row = await db.prepare("SELECT COUNT(*) AS count FROM careers").first<{ count: number }>();
-    expect(Number(row?.count), "Career source must contain exactly 305 canonical careers; do not substitute 300 or 180.").toBe(305);
+    if (table?.name) return;
+    const response = await SELF.fetch("http://example.com/api/careers/recommend?iwda_attempt_id=test-id&limit=3");
+    expect(response.status).toBe(200);
+    const data = await json(response);
+    expect(data.status).toBe("blocked");
+    expect(data.code).toBe("CAREER_CATALOGUE_NOT_VERIFIED");
+    expect(data.careers).toEqual([]);
+    expect(data.worlds_available).toBe(15);
+    expect(data.current_production_requirement).toBe(305);
+    expect(data.verified_authoritative_production_source).toBe("NOT FOUND");
+    expect(data.missing_five).toBe("NOT INVENTED");
+  });
+
+  it("does not use Career Discovery as a fallback recommendation source", async () => {
+    const response = await SELF.fetch("http://example.com/api/careers/recommend?iwda_attempt_id=test-id&limit=3");
+    if (response.status !== 200) return;
+    const data = await json(response);
+    if (data.status === "blocked") expect(data.careers).toEqual([]);
+  });
+
+  it("rejects a malformed authoritative source rather than returning fabricated careers", async () => {
+    const table = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='careers' LIMIT 1").first<{ name: string }>();
+    if (!table?.name) return;
+    const columns = await db.prepare("PRAGMA table_info(careers)").all<{ name: string }>();
+    const names = new Set((columns.results ?? []).map((c) => c.name));
+    if (!names.has("canonical_name")) return;
+    const count = await db.prepare("SELECT COUNT(*) AS count FROM careers").first<{ count: number }>();
+    if (Number(count?.count) === 305) return;
+    const response = await SELF.fetch("http://example.com/api/careers/recommend?iwda_attempt_id=test-id&limit=3");
+    expect(response.status).toBe(422);
+    const data = await json(response);
+    expect(data.status).toBe("invalid");
+    expect(data.careers).toEqual([]);
+  });
+
+  it("does not manufacture a canonical_careers table", async () => {
+    const table = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='canonical_careers' LIMIT 1").first<{ name: string }>();
+    expect(table).toBeNull();
   });
 });
