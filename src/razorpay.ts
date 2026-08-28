@@ -8,7 +8,7 @@ type JsonObject = Record<string, unknown>;
 type IWDAResultRow = { id:string; attempt_id:string; participant_id:string|null; innovation_readiness_index:number|null; traits:string|null; result_data:string|null };
 
 const json = (data: unknown, status = 200) => Response.json(data, { status });
-const fail = (message: string, status = 400) => json({ error: message }, { status });
+const fail = (message: string, status = 400) => json({ error: message }, status);
 const text = (value: unknown): string => typeof value === "string" ? value.trim() : "";
 
 const PREMIUM_AMOUNT = 1995;
@@ -91,22 +91,50 @@ export async function createRazorpayOrder(request: Request, env: PaymentEnv): Pr
     const currency = text(body.currency) || PREMIUM_CURRENCY;
     const suppliedReceipt = text(body.receipt);
     const receipt = suppliedReceipt || `iwda_${crypto.randomUUID().replace(/-/g, "").slice(0, 34)}`;
+
     if (!attemptId) return fail("attempt_id is required.");
     if (!Number.isInteger(requestedAmount) || requestedAmount < 100) return fail("amount must be at least 100 paise.");
     if (requestedAmount !== PREMIUM_AMOUNT || currency !== PREMIUM_CURRENCY) return fail("Complete Innovation Profile orders must be $19.95 USD.", 400);
     if (receipt.length < 1 || receipt.length > 40) return fail("Invalid receipt.");
+
     const result = await env.DB.prepare("SELECT id FROM iwda_results WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{ id: string }>();
     if (!result) return fail("A completed IWDA result is required before purchase.", 404);
+
     let auth: string;
-    try { auth = razorpayAuth(env); } catch (error) { console.error("Razorpay credential configuration error", error); return fail("Razorpay server credentials are not configured.", 500); }
+    try {
+      auth = razorpayAuth(env);
+    } catch (error) {
+      console.error("Razorpay credential configuration error", error);
+      return fail("Razorpay server credentials are not configured.", 500);
+    }
+
     let response: Response;
-    try { response = await fetch("https://api.razorpay.com/v1/orders", { method: "POST", headers: { "Authorization": auth, "Content-Type": "application/json" }, body: JSON.stringify({ amount: requestedAmount, currency, receipt }) }); } catch (error) { console.error("Razorpay order request failed", error); return fail("Unable to reach Razorpay.", 502); }
+    try {
+      response = await fetch("https://api.razorpay.com/v1/orders", {
+        method: "POST",
+        headers: { "Authorization": auth, "Content-Type": "application/json" },
+        body: JSON.stringify({ amount: requestedAmount, currency, receipt }),
+      });
+    } catch (error) {
+      console.error("Razorpay order request failed", error);
+      return fail("Unable to reach Razorpay.", 502);
+    }
+
     if (response.status === 401) return fail("Razorpay authentication failed.", 401);
-    if (!response.ok) { let detail = "Razorpay rejected the order."; try { const data = await response.json() as { error?: { description?: string } }; detail = data.error?.description || detail; } catch {} console.error("Razorpay order rejected", response.status, detail); return fail(detail, 500); }
+    if (!response.ok) {
+      let detail = "Razorpay rejected the order.";
+      try { const data = await response.json() as { error?: { description?: string } }; detail = data.error?.description || detail; } catch {}
+      console.error("Razorpay order rejected", response.status, detail);
+      return fail(detail, 500);
+    }
+
     const order = await response.json() as { id?: string; amount?: number; currency?: string };
     if (!order.id) return fail("Razorpay returned an invalid order.", 500);
     return json({ order_id: order.id, amount: order.amount ?? requestedAmount, currency: order.currency ?? currency, key_id: env.RAZORPAY_KEY_ID?.trim(), attempt_id: attemptId });
-  } catch (error) { console.error("Create Razorpay order failed", error); return fail(error instanceof Error ? error.message : "Unable to create order.", 500); }
+  } catch (error) {
+    console.error("Create Razorpay order failed", error);
+    return fail(error instanceof Error ? error.message : "Unable to create order.", 500);
+  }
 }
 
 async function hmacSha256Hex(secret: string, message: string): Promise<string> {
@@ -131,28 +159,40 @@ export async function verifyRazorpayPayment(request: Request, env: PaymentEnv): 
     const signature = text(body.razorpay_signature);
     const attemptId = text(body.attempt_id);
     if (!paymentId || !orderId || !signature || !attemptId) return fail("razorpay_payment_id, razorpay_order_id, razorpay_signature and attempt_id are required.");
+
     const result = await env.DB.prepare("SELECT id,attempt_id,participant_id,innovation_readiness_index,traits,result_data FROM iwda_results WHERE attempt_id=? LIMIT 1").bind(attemptId).first<IWDAResultRow>();
     if (!result) return fail("IWDA result not found.", 404);
+
     const secret = env.RAZORPAY_KEY_SECRET?.trim();
     if (!secret) return fail("Razorpay server credentials are not configured.", 500);
     const expected = await hmacSha256Hex(secret, `${orderId}|${paymentId}`);
     if (!timingSafeEqualHex(expected, signature)) return fail("Payment signature verification failed.", 400);
+
     const existing = await env.DB.prepare("SELECT id,access_token_hash FROM innovation_profile_entitlements WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{id:string;access_token_hash:string}>();
     if (existing) {
       const profile = await env.DB.prepare("SELECT id,profile_data,created_at FROM complete_innovation_profiles WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{id:string;profile_data:string;created_at:string}>();
-      let profileData: unknown = null; try { profileData = profile?.profile_data ? JSON.parse(profile.profile_data) : null; } catch {}
+      let profileData: unknown = null;
+      try { profileData = profile?.profile_data ? JSON.parse(profile.profile_data) : null; } catch {}
       return json({ status:"ok", verified:true, product:PREMIUM_PRODUCT, razorpay_payment_id:paymentId, razorpay_order_id:orderId, attempt_id:attemptId, profile_ready:Boolean(profile), profile_id:profile?.id ?? null, profile:profileData });
     }
+
     const entitlementId = crypto.randomUUID();
     const accessToken = crypto.randomUUID() + crypto.randomUUID();
     const accessTokenHash = await sha256Hex(accessToken);
     const profileId = crypto.randomUUID();
     const profileData = buildCompleteInnovationProfile(result);
     const now = new Date().toISOString();
-    await env.DB.prepare(`INSERT INTO innovation_profile_entitlements (id,attempt_id,payment_order_id,payment_id,participant_id,product_code,amount_paise,currency,status,access_token_hash,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)`).bind(entitlementId,attemptId,orderId,paymentId,result.participant_id,PREMIUM_PRODUCT,PREMIUM_AMOUNT,PREMIUM_CURRENCY,"paid",accessTokenHash,now).run();
-    await env.DB.prepare(`INSERT INTO complete_innovation_profiles (id,attempt_id,entitlement_id,participant_id,profile_data,created_at) VALUES (?,?,?,?,?,?)`).bind(profileId,attemptId,entitlementId,result.participant_id,JSON.stringify(profileData),now).run();
+
+    await env.DB.prepare(`INSERT INTO innovation_profile_entitlements (id,attempt_id,payment_order_id,payment_id,participant_id,product_code,amount_paise,currency,status,access_token_hash,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)`)
+      .bind(entitlementId,attemptId,orderId,paymentId,result.participant_id,PREMIUM_PRODUCT,PREMIUM_AMOUNT,PREMIUM_CURRENCY,"paid",accessTokenHash,now).run();
+    await env.DB.prepare(`INSERT INTO complete_innovation_profiles (id,attempt_id,entitlement_id,participant_id,profile_data,created_at) VALUES (?,?,?,?,?,?)`)
+      .bind(profileId,attemptId,entitlementId,result.participant_id,JSON.stringify(profileData),now).run();
+
     return json({ status:"ok", verified:true, product:PREMIUM_PRODUCT, razorpay_payment_id:paymentId, razorpay_order_id:orderId, attempt_id:attemptId, profile_ready:true, profile_id:profileId, access_token:accessToken, profile:profileData });
-  } catch (error) { console.error("Verify Razorpay payment failed", error); return fail(error instanceof Error ? error.message : "Unable to verify payment.", 500); }
+  } catch (error) {
+    console.error("Verify Razorpay payment failed", error);
+    return fail(error instanceof Error ? error.message : "Unable to verify payment.", 500);
+  }
 }
 
 export async function getCompleteInnovationProfile(request: Request, env: PaymentEnv): Promise<Response> {
@@ -162,11 +202,16 @@ export async function getCompleteInnovationProfile(request: Request, env: Paymen
     const accessToken = text(url.searchParams.get("access_token"));
     if (!attemptId || !accessToken) return fail("attempt_id and access_token are required.", 401);
     const tokenHash = await sha256Hex(accessToken);
-    const row = await env.DB.prepare(`SELECT e.id entitlement_id,e.status,e.product_code,p.id profile_id,p.profile_data,p.created_at FROM innovation_profile_entitlements e JOIN complete_innovation_profiles p ON p.entitlement_id=e.id WHERE e.attempt_id=? AND e.access_token_hash=? AND e.status='paid' LIMIT 1`).bind(attemptId,tokenHash).first<{entitlement_id:string;status:string;product_code:string;profile_id:string;profile_data:string;created_at:string}>();
+    const row = await env.DB.prepare(`SELECT e.id entitlement_id,e.status,e.product_code,p.id profile_id,p.profile_data,p.created_at FROM innovation_profile_entitlements e JOIN complete_innovation_profiles p ON p.entitlement_id=e.id WHERE e.attempt_id=? AND e.access_token_hash=? AND e.status='paid' LIMIT 1`)
+      .bind(attemptId,tokenHash).first<{entitlement_id:string;status:string;product_code:string;profile_id:string;profile_data:string;created_at:string}>();
     if (!row) return fail("Premium profile not found or access token is invalid.",404);
-    let profile: unknown = null; try { profile = JSON.parse(row.profile_data); } catch { return fail("Premium profile data is invalid.",500); }
+    let profile: unknown = null;
+    try { profile = JSON.parse(row.profile_data); } catch { return fail("Premium profile data is invalid.",500); }
     return json({ status:"ok", entitlement_id:row.entitlement_id, product:row.product_code, profile_id:row.profile_id, profile, created_at:row.created_at });
-  } catch (error) { console.error("Get complete innovation profile failed", error); return fail("Unable to retrieve premium profile.",500); }
+  } catch (error) {
+    console.error("Get complete innovation profile failed", error);
+    return fail("Unable to retrieve premium profile.",500);
+  }
 }
 
 export async function createValidationRazorpayOrder(request: Request, env: PaymentEnv): Promise<Response> {
