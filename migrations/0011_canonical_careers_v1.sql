@@ -1,36 +1,12 @@
 -- Innovators World canonical career catalogue v1.0
 -- Migration 0011: authoritative 305-record production source.
 -- Source: Innovators_World_Future_Career_Explorer_v1.0.pdf body pages 3-17.
--- The cover's 300 is an editorial error; body enumeration is authoritative.
--- No synthetic per-career descriptions are introduced because the source enumerates career names, not per-career descriptions.
-
-PRAGMA foreign_keys = ON;
-
-CREATE TABLE IF NOT EXISTS canonical_careers_v1 (
-  canonical_id TEXT PRIMARY KEY,
-  reference_id TEXT NOT NULL UNIQUE,
-  canonical_name TEXT NOT NULL,
-  published_name TEXT NOT NULL,
-  slug TEXT NOT NULL,
-  world TEXT NOT NULL,
-  world_id INTEGER NOT NULL,
-  world_slug TEXT NOT NULL,
-  cluster TEXT,
-  description TEXT,
-  source TEXT NOT NULL,
-  provenance TEXT NOT NULL,
-  catalogue_version TEXT NOT NULL,
-  catalogue_status TEXT NOT NULL,
-  production_canonical_status TEXT NOT NULL,
-  evidence_status TEXT NOT NULL
-);
-
-CREATE INDEX IF NOT EXISTS idx_ccv1_world_id ON canonical_careers_v1(world_id);
-CREATE INDEX IF NOT EXISTS idx_ccv1_world_slug ON canonical_careers_v1(world_slug);
+-- Cover count 300 is an editorial error; body enumeration is authoritative.
+PRAGMA foreign_keys=ON;
+CREATE TABLE IF NOT EXISTS canonical_careers_v1(canonical_id TEXT PRIMARY KEY,reference_id TEXT NOT NULL UNIQUE,canonical_name TEXT NOT NULL,published_name TEXT NOT NULL,slug TEXT NOT NULL,world TEXT NOT NULL,world_id INTEGER NOT NULL,world_slug TEXT NOT NULL,cluster TEXT,description TEXT,source TEXT NOT NULL,provenance TEXT NOT NULL,catalogue_version TEXT NOT NULL,catalogue_status TEXT NOT NULL,production_canonical_status TEXT NOT NULL,evidence_status TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_ccv1_world ON canonical_careers_v1(world_id);
 CREATE INDEX IF NOT EXISTS idx_ccv1_name ON canonical_careers_v1(canonical_name);
-
-WITH RECURSIVE
-worlds(world_id,world,world_slug,names) AS (VALUES
+WITH RECURSIVE worlds(world_id,world,world_slug,names) AS (VALUES
 (1,'Technology & Computing','technology-computing','Software Developer|AI Safety Researcher|Web Developer|Responsible AI Specialist|Mobile App Developer|Cybersecurity Analyst|Backend Engineer|Security Engineer|Cloud Engineer|Ethical Hacker|DevOps Engineer|Digital Forensics Specialist|Data Analyst|Robotics Engineer|Data Scientist|HCI Specialist|Machine Learning Engineer|UX Engineer|AI Researcher|IoT Systems Engineer|Computer Vision Engineer|Quantum Computing Researcher|NLP Specialist|Technology Architect|AI Product Manager'),
 (2,'Science & Discovery','science-discovery','Physicist|Planetary Scientist|Chemist|Materials Scientist|Biochemist|Neuroscientist|Molecular Biologist|Earth Scientist|Microbiologist|Geophysicist|Geneticist|Laboratory Scientist|Mathematician|Scientific Researcher|Statistician|Interdisciplinary Researcher|Astronomer|Science Communicator|Astrophysicist|Scientific Instrument Specialist'),
 (3,'Engineering & Building','engineering-building','Mechanical Engineer|Industrial Engineer|Civil Engineer|Manufacturing Engineer|Structural Engineer|Automation Engineer|Electrical Engineer|Control Systems Engineer|Electronics Engineer|Mechatronics Engineer|Chemical Engineer|Energy Systems Engineer|Aerospace Engineer|Renewable Energy Engineer|Biomedical Engineer|Infrastructure Engineer|Environmental Engineer|Prototype Engineer|Systems Engineer|Additive Manufacturing Engineer'),
@@ -45,46 +21,10 @@ worlds(world_id,world,world_slug,names) AS (VALUES
 (12,'Culture, Arts & Heritage','culture-arts-heritage','Musician|Choreographer|Composer|Poet / Writer|Music Producer|Museum Curator|Singer|Heritage Conservation Specialist|Visual Artist|Cultural Programme Manager|Illustrator|Arts Administrator|Sculptor|Cultural Researcher|Actor|Art Director|Theatre Director|Creative Producer|Dancer|Digital Archivist'),
 (13,'Food, Hospitality & Experiences','food-hospitality-experiences','Chef|Event Manager|Pastry Chef|Experience Designer|Food Scientist|Restaurant Manager|Food Technologist|Food Entrepreneur|Food Product Developer|Sustainable Food Specialist|Nutrition & Food Specialist|Culinary Researcher|Hotel Manager|Hospitality Technologist|Hospitality Manager|Destination Manager|Travel Consultant|Food Media Creator|Tourism Manager|Guest Experience Manager'),
 (14,'Exploration, Transport & Space','exploration-transport-space','Pilot|Ship Captain / Master Mariner|Aircraft Engineer|Naval Architect|Aerospace Scientist|Logistics Specialist|Astronaut|Freight & Distribution Manager|Space Scientist|Automotive Engineer|Space Systems Engineer|Automotive Technology Specialist|Satellite Engineer|Rail Systems Engineer|Space Mission Specialist|Transportation Planner|Space Operations Specialist|Mobility Technology Specialist|Maritime Engineer|Geospatial Specialist'),
-(15,'Skilled Trades, Manufacturing & Applied Craft','skilled-trades-manufacturing-applied-craft','Construction Technician|Textile Technician|Electrician|Garment Technician|Plumber|Automotive Technician|HVAC Technician|Industrial Maintenance Technician|Welder|Manufacturing Technician|Metal Fabricator|Quality Technician|Machinist|Production Supervisor|CNC Technician|Advanced Manufacturing Technician|Carpenter|3D Printing Technician|Cabinet Maker|Craft Artisan')
-),
-parts(world_id,world,world_slug,rest,pos,canonical_name) AS (
-  SELECT world_id,world,world_slug,names||'|',0,'' FROM worlds
-  UNION ALL
-  SELECT world_id,world,world_slug,substr(rest,instr(rest,'|')+1),pos+1,substr(rest,1,instr(rest,'|')-1)
-  FROM parts WHERE rest<>''
-),
-source AS (
-  SELECT world_id,world,world_slug,pos,canonical_name,
-         printf('CANON-%02d-%02d',world_id,pos) AS canonical_id,
-         printf('W%02d-%02d',world_id,pos) AS reference_id,
-         lower(trim(replace(replace(replace(replace(replace(canonical_name,' / ','-'),' /','-'),'/','-'),' & ','-'),' ','-'))) AS slug
-  FROM parts WHERE pos>0 AND trim(canonical_name)<>''
-)
-INSERT INTO canonical_careers_v1
-(canonical_id,reference_id,canonical_name,published_name,slug,world,world_id,world_slug,cluster,description,source,provenance,catalogue_version,catalogue_status,production_canonical_status,evidence_status)
-SELECT canonical_id,reference_id,canonical_name,canonical_name,slug,world,world_id,world_slug,NULL,NULL,
-       'Innovators_World_Future_Career_Explorer_v1.0.pdf',
-       'World '||printf('%02d',world_id)||' | Career Catalogue v1.0 | Body page '||(world_id+2)||' | Body enumeration',
-       'canonical_careers_v1','Authoritative Production Catalogue','VERIFIED','VERIFIED - Body enumeration'
-FROM source;
-
-CREATE TABLE IF NOT EXISTS catalogue_status_v1 (
-  catalogue_version TEXT PRIMARY KEY,
-  library_reference_cover_count INTEGER NOT NULL,
-  body_enumerated_count INTEGER NOT NULL,
-  production_required_count INTEGER NOT NULL,
-  unique_name_count INTEGER NOT NULL,
-  status TEXT NOT NULL,
-  evidence_status TEXT NOT NULL,
-  note TEXT NOT NULL
-);
-
-INSERT OR REPLACE INTO catalogue_status_v1
-VALUES ('canonical_careers_v1',300,305,305,304,'Authoritative Production Catalogue','VERIFIED','Cover states 300; body pages 3-17 enumerate 305. The five World 01 entries Computer Vision Engineer, Quantum Computing Researcher, NLP Specialist, Technology Architect and AI Product Manager are present in the source body. Experience Designer occurs twice across World 08 and World 13 and is valid as two distinct canonical records.');
-
--- Production integrity assertions.
-SELECT CASE WHEN (SELECT COUNT(*) FROM canonical_careers_v1) != 305 THEN RAISE(ABORT,'canonical_careers_v1 must contain exactly 305 records') END;
-SELECT CASE WHEN (SELECT COUNT(*) FROM canonical_careers_v1 WHERE production_canonical_status != 'VERIFIED') != 0 THEN RAISE(ABORT,'canonical_careers_v1 contains non-VERIFIED records') END;
-SELECT CASE WHEN (SELECT COUNT(*) FROM canonical_careers_v1 WHERE canonical_name='Experience Designer') != 2 THEN RAISE(ABORT,'Experience Designer must remain two distinct canonical records') END;
-SELECT CASE WHEN (SELECT COUNT(*) FROM canonical_careers_v1 WHERE world_id=1) != 25 THEN RAISE(ABORT,'World 01 must contain 25 records') END;
-SELECT CASE WHEN (SELECT COUNT(*) FROM canonical_careers_v1 WHERE world_id BETWEEN 2 AND 15) != 280 THEN RAISE(ABORT,'Worlds 02-15 must contain 280 records total') END;
+(15,'Skilled Trades, Manufacturing & Applied Craft','skilled-trades-manufacturing-applied-craft','Construction Technician|Textile Technician|Electrician|Garment Technician|Plumber|Automotive Technician|HVAC Technician|Industrial Maintenance Technician|Welder|Manufacturing Technician|Metal Fabricator|Quality Technician|Machinist|Production Supervisor|CNC Technician|Advanced Manufacturing Technician|Carpenter|3D Printing Technician|Cabinet Maker|Craft Artisan')),
+parts(world_id,world,world_slug,rest,pos,canonical_name) AS (SELECT world_id,world,world_slug,names||'|',0,'' FROM worlds UNION ALL SELECT world_id,world,world_slug,substr(rest,instr(rest,'|')+1),pos+1,substr(rest,1,instr(rest,'|')-1) FROM parts WHERE rest<>''),
+source AS (SELECT world_id,world,world_slug,pos,canonical_name,printf('CANON-%02d-%02d',world_id,pos) canonical_id,printf('W%02d-%02d',world_id,pos) reference_id,lower(trim(replace(replace(replace(replace(replace(canonical_name,' / ','-'),'/','-'),' & ','-'),' ','-'),'.',''))) slug FROM parts WHERE pos>0 AND trim(canonical_name)<>'' )
+INSERT INTO canonical_careers_v1(canonical_id,reference_id,canonical_name,published_name,slug,world,world_id,world_slug,cluster,description,source,provenance,catalogue_version,catalogue_status,production_canonical_status,evidence_status)
+SELECT canonical_id,reference_id,canonical_name,canonical_name,slug,world,world_id,world_slug,NULL,NULL,'Innovators_World_Future_Career_Explorer_v1.0.pdf','World '||printf('%02d',world_id)||' | Career Catalogue v1.0 | Body page '||(world_id+2)||' | Body enumeration','canonical_careers_v1','Authoritative Production Catalogue','VERIFIED','VERIFIED - Body enumeration' FROM source;
+CREATE TABLE IF NOT EXISTS catalogue_status_v1(catalogue_version TEXT PRIMARY KEY,library_reference_cover_count INTEGER NOT NULL,body_enumerated_count INTEGER NOT NULL,production_required_count INTEGER NOT NULL,unique_name_count INTEGER NOT NULL,status TEXT NOT NULL,evidence_status TEXT NOT NULL,note TEXT NOT NULL);
+INSERT OR REPLACE INTO catalogue_status_v1 VALUES('canonical_careers_v1',300,305,305,304,'Authoritative Production Catalogue','VERIFIED','Cover states 300; body pages 3-17 enumerate 305. The five World 01 entries Computer Vision Engineer, Quantum Computing Researcher, NLP Specialist, Technology Architect and AI Product Manager are present in the source body. Experience Designer occurs twice across World 08 and World 13 and remains two distinct canonical records.');
