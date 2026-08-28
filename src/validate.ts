@@ -24,7 +24,8 @@ export async function handleValidation(request: Request, env: Env): Promise<Resp
 
   if (url.pathname === "/validate" && request.method === "GET") {
     if (!env.ASSETS) return json({ error: "Validation page is not configured." }, 503);
-    return env.ASSETS.fetch(new Request(new URL("/validate/index.html", request.url), request));
+    const assetUrl = new URL("/validate/index.html", request.url);
+    return env.ASSETS.fetch(new Request(assetUrl, { method: "GET", headers: request.headers }));
   }
 
   if (url.pathname === "/api/validation/event" && request.method === "POST") {
