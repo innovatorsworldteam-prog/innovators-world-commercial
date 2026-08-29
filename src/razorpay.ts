@@ -216,3 +216,44 @@ export async function getCompleteInnovationProfile(request: Request, env: Paymen
     return fail("Unable to retrieve premium profile.",500);
   }
 }
+
+export async function createValidationRazorpayOrder(request: Request, env: PaymentEnv): Promise<Response> {
+  try {
+    const body = await parseBody(request);
+    const attemptId = text(body.attempt_id);
+    const receipt = text(body.receipt) || `iwva_${crypto.randomUUID().replace(/-/g, "").slice(0, 34)}`;
+    const amount = Number(body.amount ?? 49900);
+    const currency = text(body.currency) || "INR";
+    if (!attemptId) return fail("attempt_id is required.");
+    if (amount !== 49900 || currency !== "INR") return fail("Validation report checkout is currently configured for the India validation cohort at ₹499.",400);
+    if (receipt.length < 1 || receipt.length > 40) return fail("Invalid receipt.");
+    const result = await env.DB.prepare("SELECT id FROM iwda_results WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{id:string}>();
+    if (!result) return fail("A completed IWDA result is required before purchase.",404);
+    const auth = razorpayAuth(env);
+    const response = await fetch("https://api.razorpay.com/v1/orders", { method:"POST", headers:{"Authorization":auth,"Content-Type":"application/json"}, body:JSON.stringify({amount,currency,receipt,notes:{product:"validation_report",validation:true}}) });
+    if (response.status===401) return fail("Razorpay authentication failed.",401);
+    if (!response.ok) { let detail="Razorpay rejected the validation order."; try { const data=await response.json() as {error?:{description?:string}}; detail=data.error?.description||detail; } catch {} return fail(detail,500); }
+    const order=await response.json() as {id?:string;amount?:number;currency?:string};
+    if (!order.id) return fail("Razorpay returned an invalid order.",500);
+    return json({order_id:order.id,amount:order.amount??amount,currency:order.currency??currency,key_id:env.RAZORPAY_KEY_ID?.trim(),attempt_id:attemptId,product:"validation_report"});
+  } catch(error) { console.error("Create validation Razorpay order failed",error); return fail(error instanceof Error?error.message:"Unable to create validation order.",500); }
+}
+
+export async function verifyValidationRazorpayPayment(request: Request, env: PaymentEnv): Promise<Response> {
+  try {
+    const body = await parseBody(request);
+    const paymentId=text(body.razorpay_payment_id), orderId=text(body.razorpay_order_id), signature=text(body.razorpay_signature), attemptId=text(body.attempt_id);
+    if(!paymentId||!orderId||!signature||!attemptId) return fail("razorpay_payment_id, razorpay_order_id, razorpay_signature and attempt_id are required.");
+    const result=await env.DB.prepare("SELECT r.id,r.attempt_id,a.participant_id,r.innovation_readiness_index,r.traits,r.result_data FROM iwda_results r LEFT JOIN iwda_attempts a ON a.id=r.attempt_id WHERE r.attempt_id=? LIMIT 1").bind(attemptId).first<IWDAResultRow>();
+    if(!result) return fail("IWDA result not found.",404);
+    const secret=env.RAZORPAY_KEY_SECRET?.trim(); if(!secret) return fail("Razorpay server credentials are not configured.",500);
+    const expected=await hmacSha256Hex(secret,`${orderId}|${paymentId}`); if(!timingSafeEqualHex(expected,signature)) return fail("Payment signature verification failed.",400);
+    const existing=await env.DB.prepare("SELECT id,access_token_hash,product_code,amount_paise,currency FROM innovation_profile_entitlements WHERE attempt_id=? LIMIT 1").bind(attemptId).first<{id:string;access_token_hash:string;product_code:string;amount_paise:number;currency:string}>();
+    if(existing) return json({status:"ok",verified:true,product:existing.product_code,attempt_id:attemptId,profile_ready:true});
+    const entitlementId=crypto.randomUUID(), profileId=crypto.randomUUID(), accessToken=crypto.randomUUID()+crypto.randomUUID(), accessTokenHash=await sha256Hex(accessToken), now=new Date().toISOString();
+    const profileData={...buildCompleteInnovationProfile(result),product:"validation_report",title:"Personalised Innovation & Career Discovery Report",validation_configuration:{amount_paise:49900,currency:"INR"},career_recommendations_status:"pending_canonical_305_source"};
+    await env.DB.prepare(`INSERT INTO innovation_profile_entitlements (id,attempt_id,payment_order_id,payment_id,participant_id,product_code,amount_paise,currency,status,access_token_hash,created_at) VALUES (?,?,?,?,?,?,?,?,?,?,?)`).bind(entitlementId,attemptId,orderId,paymentId,result.participant_id,"validation_report",49900,"INR","paid",accessTokenHash,now).run();
+    await env.DB.prepare(`INSERT INTO complete_innovation_profiles (id,attempt_id,entitlement_id,participant_id,profile_data,created_at) VALUES (?,?,?,?,?,?)`).bind(profileId,attemptId,entitlementId,result.participant_id,JSON.stringify(profileData),now).run();
+    return json({status:"ok",verified:true,product:"validation_report",attempt_id:attemptId,profile_ready:true,profile_id:profileId,access_token:accessToken,profile:profileData});
+  } catch(error) { console.error("Verify validation Razorpay payment failed",error); return fail(error instanceof Error?error.message:"Unable to verify validation payment.",500); }
+}

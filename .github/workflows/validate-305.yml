@@ -1,0 +1,41 @@
+name: Validate 305 canonical catalogue
+
+on:
+  push:
+    branches: [feat/validate-international]
+  pull_request:
+    branches: [validation-base-c502]
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Repository baseline
+        run: |
+          git rev-parse HEAD
+          git branch --show-current
+          git status --short
+          git diff --stat
+      - name: Test
+        run: npm test -- --run
+      - name: Build
+        run: npm run build
+      - name: Local canonical D1 migration
+        run: npx wrangler d1 migrations apply innovators-world-commercial-db --local
+      - name: Local canonical D1 verification
+        run: |
+          npx wrangler d1 execute innovators-world-commercial-db --local --command "SELECT COUNT(*) AS total FROM canonical_careers_v1;"
+          npx wrangler d1 execute innovators-world-commercial-db --local --command "SELECT world_id, world_slug, COUNT(*) AS count FROM canonical_careers_v1 GROUP BY world_id, world_slug ORDER BY world_id;"
+          npx wrangler d1 execute innovators-world-commercial-db --local --command "SELECT canonical_name, COUNT(*) AS count FROM canonical_careers_v1 GROUP BY canonical_name HAVING COUNT(*) > 1;"
+          npx wrangler d1 execute innovators-world-commercial-db --local --command "SELECT COUNT(*) AS non_verified FROM canonical_careers_v1 WHERE production_canonical_status != 'VERIFIED';"
