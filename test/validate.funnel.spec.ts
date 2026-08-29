@@ -36,7 +36,7 @@ describe("International validation funnel", () => {
   });
 
   it("returns a controlled BLOCKED state when no authoritative careers source exists", async () => {
-    const table = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='careers' LIMIT 1").first<{ name: string }>();
+    const table = await db.prepare("SELECT name FROM sqlite_master WHERE type='table' AND name='canonical_careers_v1' LIMIT 1").first<{ name: string }>();
     if (table?.name) return;
     const response = await SELF.fetch("http://example.com/api/careers/recommend?iwda_attempt_id=test-id&limit=3");
     expect(response.status).toBe(200);
