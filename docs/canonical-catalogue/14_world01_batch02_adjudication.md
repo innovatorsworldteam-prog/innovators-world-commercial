@@ -1,7 +1,7 @@
 # World 01 — Batch 2 Adjudication Sheet (Data + Cloud + Networking)
 
 **Document 14 / 10** — Phase 5 deliverable: human editorial decision sheet, **Batch 2 only**.
-Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. Not an import file.**
+Status: **Batch 2 human decisions RECORDED (2026-09-01). Columns 16/17 filled below. Not an import file.**
 
 - **Date:** 2026-09-01
 - **Review baseline:** `docs/canonical-catalogue/12_world01_editorial_review.md` (accepted, `commit d8b8df5`)
@@ -35,8 +35,8 @@ Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. N
 | 13 | What would make this a distinct canonical career |
 | 14 | What would justify merging/aliasing it |
 | 15 | Recommended human decision (OpenCode recommendation only) |
-| 16 | Human decision (blank) |
-| 17 | Human notes (blank) |
+| 16 | Human decision (recorded below) |
+| 17 | Human notes (recorded below) |
 
 Each candidate sheet adds an evidence-oriented decomposition (the same A–D lens as Batch 1):
 
@@ -82,8 +82,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Pipeline/warehouse construction remains separable from downstream semantic-layer work (#21), DB operations (#37) and analytics (#20/24). |
 | 14 | Merge/alias if | Only if the build function merged into #37 (ops) — rejected on functional split; see Critical case 1. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Data Engineer remains separate — its primary competency centre (pipeline/warehouse build) differs from Analytics Engineer (#21) and Database Administrator (#37, ops). |
 
 - **A. Title/market:** data engineer, data-infrastructure engineer, data pipeline engineer.
 - **B. Occupational identity:** building and operating the data-delivery estate (pipelines, warehouses, ingestion).
@@ -104,8 +104,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the canonical home for BI/dashboard/metric vocabulary; the distinct analysis identity from data-scientist (#11, statistical) and from #24 (reporting vocabulary). |
 | 14 | Merge/alias if | #24 BI Analyst folds here as alias; if the analytical half dissolves into #11, #20 becomes redundant — not supported on T1 national classification. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Data Analyst remains separate — distinct analysis competency centre (T1 national classification); canonical home for BI/reporting vocabulary. |
 
 - **A. Title/market:** data analyst, business analyst (data), BI analyst (relative).
 - **B. Occupational identity:** turning data into business insight/reporting.
@@ -126,8 +126,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | The transformation/semantic-layer function is a real, recurring role distinct from raw-pipeline data engineering and from front-end analysis — T3 market/practitioner evidence. |
 | 14 | Merge/alias if | If the semantic layer were merely a specialisation of #19 (data engineer); the modern-data-stack practitioner movement argues it is emerging distinct. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Analytics Engineer remains separate — distinct competency centre (transform/semantic layer) from Data Engineer (#19) and Data Analyst (#20). |
 
 - **A. Title/market:** analytics engineer, analytics data engineer.
 - **B. Occupational identity:** owning the modelling/semantic layer between raw data and analytics.
@@ -148,8 +148,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Data-architecture design remains a distinct specialist function (DAMA body) separate from data build (#19) and general solutions architecture (#65). |
 | 14 | Merge/alias if | If pure "data architecture" were indistinguishable from #65 or from senior #19; DAMA/SFIA basis argues specialist distinct. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Data Architect remains separate/distinct — architecture of enterprise data structures/platforms is materially different from data-engineering implementation (#19). |
 
 - **A. Title/market:** data architect, enterprise-data architect.
 - **B. Occupational identity:** designing the data architecture.
@@ -170,8 +170,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Data-asset governance/stewardship (DAMA-DMBOK, GDPR data-side duties) is a defined discipline with distinct regulatory + ownership responsibilities. |
 | 14 | Merge/alias if | It must be distinguished relationally from #16/#52 (triad governance), not merged — collapsing would lose the data-asset strand; author `career_relations` at import. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Data Steward/Governance remains separate — data governance, quality, stewardship and accountability form a distinct occupational function (DAMA/GDPR basis). |
 
 - **A. Title/market:** data steward, data-governance manager, data-quality lead, CDO-adjacent governance roles.
 - **B. Occupational identity:** owning data-asset quality, availability, lineage and compliance.
@@ -192,8 +192,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if BI delivery had a function body distinct from #20's analysis — market evidence does not support a separate career. |
 | 14 | Merge/alias if | Because BI/reporting is the reporting vocabulary of #20; ALIAS keeps the title findable without a competing identity (Critical case 2). |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | BI Analyst treated as alias/market terminology variant of Data Analyst (#20), not a separate canonical identity. |
 
 - **A. Title/market:** BI analyst, business intelligence developer/analyst.
 - **B. Occupational identity:** dashboard, metric and report delivery over analysts' work.
@@ -214,8 +214,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | In World 01 only if tied to computing-software; the T1 classification is scientific → recommend MOVE to World 02 (see Critical case 3). |
 | 14 | Merge/alias if | Not merged; MOVE hand-off to World 02. Within World 01 its applied-analytics half is already represented by #11 — do not duplicate. |
 | 15 | Recommended human decision (AI) | **MOVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **MOVE** |
+| 17 | Human notes | Statistician MOVED for eventual World 02 consideration — preserved as a canonical career candidate, NOT rejected or deleted from the Innovators World career universe. No duplication with Data Scientist (#11). |
 
 - **A. Title/market:** statistician, applied statistician, official-statistics roles; overlaps analytics in data teams.
 - **B. Occupational identity:** statistical inference and experiment design (scientific), vs applied-analytics in World 01 careers.
@@ -236,8 +236,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Cloud-native design (vendor ecosystem + certification) stays separable from general #65 and from infra ops/engineering. |
 | 14 | Merge/alias if | If cloud design collapsed into #65; the certification ecosystem and cloud-native body argue distinct in 04 (Critical case 4). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Cloud Architect remains distinct from general infrastructure engineering (mature cloud-native design function + certification ecosystem). |
 
 - **A. Title/market:** cloud architect, cloud solutions architect, principal cloud architect.
 - **B. Occupational identity:** designing cloud-native architectures.
@@ -258,8 +258,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the canonical home for infrastructure/release vocabulary (#30, #31) and is distinguished from SRE (#28, reliability coding) and platform (#29, internal developer platforms). |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver (infra/release fold here). The triad question is whether #29 folds in (Critical case 5). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | DevOps Engineer remains separate — occupational centre is delivery automation and development/operations integration (DORA). |
 
 - **A. Title/market:** DevOps engineer, delivery engineer, release/CI-CD roles (relative).
 - **B. Occupational identity:** software delivery and operations pipeline.
@@ -280,8 +280,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Reliability-as-coded-practice (Google SRE + DORA) remains distinct from delivery/DevOps (#27); operational reliability is a distinct discipline. |
 | 14 | Merge/alias if | If SRE were a specialty of #27 — the coding-in-ops/error-budget body argues it stays distinct (attention case: DevOps vs Platform vs SRE). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | SRE remains separate — occupational centre is reliability and operational engineering (Google SRE + DORA). |
 
 - **A. Title/market:** SRE, site reliability engineer, platform-reliability roles (relative).
 - **B. Occupational identity:** reliability engineering of production services.
@@ -302,8 +302,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | IDP/product-for-engineers intent is a real, recurring role with distinct T3 evidence and SEO distinctness; owner of the platform-intent vocabulary. |
 | 14 | Merge/alias if | The **explicit alternative** flagged: fold #29 into #27/#28 to avoid a 3-way division of the 04 ops surface. Human must arbitrate keep-distinct vs fold (Critical case 5). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Platform Engineer remains separate (`emerging`) — occupational centre is internal platforms and developer enablement (IDP intent), distinct from DevOps (#27) delivery automation and SRE (#28) reliability. |
 
 - **A. Title/market:** platform engineer, developer-experience engineer, IDP engineer.
 - **B. Occupational identity:** engineering the internal platform/SDX used by other engineers.
@@ -324,8 +324,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if infra engineering had a function body distinct from #27 — T3 usage shows it as terminology, not a separate body (attention case: Cloud Architect vs Infrastructure Engineer). |
 | 14 | Merge/alias if | Because infrastructure-engineering is the infra vocabulary of #27; MERGE keeps the term findable under the DevOps identity. |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Human override of AI MERGE → ALIAS. Infrastructure Engineer treated as an alias/broad terminology rather than a separate canonical identity where the underlying work is represented by more specific infrastructure occupations (chiefly DevOps #27). |
 
 - **A. Title/market:** infrastructure engineer, IaC/infra roles.
 - **B. Occupational identity:** building/managing cloud and on-prem infrastructure — the infra half of DevOps.
@@ -346,8 +346,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if release engineering were a distinct body from #27 — it is a sub-practice of the delivery pipeline. |
 | 14 | Merge/alias if | Because release automation is DevOps delivery vocabulary; MERGE into #27. |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Release Engineer (#31) not explicitly listed in the recorded decision set; no override recorded — OpenCode MERGE into DevOps (#27) carried as the documented terminology resolution. |
 
 - **A. Title/market:** release engineer, build/release engineer.
 - **B. Occupational identity:** release pipeline and automation.
@@ -368,8 +368,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only after World 07 editorial settles whether FinOps is a technology or finance identity; currently a recognized FinOps Foundation body but vocabulary consolidating. |
 | 14 | Merge/alias if | Deferred — the technology/finance boundary is unresolved; do not pre-empt a World 07 decision. |
 | 15 | Recommended human decision (AI) | **DEFER** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Cloud Cost Engineer (FinOps) (#32) not explicitly listed in the recorded decision set; no override recorded — OpenCode DEFER (pending World 07 editorial) carried unopposed. |
 
 - **A. Title/market:** FinOps engineer, cloud cost engineer, cloud-finops analyst.
 - **B. Occupational identity:** cloud cost optimisation and FinOps practice.
@@ -390,8 +390,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the core networked-infrastructure occupation; distinguished from #34 (design) by build/ops vs architecture. |
 | 14 | Merge/alias if | Not merged; the human split question is a design vs seniority framing (#34) — see Critical case 6. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Network Engineer remains separate — core networking occupation (T1); distinct from Network Architect (#34) by implementation/operations vs design. |
 
 - **A. Title/market:** network engineer, network operations engineer, routing/switching engineer.
 - **B. Occupational identity:** building and running network infrastructure.
@@ -412,8 +412,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Network design stays a distinct specialist function from #33 operations — consistent with the architecture separation used across the review. |
 | 14 | Merge/alias if | If "network architect" were a seniority framing of #33 rather than a design function; SFIA distinguishes design identity — see Critical case 6. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Network Architect remains separate — network design function distinct from Network Engineer (#33); design vs implementation split confirmed. |
 
 - **A. Title/market:** network architect, network design architect.
 - **B. Occupational identity:** designing network architecture at scale.
@@ -434,8 +434,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains in World 01 for the software/networking core; hardware/physical-layer portions split to World 03. |
 | 14 | Merge/alias if | The carrier identity is distinct from #33/#34 — it is not merged; the World 03 split for hardware portions is the ratify point. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **MOVE / CROSS-WORLD REVIEW** |
+| 17 | Human notes | Telecommunications Engineer preserved as a valid career candidate for eventual allocation; moved/cross-world reviewed because communications engineering may be better represented in another Career World (e.g., World 03 hardware/physical-layer). Preserved — not rejected or deleted. |
 
 - **A. Title/market:** telecoms engineer, carrier-network engineer, 5G/radio-network engineer.
 - **B. Occupational identity:** carrier/telecom networking and its software core.
@@ -456,8 +456,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the established systems-operations occupation (T1); the receiver of data-centre/storage/mainframe folds (#38/#39/#40). |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver. The folds (#38/#39/#40) resolve into it (with #38's 04 platform relation) — see Critical case 7. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Systems Administrator remains separate — established T1 systems-operations occupational identity; receiver of data-centre/storage/mainframe folds (#38/#39/#40). |
 
 - **A. Title/market:** systems admin, sysadmin, server/admin engineer.
 - **B. Occupational identity:** operating and maintaining compute/server estate.
@@ -478,8 +478,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | DB platform operations remain distinct from #19's data-pipeline build; T1 classified. The build-ops split is the arbiter (Critical case 1 / attention case Database Administrator). |
 | 14 | Merge/alias if | The mainframe (#40) folds here as legacy specialisation; the DBA career itself does not merge — ops vs build split holds. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Database Administrator remains separate — distinct database-operations occupational identity (T1), distinct from the #19 data-engineering build function. |
 
 - **A. Title/market:** DBA, database administrator, database-platform engineer.
 - **B. Occupational identity:** operating database platforms.
@@ -500,8 +500,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if data-centre ops were a distinct body from #36 — T3 usage shows vocabulary, not a separate occupation. |
 | 14 | Merge/alias if | Because data-centre ops is the facility vocabulary over #36 (with an 04 relation); MERGE folds it without a competing record. |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Data Centre Engineer (#38) not explicitly listed in the recorded decision set; not a distinct occupational identity — documented MERGE into #36 (with 04 relation) preserved per the terminology-duplicate rule. |
 
 - **A. Title/market:** data-centre engineer, DC ops engineer.
 - **B. Occupational identity:** operations of data-centre compute/storage.
@@ -522,8 +522,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if storage specialisation were a distinct occupation body — T3 usage shows weak/niche terminology, flagged. |
 | 14 | Merge/alias if | Because storage vocabulary folds into #36 systems-admin / 04 platform (attention case: Storage Administrator). |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **MERGE** |
+| 17 | Human notes | Storage Administrator/Engineer merged — the evidence does not justify a separate canonical identity at this stage; folds into #36 / 04 platform. |
 
 - **A. Title/market:** storage engineer, SAN/NAS admin, object-storage engineer.
 - **B. Occupational identity:** storage platform vocabulary over systems/storage ops.
@@ -544,8 +544,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if mainframe legacy support deserved full-career status; T4 documents real roles but they are platform-specialist over #36/#37. |
 | 14 | Merge/alias if | Because it is a legacy-platform vogue over #36/#37; propose a **dedicated relation** for mainframe COBOL domains rather than a full career. |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Mainframe Engineer (#40) not explicitly listed in the recorded decision set; legacy-platform specialisation over #36/#37 — documented MERGE (as legacy alias) preserved per the terminology-duplicate rule. |
 
 - **A. Title/market:** mainframe engineer, COBOL/mainframe developer (relative), z/OS admin.
 - **B. Occupational identity:** operating/building on legacy mainframe platforms.
@@ -640,34 +640,35 @@ The OpenCode recommendation is **APPROVE** (distinct `emerging`); the human may 
 
 | # | Name | Cluster | Status | Evidence | Recommendation (AI) | Human decision |
 |---|---|---|---|---|---|---|
-| 19 | Data Engineer | 03 | current | T2 | APPROVE |  |
-| 20 | Data Analyst | 03 | current | T1 | APPROVE |  |
-| 21 | Analytics Engineer | 03 | emerging | T3 | APPROVE |  |
-| 22 | Data Architect | 03 | specialist | T2 | APPROVE |  |
-| 23 | Data Governance & Stewardship | 03 | specialist | T2 | APPROVE |  |
-| 24 | Business Intelligence Analyst | 03 | current | T3 | ALIAS |  |
-| 25 | Statistician | 03 | current | T1 | MOVE (World 02) |  |
-| 26 | Cloud Architect | 04 | current | T2 | APPROVE |  |
-| 27 | DevOps Engineer | 04 | current | T2 | APPROVE |  |
-| 28 | Site Reliability Engineer | 04 | current | T2 | APPROVE |  |
-| 29 | Platform Engineer | 04 | emerging | T3 | APPROVE (arbitration) |  |
-| 30 | Infrastructure Engineer | 04 | specialist | T3 | MERGE |  |
-| 31 | Release Engineer | 04 | specialist | T3 | MERGE |  |
-| 32 | Cloud Cost Engineer (FinOps) | 04 | emerging | T3 | DEFER |  |
-| 33 | Network Engineer | 05 | current | T1 | APPROVE |  |
-| 34 | Network Architect | 05 | specialist | T2 | APPROVE |  |
-| 35 | Telecommunications Engineer | 05 | current | T1 | APPROVE |  |
-| 36 | Systems Administrator | 05 | current | T1 | APPROVE (receiver) |  |
-| 37 | Database Administrator | 05 | current | T1 | APPROVE |  |
-| 38 | Data Centre Engineer | 05 | specialist | T3 | MERGE |  |
-| 39 | Storage Engineer | 05 | specialist | T3 | MERGE |  |
-| 40 | Mainframe Engineer | 05 | specialist | T4 | MERGE |  |
+| 19 | Data Engineer | 03 | current | T2 | APPROVE | **APPROVE** |
+| 20 | Data Analyst | 03 | current | T1 | APPROVE | **APPROVE** |
+| 21 | Analytics Engineer | 03 | emerging | T3 | APPROVE | **APPROVE** |
+| 22 | Data Architect | 03 | specialist | T2 | APPROVE | **APPROVE** |
+| 23 | Data Governance & Stewardship | 03 | specialist | T2 | APPROVE | **APPROVE** |
+| 24 | Business Intelligence Analyst | 03 | current | T3 | ALIAS | **ALIAS** |
+| 25 | Statistician | 03 | current | T1 | MOVE (World 02) | **MOVE** |
+| 26 | Cloud Architect | 04 | current | T2 | APPROVE | **APPROVE** |
+| 27 | DevOps Engineer | 04 | current | T2 | APPROVE | **APPROVE** |
+| 28 | Site Reliability Engineer | 04 | current | T2 | APPROVE | **APPROVE** |
+| 29 | Platform Engineer | 04 | emerging | T3 | APPROVE (arbitration) | **APPROVE** |
+| 30 | Infrastructure Engineer | 04 | specialist | T3 | MERGE | **ALIAS** (override) |
+| 31 | Release Engineer | 04 | specialist | T3 | MERGE | — (no override; MERGE carried) |
+| 32 | Cloud Cost Engineer (FinOps) | 04 | emerging | T3 | DEFER | — (no override; DEFER carried) |
+| 33 | Network Engineer | 05 | current | T1 | APPROVE | **APPROVE** |
+| 34 | Network Architect | 05 | specialist | T2 | APPROVE | **APPROVE** |
+| 35 | Telecommunications Engineer | 05 | current | T1 | APPROVE | **MOVE / CROSS-WORLD REVIEW** |
+| 36 | Systems Administrator | 05 | current | T1 | APPROVE (receiver) | **APPROVE** |
+| 37 | Database Administrator | 05 | current | T1 | APPROVE | **APPROVE** |
+| 38 | Data Centre Engineer | 05 | specialist | T3 | MERGE | — (no override; MERGE carried) |
+| 39 | Storage Engineer | 05 | specialist | T3 | MERGE | **MERGE** |
+| 40 | Mainframe Engineer | 05 | specialist | T4 | MERGE | — (no override; MERGE carried) |
 
-> **Human-arbitration highlights for Batch 2:** the three items most likely to need a human call are
-> **(1)** Platform Engineer (#29) — keep distinct `emerging` vs fold into DevOps/SRE; **(2)** Statistician (#25)
-> — ratify the World 02 MOVE and the no-duplication-with-Data-Scientist rule; **(3)** Cloud Architect vs
-> Infrastructure Engineer (#26 vs #30) — confirm #26 distinct-design / #30 merged-into-DevOps.
-> All other rows are routine confirmations against the standing title≠career rule.
+> **Human-arbitration note (post-decision):** the three deliberate arbitration points resolved as follows —
+> **(1)** Platform Engineer (#29) confirmed distinct `emerging` (IDP intent) vs folding; **(2)** Statistician (#25)
+> confirmed MOVE to World 02 with a no-duplication-with-Data-Scientist rule; **(3)** Cloud Architect (#26) distinct
+> design, Infrastructure Engineer (#30) overridden to ALIAS (broad terminology over more specific infra
+> occupations, not a MERGE). Rows #31/#32/#38/#40 received no explicit decision and carry their documented
+> MERGE/DEFER terminology resolutions per the standing title≠career rule.
 
 > **Insufficient-evidence note (explicit):** no Batch 2 candidate rests on T5 predictive provenance; the
 > thinnest are the T3-niche storage/data-centre folds (#38/#39) and the T3 `emerging` items (#21, #29, #32).
@@ -676,4 +677,36 @@ The OpenCode recommendation is **APPROVE** (distinct `emerging`); the human may 
 
 ---
 
-*End of Document 14. Batch 2 is open for human adjudication; columns 16/17 intentionally blank. No inventory, seed, or production data is modified; no canonical IDs created.*
+## Recorded human decisions and rationale (2026-09-01)
+
+These decisions are **human**, recorded in column 16; they are visibly distinct from the column-15 AI recommendations (which are unchanged).
+
+| # | Name | Human decision | Human rationale (as recorded) |
+|---|---|---|---|
+| 19 | Data Engineer | APPROVE | Remains separate — primary competency centre (pipeline/warehouse build) differs from Analytics Engineer and DBA. (Rationale 1) |
+| 20 | Data Analyst | APPROVE | Remains separate — distinct analysis competency centre (T1). (Rationale 1) |
+| 21 | Analytics Engineer | APPROVE | Remains separate — distinct transform/semantic-layer competency centre. (Rationale 1) |
+| 24 | Business Intelligence Analyst | ALIAS | Alias/market terminology variant of Data Analyst, not a separate canonical identity. (Rationale 2) |
+| 23 | Data Steward / Governance | APPROVE | Remains separate — data governance, quality, stewardship and accountability form a distinct occupational function. (Rationale 3) |
+| 25 | Statistician | MOVE | Moved for eventual World 02 consideration — preserved as a canonical career candidate, NOT rejected/deleted. (Rationale 4) |
+| 22 | Data Architect | APPROVE | Remains distinct — architecture of enterprise data structures/platforms is materially different from data-engineering implementation. (Rationale 5) |
+| 26 | Cloud Architect | APPROVE | Remains distinct from general infrastructure engineering. (Rationale 6) |
+| 27 | DevOps Engineer | APPROVE | Delivery automation and development/operations integration. (Rationale 7) |
+| 28 | Site Reliability Engineer | APPROVE | Reliability and operational engineering. (Rationale 7) |
+| 29 | Platform Engineer | APPROVE | Internal platforms and developer enablement. (Rationale 7) |
+| 30 | Infrastructure Engineer | ALIAS | Alias/broad terminology, not a separate canonical identity — underlying work represented by more specific infrastructure occupations. (Rationale 8) |
+| 33 | Network Engineer | APPROVE | Remains separate (T1 networking core). (Rationale 9) |
+| 34 | Network Architect | APPROVE | Remains separate (network design function). (Rationale 9) |
+| 35 | Telecommunications Engineer | MOVE / CROSS-WORLD REVIEW | Preserved but moved/cross-world reviewed — communications engineering may be better represented in another Career World. (Rationale 10) |
+| 36 | Systems Administrator | APPROVE | Remains a separate occupational identity (T1 systems-operations anchor). (Rationale 11) |
+| 37 | Database Administrator | APPROVE | Remains a separate occupational identity (T1 database-operations). (Rationale 11) |
+| 39 | Storage Administrator/Engineer | MERGE | Evidence does not justify a separate canonical identity at this stage. (Rationale 12) |
+
+### Editorial notes on remaining Batch 2 terminology
+
+- Rows not explicitly listed in the decision set (#31 Release Engineer, #32 Cloud Cost/FinOps, #38 Data Centre Engineer, #40 Mainframe Engineer) are **terminology duplicates already identified by the research analysis**; they preserve the documented MERGE/DEFER resolution rather than creating a new identity, per the standing rule.
+- Standing rule applied throughout Batch 2 and carried into Batch 3: a different job title is **not** automatically a different canonical career — decisions hinge on function/competency, not label.
+
+---
+
+*End of Document 14 (Batch 2 adjudicated — Batch 1 anchor doc 13; human decisions recorded 2026-09-01). No inventory, seed, or production data modified; no canonical IDs created.*
