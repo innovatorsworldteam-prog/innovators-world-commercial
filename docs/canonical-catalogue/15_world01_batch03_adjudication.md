@@ -1,7 +1,7 @@
 # World 01 — Batch 3 Adjudication Sheet (Security + Quality)
 
 **Document 15 / 10** — Phase 5 deliverable: human editorial decision sheet, **Batch 3 only**.
-Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. Not an import file.**
+Status: **Batch 3 human decisions RECORDED (2026-09-01). Columns 16/17 filled below. Not an import file.**
 
 - **Date:** 2026-09-01
 - **Review baseline:** `docs/canonical-catalogue/12_world01_editorial_review.md` (accepted, `commit d8b8df5`)
@@ -35,8 +35,8 @@ Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. N
 | 13 | What would make this a distinct canonical career |
 | 14 | What would justify merging/aliasing it |
 | 15 | Recommended human decision (OpenCode recommendation only) |
-| 16 | Human decision (blank) |
-| 17 | Human notes (blank) |
+| 16 | Human decision (recorded below) |
+| 17 | Human notes (recorded below) |
 
 Each candidate sheet adds an evidence-oriented decomposition (the same A–D lens as Batches 1–2):
 
@@ -81,8 +81,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the seed canonical home for monitoring/defence vocabulary (incl. SOC #46) — the monitor/defend half vs the build half of #42. |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver (SOC vocabulary). The question is whether #46 stays ALIAS or becomes distinct SOC (Critical case 1). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Cybersecurity Analyst remains the core defensive analysis occupational identity (seed canonical 4/5). |
 
 - **A. Title/market:** cybersecurity analyst, security operations analyst, SOC analyst (relative), security analyst.
 - **B. Occupational identity:** defending via monitoring, detection and response.
@@ -103,8 +103,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Security-engineering (build) remains distinct from security-operations (monitor, #41) and from security-architecture (design, #44). |
 | 14 | Merge/alias if | #47 cloud-security merges here as cloud-platform specialisation; the Security Engineer career itself does not merge (Critical case 2/4). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Security Engineer remains separate — build/engineer identity (NICE work roles); receiver of cloud-security (#47) as a cloud-platform specialisation. |
 
 - **A. Title/market:** security engineer, application-security engineer, build-security engineer.
 - **B. Occupational identity:** engineering security into systems/apps.
@@ -125,8 +125,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | The offensive/testing function remains distinct from build (#42) and monitor (#41) — NICE offensive work roles + certification ecosystem. |
 | 14 | Merge/alias if | Not merged; distinct offensive identity (with a relation to #81 smart-contract-auditor's programmatic focus). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Penetration Tester remains separate — authorized offensive security assessment is a materially distinct competency centre (NICE + cert ecosystem). |
 
 - **A. Title/market:** penetration tester, ethical hacker, red-team engineer.
 - **B. Occupational identity:** authorised offensive security testing.
@@ -147,8 +147,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Security architecture remains a distinct design function from #42 (build) and #41 (monitor), consistent with the architecture separation used across the review (Critical case 2). |
 | 14 | Merge/alias if | If security architecture were a seniority framing of #42 rather than a design function; SFIA/NICE distinguish architecture. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Security Architect remains separate — engineering implementation/operation (#42) differs from security architecture and design (#44). |
 
 - **A. Title/market:** security architect, enterprise-security architect.
 - **B. Occupational identity:** designing security architecture.
@@ -169,8 +169,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | OT/ICS security maintains a distinct risk profile and regulatory duty distinct from IT security engineering (#42) — NIS2 momentum + real postings (attention case: OT/Industrial Security). |
 | 14 | Merge/alias if | If the OT security work were merely #42 applied to a domain; the distinct risk/regulatory profile argues `emerging` distinct, with a World 15 on-site boundary to ratify. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE (PROVISIONAL)** |
+| 17 | Human notes | OT/Industrial Security provisionally retained as a specialist/emerging security domain (regulator-driven NIS2-style). Subject to profile-boundary validation — the profile must make the OT-vs-generic-enterprise-IT boundary explicit; World 15 on-site half to ratify. |
 
 - **A. Title/market:** OT security engineer, ICS/SCADA security engineer, industrial-cyber engineer.
 - **B. Occupational identity:** securing operational technology.
@@ -191,8 +191,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if SOC operations had a function body distinct from #41 — NICE groups SOC roles under the analyst work role; evidence does not support a separate career (Critical case 1). |
 | 14 | Merge/alias if | Because SOC L1–L3 monitoring is the operations vocabulary of #41; ALIAS keeps the tier structure findable without a competing identity. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | SOC Analyst treated as an alias/specialization (L1–L3 monitoring arm of Cybersecurity Analyst), not a separate canonical career. |
 
 - **A. Title/market:** SOC analyst, security operations analyst, tier-1/2/3 analyst.
 - **B. Occupational identity:** continuous monitoring/triage within security operations.
@@ -213,8 +213,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if cloud-security had a function body distinct from #42 — T3 usage shows a platform specialisation, not a distinct occupation. |
 | 14 | Merge/alias if | Because cloud-security is the cloud-platform vocabulary of #42; ALIAS keeps the term findable without a competing identity. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Human override of AI ALIAS recommendation — Cloud Security Engineer remains separate: cloud-native security represents a sufficiently developed technical specialization. |
 
 - **A. Title/market:** cloud security engineer (AWS/Azure/GCP flavour).
 - **B. Occupational identity:** securing cloud platforms — a specialisation of #42.
@@ -235,8 +235,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Threat-intel research stays distinct from monitor (#41) and build (#42) — NICE threat-intel work roles (attention case: Threat Intelligence). |
 | 14 | Merge/alias if | Not merged; distinct research identity with NICE work roles. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Threat Intelligence remains separate — intelligence collection, analysis and adversary research represent a distinct competency centre (NICE threat-intel work roles). |
 
 - **A. Title/market:** threat intelligence analyst, CTI analyst, threat researcher.
 - **B. Occupational identity:** producing and operationalising threat intelligence.
@@ -257,8 +257,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Applied-cryptography engineering remains a distinct specialist engineering/research discipline (T4 documented roles, academic/practitioner body) (Critical case 6). |
 | 14 | Merge/alias if | Not merged; the IAM (#50) PKI overlap is a relation. Distinct from the cryptographic/blockchain-asset world via the naming note. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Cryptography Engineer remains separate — cryptographic engineering has a specialized mathematical/security competency base (T4 documented; distinct from cryptoassets via naming note). |
 
 - **A. Title/market:** cryptographic engineer, applied-cryptography engineer, PKI/crypto engineer.
 - **B. Occupational identity:** engineering cryptographic systems.
@@ -279,8 +279,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | IAM is a distinct functional specialism with NICE work roles and identity-platform body — separate from general security engineering (#42) (Critical case 5). |
 | 14 | Merge/alias if | Not merged; the PKI overlap with #49 and any SSO-as-seniority framing are relations, not merges. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | IAM Engineer remains separate — identity, authentication, authorization and access-control engineering constitute a substantial technical discipline (NICE identity/access work roles). |
 
 - **A. Title/market:** IAM engineer, identity engineer, access-management engineer.
 - **B. Occupational identity:** engineering identity and access.
@@ -301,8 +301,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Digital-forensics evidence work remains a distinct technical identity (NICE forensics + ESCO); legal-adjacent but technical (attention case: DR in cybersecurity). |
 | 14 | Merge/alias if | Not merged; the legal-adjacency is a relation, not a move — it stays in World 01 as a technical identity (unless a legal-World pull is considered; not recommended). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Digital Forensics Analyst (#51) not explicitly listed in the recorded decision set; no override recorded — AI recommendation (APPROVE) carried unopposed as a distinct forensic/evidence identity. |
 
 - **A. Title/market:** digital forensics analyst, forensic examiner, DFIR engineer (relative).
 - **B. Occupational identity:** collecting and analysing digital evidence.
@@ -323,8 +323,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | The human must arbitrate its home: cybersecurity GRC (06) vs cross-world governance (World 10). If 06, GRC is a specialist; if World 10, it MOVE/DEFERs (Critical case 3). |
 | 14 | Merge/alias if | It is not merged — the open question is *home*, not *existence*. Recommended DEFER pending World 10 editorial, or the human may assert a home now. |
 | 15 | Recommended human decision (AI) | **DEFER** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE (PROVISIONAL)** |
+| 17 | Human notes | GRC Analyst provisionally approved — governance, risk and compliance represent a distinct occupational function; eventual Career World home retained pending cross-World home arbitration (06 vs World 10). Do not create duplicate canonical identities for GRC/security-governance terminology. |
 
 - **A. Title/market:** GRC analyst, security-grc analyst, ISO-27001/risk & compliance roles.
 - **B. Occupational identity:** security governance/risk/compliance practice.
@@ -345,8 +345,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the canonical home for all testing vocabulary (#54 SDET, #55 performance) — the deliberate single-identity position in 07 (Critical case 7). |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver. The question is whether #54 (SDET/automation) stays MERGE or becomes a distinct specialist (Critical case 7). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | QA Engineer remains the canonical quality/testing career (T1); receiver of SDET (#54) as an alias/specialization. |
 
 - **A. Title/market:** QA engineer, QA/tester, test engineer.
 - **B. Occupational identity:** ensuring software quality through testing.
@@ -367,8 +367,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if test-automation engineering were a distinct occupation body from #53 — T3 usage shows a coding specialisation, not a distinct function (Critical case 7). |
 | 14 | Merge/alias if | Because SDET is test-automation vocabulary over #53; MERGE keeps it findable without a competing QA identity (the alternative, a distinct `specialist`, was flagged in doc 11 §G.3 for the human to choose). |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Human override of AI MERGE → ALIAS. Test Automation/SDET treated as an alias/specialization of QA Engineer (#53), not a separate canonical career. |
 
 - **A. Title/market:** SDET, test automation engineer, QA engineer (automation).
 - **B. Occupational identity:** automated testing of software — a coding specialisation of QA.
@@ -389,8 +389,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if performance engineering were a distinct body — T3 usage shows it spans QA and SRE; not a separate occupation (Critical case 8). |
 | 14 | Merge/alias if | Because performance folds into #53 QA (performance testing) or #28 SRE (runtime perf) per function; MERGE by function is the documented resolution. |
 | 15 | Recommended human decision (AI) | **MERGE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Human override of AI MERGE → APPROVE. Performance Engineer remains separate — performance, scalability, load and system-behaviour engineering form a distinct technical competency centre; boundary relations to QA (#53) and SRE (#28) to be authored. |
 
 - **A. Title/market:** performance engineer, performance-testing engineer.
 - **B. Occupational identity:** performance/load testing (QA) + runtime perf (SRE) — a straddle.
@@ -411,8 +411,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only after World 08 editorial settles whether accessibility is a quality (07) or design/UX (08) identity; vocabulary is settling. |
 | 14 | Merge/alias if | Deferred — the quality-vs-UX home is unresolved; do not pre-empt a World 08 decision. |
 | 15 | Recommended human decision (AI) | **DEFER** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Accessibility Engineer (#56) not explicitly listed in the recorded decision set; no override recorded — AI recommendation (DEFER pending World 08 boundary) carried unopposed. |
 
 - **A. Title/market:** accessibility engineer, a11y engineer, WCAG/accessibility specialist.
 - **B. Occupational identity:** engineering digital accessibility (WCAG).
@@ -512,28 +512,30 @@ The **Release Engineer** candidate (#31) was adjudicated in **Batch 2 / 04-devop
 
 | # | Name | Cluster | Status | Evidence | Recommendation (AI) | Human decision |
 |---|---|---|---|---|---|---|
-| 41 | Cybersecurity Analyst | 06 | current | T1 | APPROVE |  |
-| 42 | Security Engineer | 06 | current | T2 | APPROVE |  |
-| 43 | Penetration Tester | 06 | current | T2 | APPROVE |  |
-| 44 | Security Architect | 06 | specialist | T2 | APPROVE |  |
-| 45 | OT/Industrial Control Systems Security Engineer | 06 | emerging | T3 | APPROVE |  |
-| 46 | SOC Analyst | 06 | current | T3 | ALIAS |  |
-| 47 | Cloud Security Engineer | 06 | specialist | T3 | ALIAS |  |
-| 48 | Threat Intelligence Analyst | 06 | specialist | T2 | APPROVE |  |
-| 49 | Cryptographic Engineer | 06 | specialist | T4 | APPROVE |  |
-| 50 | Identity & Access Management Engineer | 06 | specialist | T2 | APPROVE |  |
-| 51 | Digital Forensics Analyst | 06 | specialist | T2 | APPROVE |  |
-| 52 | Security GRC Analyst | 06 | specialist | T2 | DEFER (home arbitration) |  |
-| 53 | Quality Assurance Engineer | 07 | current | T1 | APPROVE |  |
-| 54 | SDET | 07 | specialist | T3 | MERGE (alt: distinct specialist) |  |
-| 55 | Performance Engineer | 07 | specialist | T3 | MERGE |  |
-| 56 | Accessibility Engineer | 07 | emerging | T3 | DEFER |  |
+| 41 | Cybersecurity Analyst | 06 | current | T1 | APPROVE | **APPROVE** |
+| 42 | Security Engineer | 06 | current | T2 | APPROVE | **APPROVE** |
+| 43 | Penetration Tester | 06 | current | T2 | APPROVE | **APPROVE** |
+| 44 | Security Architect | 06 | specialist | T2 | APPROVE | **APPROVE** |
+| 45 | OT/Industrial Control Systems Security Engineer | 06 | emerging | T3 | APPROVE | **APPROVE (PROVISIONAL)** |
+| 46 | SOC Analyst | 06 | current | T3 | ALIAS | **ALIAS** |
+| 47 | Cloud Security Engineer | 06 | specialist | T3 | ALIAS | **APPROVE** (override) |
+| 48 | Threat Intelligence Analyst | 06 | specialist | T2 | APPROVE | **APPROVE** |
+| 49 | Cryptographic Engineer | 06 | specialist | T4 | APPROVE | **APPROVE** |
+| 50 | Identity & Access Management Engineer | 06 | specialist | T2 | APPROVE | **APPROVE** |
+| 51 | Digital Forensics Analyst | 06 | specialist | T2 | APPROVE | — (no override; APPROVE carried) |
+| 52 | Security GRC Analyst | 06 | specialist | T2 | DEFER (home arbitration) | **APPROVE (PROVISIONAL)** |
+| 53 | Quality Assurance Engineer | 07 | current | T1 | APPROVE | **APPROVE** |
+| 54 | SDET | 07 | specialist | T3 | MERGE (alt: distinct specialist) | **ALIAS** (override) |
+| 55 | Performance Engineer | 07 | specialist | T3 | MERGE | **APPROVE** (override) |
+| 56 | Accessibility Engineer | 07 | emerging | T3 | DEFER | — (no override; DEFER carried) |
 
-> **Human-arbitration highlights for Batch 3:** the three items most likely to need a human call are
-> **(1)** Security GRC (#52) — assert an 06 home now vs DEFER pending World 10 editorial; **(2)** SDET (#54)
-> — confirm MERGE into QA vs keep as a distinct `specialist` (the flagged breadth alternative); **(3)** OT/ICS
-> security (#45) — confirm `emerging` and the World 15 on-site half boundary. All other rows are routine
-> confirmations against the standing title≠career rule.
+> **Post-decision note:** the three deliberate arbitration points resolved as follows —
+> **(1)** Security GRC (#52) provisionally approved as a distinct occupational function, with its Career World
+> home retained pending cross-World arbitration (06 vs World 10); **(2)** SDET (#54) resolved to **ALIAS** into QA
+> (rather than MERGE, and rather than the flagged distinct-specialist alternative); **(3)** Cloud Security (#47)
+> and Performance Engineer (#55) were **APPROVED as separate** (overriding the AI ALIAS/MERGE) — cloud-native
+> security and performance/load engineering judged sufficiently developed distinct specializations. Rows
+> #51/#56 received no explicit decision and carry their documented APPROVE/DEFER resolutions.
 
 > **Insufficient-evidence note (explicit):** no Batch 3 candidate rests on T5 predictive provenance; the
 > four `emerging`/T3 items carry real documented/market basis (OT #45 T3+NICE, accessibility #56 T3+WCAG).
@@ -541,4 +543,33 @@ The **Release Engineer** candidate (#31) was adjudicated in **Batch 2 / 04-devop
 
 ---
 
-*End of Document 15. Batch 3 is open for human adjudication; columns 16/17 intentionally blank. No inventory, seed, or production data is modified; no canonical IDs created.*
+## Recorded human decisions and rationale (2026-09-01)
+
+These decisions are **human**, recorded in column 16; they are visibly distinct from the column-15 AI recommendations (which are unchanged).
+
+| # | Name | Human decision | Human rationale (as recorded) |
+|---|---|---|---|
+| 41 | Cybersecurity Analyst | APPROVE | Core defensive analysis occupational identity (seed 4/5). (Rationale 1) |
+| 46 | SOC Analyst | ALIAS | Alias/specialization (L1–L3 monitoring arm of #41), not a separate canonical career. (Rationale 2) |
+| 43 | Penetration Tester | APPROVE | Remains separate — authorized offensive security assessment is a materially distinct competency centre. (Rationale 3) |
+| 42/44 | Security Engineer / Security Architect | APPROVE | Both remain separate — engineering implementation/operation differs from security architecture and design. (Rationale 4) |
+| 48 | Threat Intelligence Analyst | APPROVE | Remains separate — intelligence collection, analysis and adversary research represent a distinct competency centre. (Rationale 5) |
+| 49 | Cryptography Engineer | APPROVE | Remains separate — cryptographic engineering has a specialized mathematical/security competency base. (Rationale 6) |
+| 52 | GRC Analyst | APPROVE (PROVISIONAL) | Governance, risk and compliance represent a distinct occupational function; eventual Career World home retained pending cross-World arbitration. (Rationale 7) |
+| 47 | Cloud Security Engineer | APPROVE | Remains separate (override of AI ALIAS) — cloud-native security is a sufficiently developed technical specialization. (Rationale 8) |
+| 50 | IAM Engineer | APPROVE | Remains separate — identity, authentication, authorization and access-control engineering constitute a substantial technical discipline. (Rationale 9) |
+| 45 | OT/Industrial Security | APPROVE (PROVISIONAL) | Provisionally retained — operational-technology security is materially different from generic enterprise IT; the profile must make that boundary explicit. (Rationale 10) |
+| 53 | QA Engineer | APPROVE | Remains the canonical quality/testing career. (Rationale 11) |
+| 54 | SDET / Test Automation | ALIAS | Treated as an alias/specialization, not a separate canonical career. (Rationale 12) |
+| 55 | Performance Engineer | APPROVE | Remains separate (override of AI MERGE) — performance, scalability, load and system-behaviour engineering form a distinct technical competency centre. (Rationale 13) |
+| 31 | Release Engineer | MERGE | Merged into the DevOps/platform engineering family, not a separate canonical career. (Rationale 14) |
+
+### Editorial notes on Batch 3
+
+- **Release Engineer** — the Batch 3 decision specifies MERGE into the **DevOps/platform engineering family**. This maps to the Batch 2/04 candidate #31 (already documented MERGE into DevOps #27); the Batch 3 instruction is consistent with and confirms that resolution. No new candidate is created.
+- **Additional GRC/security-governance terminology** — where the research analysis identifies further GRC/security-governance terminology, the documented **DEFER / HOME-ARBITRATION** resolution is preserved; no duplicate canonical identities are created.
+- **Standing rule (Rationale 15), carried through all batches:** different job titles do not automatically constitute different canonical careers.
+
+---
+
+*End of Document 15 (Batch 3 adjudicated — human decisions recorded 2026-09-01). No inventory, seed, or production data modified; no canonical IDs created.*
