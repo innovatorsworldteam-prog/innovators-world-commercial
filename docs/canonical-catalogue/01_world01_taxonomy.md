@@ -26,22 +26,29 @@ count. Clusters may contain many careers (e.g. Software Engineering) or few
 5. **Stable identity.** Once a career is created, its `canonical_slug` and
    canonical name do not change; clusters may be refined before publishing.
 
+> **Amendment (2026-09-01):** The original draft listed 16 clusters while the
+> text promised 14. Aligned to exactly **14** below by (1) merging A5
+> *Networking & Connectivity* and A6 *Systems & Database Administration* into a
+> single **Networking, Systems & Databases** cluster, and (2) folding the former
+> C4 *AI Safety & Responsible AI* cluster into A2 as an AI-governance strand
+> (AI safety / alignment *predictive* titles remain excluded pending the
+> Inclusion Criteria predictive gate). See `11_world01_candidate_report.md` §I.
+
 ## 3. The World 01 taxonomy
 
-Fourteen clusters are proposed. Each lists representative career families
+Fourteen clusters are defined. Each lists representative career families
 (hypothetical until confirmed by research) to show the shape of the cluster.
 
 ### A. Core engineering (established)
 | Cluster | Representative career families |
 |---|---|
 | A1 Software Engineering | Backend, frontend, full-stack, mobile, embedded systems, game, low-level/systems |
-| A2 AI & Machine Learning | ML engineer, data scientist (overlap to D), computer vision, NLP, ML ops |
+| A2 AI, Machine Learning & Responsible AI | ML engineer, data scientist (overlap to D), computer vision, AI governance |
 | A3 Data Engineering & Analytics | Data engineer, data analyst, BI analyst, analytics engineer |
 | A4 Cloud, Infrastructure & DevOps | Cloud architect, platform engineer, SRE, DevOps engineer, site reliability |
-| A5 Networking & Connectivity | Network engineer, network architect, telecom/5G engineer, SDN |
-| A6 Systems & Database Administration | Sysadmin, database administrator, storage, mainframe |
-| A7 Cybersecurity | Security analyst, penetration tester, security engineer, threat intel, SOC |
-| A8 Quality, Testing & Reliability | QA engineer, test automation, SDET, performance engineer |
+| A5 Networking, Systems & Databases | Network engineer, network architect, telecom/5G engineer, SDN, sysadmin, database administrator, storage, mainframe |
+| A6 Cybersecurity | Security analyst, penetration tester, security engineer, threat intel, SOC |
+| A7 Quality, Testing & Reliability | QA engineer, test automation, SDET, performance engineer |
 
 ### B. Product & delivery (established/specialist)
 | Cluster | Representative career families |
@@ -55,7 +62,6 @@ Fourteen clusters are proposed. Each lists representative career families
 | C1 Applied Frontier Tech | AR/VR/XR engineer, robotics software, IoT/edge, digital twin, space software |
 | C2 Web3 & Distributed Systems | Blockchain engineer, distributed systems, privacy engineering |
 | C3 Quantum Computing | Quantum software, quantum algorithm researcher, quantum error-correction |
-| C4 AI Safety & Responsible AI | AI governance, model evaluation, alignment engineer |
 
 ### D. Specialist & niche computing (specialist)
 | Cluster | Representative career families |
@@ -63,9 +69,10 @@ Fourteen clusters are proposed. Each lists representative career families
 | D1 Domain-Integrated Computing | Bioinformatics, climate/geospatial software, health informatics, fintech engineering |
 | D2 Technical Support & Service | IT support, technical account management, field/network technician escalation |
 
-> **Note on C4 predictive titles:** AI-safety and modelling-conduct roles are
-> credible and sourced where the underlying science is active. Any *future*
-> classification must clear the Inclusion Criteria's predictive gate (see doc 02).
+> **Note on AI-governance titles:** responsible-AI / AI-governance roles are
+> credible and sourced today (see `11_world01_candidate_report.md` §I for the
+> EU AI Act evidence basis). Purely *predictive* AI-safety/alignment titles are
+> excluded unless they clear the Inclusion Criteria's predictive gate (doc 02).
 
 ## 4. Career status mapping by cluster
 
@@ -75,10 +82,10 @@ assigned per-career from evidence:
 
 | Status | Typical clusters | Example |
 |---|---|---|
-| `current` | A1–A8, B1–B2, D2 | Software Engineer, DBA |
-| `specialist` | D1, A2/A7 niches | Bioinformatics Engineer, Threat Intelligence |
-| `emerging` | C1, C2 | AR/VR Systems Engineer, Platform Engineer |
-| `future` (predictive) | C3, C4 | Quantum Error-Correction Engineer |
+| `current` | A1, A3, A5, A6(A7), B1, B2, D2 | Software Engineer, DBA |
+| `specialist` | D1, A2/A6 niches | Bioinformatics Engineer, Threat Intelligence |
+| `emerging` | C1, C2, A2 AI-governance strand | AR/VR Systems Engineer, Platform Engineer |
+| `future` (predictive) | C3 (thin-evidence roles only) | Quantum Error-Correction Engineer |
 
 ## 5. How clusters are stored
 
@@ -101,5 +108,6 @@ assigned per-career from evidence:
    keeps them separate (different skill sets and progression).
 2. Whether B2 leadership/architecture roles belong in a technology World or a
    generic management layer (recommendation: include, they are Technology careers).
-3. Whether C4 predictive titles are added now or deferred until evidence is
-   settled (recommendation: defer authored titles, keep cluster reserved).
+3. Whether thin-evidence predictive titles (e.g. isolated frontier quantum
+   engineer titles) are added now or deferred until evidence is settled.
+   Recommendation: defer authored titles; keep the cluster reserved.
