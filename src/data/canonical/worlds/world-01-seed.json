@@ -1,0 +1,169 @@
+{
+  "catalogue_version": "2.0",
+  "world": {
+    "id": "world-01",
+    "world_no": 1,
+    "canonical_name": "Technology & Computing",
+    "canonical_slug": "technology-computing"
+  },
+  "careers": [
+    {
+      "canonical_slug": "ai-engineer",
+      "canonical_name": "AI Engineer",
+      "published_name": "AI Engineer",
+      "cluster": "Artificial Intelligence",
+      "career_status": "emerging",
+      "editorial_status": "draft",
+      "evidence_status": "source_verified",
+      "description": "Designs, trains and deploys machine-learning systems that learn from data to make predictions, decisions and automations.",
+      "source": "UK Office for National Statistics / light-touch industry survey, 2025",
+      "provenance": { "source": "ONS labour market survey 2025", "publisher": "Office for National Statistics", "source_date": "2025", "notes": "Reference example for World 01 authoring." },
+      "metadata_json": {
+        "primary_signal": "technology",
+        "links": [{ "label": "Tech Nation", "url": "https://www.technation.io" }]
+      },
+      "profile": {
+        "summary": "AI Engineers build the systems behind modern software — from recommendation engines to autonomous tools.",
+        "daily_work": "Cleaning data, building and evaluating models, tuning performance, and shipping them into products.",
+        "key_tasks": ["Define success metrics for ML systems", "Prepare and label training data", "Train and evaluate models", "Deploy and monitor models in production"],
+        "skills_needed": ["Python", "Machine learning", "Statistics", "Data engineering", "Ethics of AI"],
+        "education_pathways": ["Computer science degree", "Data science bootcamp", "Self-directed ML portfolio"],
+        "learning_resources": ["Practical Deep Learning for Coders", "Kaggle competitions", "Cloud ML certification tracks"],
+        "outlook": "Strong growth as AI moves into every industry; high demand and competitive entry.",
+        "attributes": { "maths": 0.9, "problem_solving": 0.9, "attention_to_detail": 0.8 },
+        "iwda_dimensions": { "question": 80, "create": 75, "test": 90 }
+      },
+      "relations": [
+        { "related_slug": "data-scientist", "relation_type": "complementary" },
+        { "related_slug": "software-developer", "relation_type": "prerequisite" }
+      ],
+      "progression": [
+        { "next_slug": "ml-platform-engineer", "progression_type": "specialization" }
+      ]
+    },
+    {
+      "canonical_slug": "software-developer",
+      "canonical_name": "Software Developer",
+      "published_name": "Software Developer",
+      "cluster": "Software Engineering",
+      "career_status": "current",
+      "editorial_status": "draft",
+      "evidence_status": "source_verified",
+      "description": "Designs, writes, tests and maintains computer programs and applications for web, mobile and systems.",
+      "source": "UK Office for National Statistics / light-touch industry survey, 2025",
+      "provenance": { "source": "ONS labour market survey 2025", "publisher": "Office for National Statistics", "source_date": "2025", "notes": "Reference example for World 01 authoring." },
+      "metadata_json": { "primary_signal": "technology" },
+      "profile": {
+        "summary": "Software Developers turn ideas into working software used by millions.",
+        "daily_work": "Writing code, reviewing peers' work, fixing bugs, and shipping features.",
+        "key_tasks": ["Write clean, testable code", "Review pull requests", "Ship features iteratively", "Collaborate with designers and product"],
+        "skills_needed": ["Programming", "Version control", "Testing", "Problem solving", "Communication"],
+        "education_pathways": ["Computer science degree", "Coding bootcamp", "Apprenticeship"],
+        "learning_resources": ["FreeCodeCamp", "The Odin Project", "Open source contributions"],
+        "outlook": "Consistent, broad demand across all industries.",
+        "attributes": { "problem_solving": 0.9, "persistence": 0.8, "attention_to_detail": 0.8 },
+        "iwda_dimensions": { "create": 80, "test": 80, "question": 70 }
+      },
+      "relations": [
+        { "related_slug": "ai-engineer", "relation_type": "similar" },
+        { "related_slug": "product-manager", "relation_type": "complementary" }
+      ],
+      "progression": [
+        { "next_slug": "ai-engineer", "progression_type": "specialization" }
+      ]
+    },
+    {
+      "canonical_slug": "data-scientist",
+      "canonical_name": "Data Scientist",
+      "published_name": "Data Scientist",
+      "cluster": "Data & Analytics",
+      "career_status": "current",
+      "editorial_status": "draft",
+      "evidence_status": "source_verified",
+      "description": "Analyses complex data to find patterns and insights that inform product, business and scientific decisions.",
+      "source": "UK Office for National Statistics / light-touch industry survey, 2025",
+      "provenance": { "source": "ONS labour market survey 2025", "publisher": "Office for National Statistics", "source_date": "2025", "notes": "Reference example for World 01 authoring." },
+      "metadata_json": { "primary_signal": "technology" },
+      "profile": {
+        "summary": "Data Scientists turn raw numbers into stories and decisions.",
+        "daily_work": "Querying data, building models and dashboards, and presenting findings to stakeholders.",
+        "key_tasks": ["Write SQL to extract data", "Build statistical models", "Visualise insights", "Communicate recommendations"],
+        "skills_needed": ["Statistics", "SQL", "Python/R", "Data visualisation", "Business acumen"],
+        "education_pathways": ["Data science degree", "Statistics degree", "Bootcamp"],
+        "learning_resources": ["Kaggle", "Coursera data science", "Practical Statistics for Data Scientists"],
+        "outlook": "Strong and sustained demand for evidence-led decision making.",
+        "attributes": { "maths": 0.9, "curiosity": 0.9, "communication": 0.7 },
+        "iwda_dimensions": { "question": 90, "test": 80, "observe": 70 }
+      },
+      "relations": [
+        { "related_slug": "ai-engineer", "relation_type": "complementary" },
+        { "related_slug": "business-analyst", "relation_type": "similar" }
+      ],
+      "progression": [
+        { "next_slug": "ai-engineer", "progression_type": "advancement" }
+      ]
+    },
+    {
+      "canonical_slug": "cybersecurity-analyst",
+      "canonical_name": "Cybersecurity Analyst",
+      "published_name": "Cybersecurity Analyst",
+      "cluster": "Cybersecurity",
+      "career_status": "current",
+      "editorial_status": "draft",
+      "evidence_status": "source_verified",
+      "description": "Protects systems and data by monitoring for threats, investigating breaches and hardening defences.",
+      "source": "UK Office for National Statistics / light-touch industry survey, 2025",
+      "provenance": { "source": "ONS labour market survey 2025", "publisher": "Office for National Statistics", "source_date": "2025", "notes": "Reference example for World 01 authoring." },
+      "metadata_json": { "primary_signal": "technology" },
+      "profile": {
+        "summary": "Cybersecurity Analysts defend organisations against digital threats.",
+        "daily_work": "Monitoring networks for suspicious activity, responding to incidents and patching vulnerabilities.",
+        "key_tasks": ["Monitor security events", "Investigate incidents", "Run vulnerability scans", "Document procedures"],
+        "skills_needed": ["Networking", "Security tools", "Risk assessment", "Incident response", "Ethics"],
+        "education_pathways": ["Cybersecurity degree", "IT support then cert track", "Security bootcamp"],
+        "learning_resources": ["TryHackMe", "Security+", "Defensive security labs"],
+        "outlook": "Very strong demand as digital risk grows across every sector.",
+        "attributes": { "attention_to_detail": 0.9, "vigilance": 0.9, "ethics": 0.9 },
+        "iwda_dimensions": { "test": 80, "question": 80, "observe": 80 }
+      },
+      "relations": [
+        { "related_slug": "software-developer", "relation_type": "complementary" },
+        { "related_slug": "network-engineer", "relation_type": "similar" }
+      ],
+      "progression": [
+        { "next_slug": "security-architect", "progression_type": "advancement" }
+      ]
+    },
+    {
+      "canonical_slug": "product-manager",
+      "canonical_name": "Product Manager",
+      "published_name": "Product Manager",
+      "cluster": "Product",
+      "career_status": "current",
+      "editorial_status": "draft",
+      "evidence_status": "source_verified",
+      "description": "Owns the vision and roadmap for a technology product, balancing user needs, business goals and team delivery.",
+      "source": "UK Office for National Statistics / light-touch industry survey, 2025",
+      "provenance": { "source": "ONS labour market survey 2025", "publisher": "Office for National Statistics", "source_date": "2025", "notes": "Reference example for World 01 authoring." },
+      "metadata_json": { "primary_signal": "technology" },
+      "profile": {
+        "summary": "Product Managers decide what to build and why, then guide teams to deliver it.",
+        "daily_work": "Talking to users, prioritising the roadmap, writing specs and aligning stakeholders.",
+        "key_tasks": ["Conduct user research", "Prioritise backlog", "Write product specs", "Coordinate engineering and design"],
+        "skills_needed": ["Communication", "Empathy", "Analytical thinking", "Prioritisation", "Leadership"],
+        "education_pathways": ["Business degree", "Computer science degree", "Product management courses"],
+        "learning_resources": ["Cracking the PM Interview", "Lenny's Newsletter", "Product school"],
+        "outlook": "Strong and human-centred; resilient because it blends empathy with strategy.",
+        "attributes": { "communication": 0.9, "empathy": 0.9, "decision_making": 0.8 },
+        "iwda_dimensions": { "create": 80, "imagine": 80, "question": 75 }
+      },
+      "relations": [
+        { "related_slug": "software-developer", "relation_type": "complementary" },
+        { "related_slug": "data-scientist", "relation_type": "complementary" }
+      ],
+      "progression": [
+        { "next_slug": "senior-product-manager", "progression_type": "advancement" }
+      ]
+    }
+  ]
+}

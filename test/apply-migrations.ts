@@ -1,4 +1,7 @@
 import { applyD1Migrations, env } from "cloudflare:test";
+import { seedCareerWorld, seedWorlds } from "../src/db/catalogue";
+import type { CareerSeedFile } from "../src/db/catalogue";
+import worldOneSeed from "../src/data/canonical/worlds/world-01-seed.json";
 
 type TestEnv = {
         DB: D1Database;
@@ -95,3 +98,95 @@ await testEnv.DB
                 "CREATE INDEX IF NOT EXISTS idx_iwda_attempts_participant ON iwda_attempts(participant_id)"
         )
         .run();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Canonical Career Catalogue — ensure migration 0010 tables exist, then seed
+// the 15 worlds (idempotent) and the World 01 reference careers for tests.
+// ─────────────────────────────────────────────────────────────────────────────
+const worldTables = await testEnv.DB
+        .prepare(
+                "SELECT name FROM sqlite_master WHERE type = 'table' AND name = 'career_worlds'"
+        )
+        .all<{ name: string }>();
+
+if (worldTables.results.length === 0) {
+        await testEnv.DB.exec(`
+CREATE TABLE IF NOT EXISTS career_worlds (
+  id TEXT PRIMARY KEY,
+  world_no INTEGER NOT NULL UNIQUE CHECK (world_no BETWEEN 1 AND 15),
+  canonical_name TEXT NOT NULL,
+  canonical_slug TEXT NOT NULL UNIQUE,
+  seo_slug TEXT UNIQUE,
+  legacy_slug TEXT UNIQUE,
+  tagline TEXT,
+  description TEXT,
+  display_order INTEGER NOT NULL,
+  metadata_json TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS careers (
+  id TEXT PRIMARY KEY,
+  canonical_slug TEXT NOT NULL UNIQUE,
+  canonical_name TEXT NOT NULL UNIQUE,
+  published_name TEXT NOT NULL,
+  world_id TEXT NOT NULL,
+  cluster TEXT,
+  career_status TEXT NOT NULL DEFAULT 'current',
+  editorial_status TEXT NOT NULL DEFAULT 'draft',
+  evidence_status TEXT NOT NULL DEFAULT 'source_verified',
+  description TEXT,
+  source TEXT,
+  provenance TEXT,
+  catalogue_version TEXT NOT NULL DEFAULT '2.0',
+  metadata_json TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  FOREIGN KEY (world_id) REFERENCES career_worlds(id)
+);
+CREATE TABLE IF NOT EXISTS career_profiles (
+  id TEXT PRIMARY KEY,
+  career_id TEXT NOT NULL UNIQUE,
+  summary TEXT,
+  daily_work TEXT,
+  key_tasks_json TEXT,
+  skills_needed_json TEXT,
+  education_pathways_json TEXT,
+  learning_resources_json TEXT,
+  outlook TEXT,
+  attributes_json TEXT,
+  iwda_dimensions_json TEXT,
+  metadata_json TEXT,
+  created_at TEXT NOT NULL,
+  updated_at TEXT NOT NULL,
+  FOREIGN KEY (career_id) REFERENCES careers(id)
+);
+CREATE TABLE IF NOT EXISTS career_relations (
+  id TEXT PRIMARY KEY,
+  career_id TEXT NOT NULL,
+  related_career_id TEXT NOT NULL,
+  relation_type TEXT NOT NULL,
+  metadata_json TEXT,
+  created_at TEXT NOT NULL,
+  FOREIGN KEY (career_id) REFERENCES careers(id),
+  FOREIGN KEY (related_career_id) REFERENCES careers(id)
+);
+CREATE TABLE IF NOT EXISTS career_progression (
+  id TEXT PRIMARY KEY,
+  career_id TEXT NOT NULL,
+  next_career_id TEXT NOT NULL,
+  progression_type TEXT NOT NULL,
+  description TEXT,
+  metadata_json TEXT,
+  created_at TEXT NOT NULL,
+  FOREIGN KEY (career_id) REFERENCES careers(id),
+  FOREIGN KEY (next_career_id) REFERENCES careers(id)
+);
+CREATE INDEX IF NOT EXISTS idx_career_worlds_order ON career_worlds(display_order);
+CREATE INDEX IF NOT EXISTS idx_careers_world ON careers(world_id);
+CREATE INDEX IF NOT EXISTS idx_careers_status ON careers(editorial_status);
+                        `);
+}
+
+await seedWorlds(testEnv.DB);
+await seedCareerWorld(testEnv.DB, worldOneSeed as unknown as CareerSeedFile);
