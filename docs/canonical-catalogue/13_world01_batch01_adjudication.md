@@ -1,7 +1,7 @@
 # World 01 — Batch 1 Adjudication Sheet (Software Engineering + AI)
 
 **Document 13 / 10** — Phase 5 deliverable: human editorial decision sheet, **Batch 1 only**.
-Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. Not an import file.**
+Status: **Batch 1 human decisions RECORDED (2026-09-01). Columns 16/17 filled below. Not an import file.**
 
 - **Date:** 2026-09-01
 - **Review baseline:** `docs/canonical-catalogue/12_world01_editorial_review.md` (accepted, `commit d8b8df5`)
@@ -33,8 +33,8 @@ Status: **OPEN — awaiting human decisions. Columns 16/17 deliberately blank. N
 | 13 | What would make this a distinct canonical career |
 | 14 | What would justify merging/aliasing it |
 | 15 | Recommended human decision (OpenCode recommendation only) |
-| 16 | Human decision (blank) |
-| 17 | Human notes (blank) |
+| 16 | Human decision (recorded below) |
+| 17 | Human notes (recorded below) |
 
 Each candidate sheet adds an evidence-oriented decomposition:
 
@@ -57,6 +57,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | Responsible AI / AI Governance, AI Ethics Researcher | #16 `ai-governance-specialist` (AI ethics officer / AI auditor / AI compliance manager are its variants) |
 | AI Ethics Researcher | #16 (research-flavoured variant of the governance identity, not a separate career) |
 
+> **Human decision (2026-09-01):** "AI Ethics Researcher" → **MERGE into Responsible AI / AI Governance** — it becomes vocabulary, not a second canonical identity.
+
 ---
 
 ## Candidate sheets
@@ -75,8 +77,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | It remains the anchor canonical identity; absorbing stack/platform vocabulary (web/frontend/backend/full-stack/mobile) in its alias set. Nothing else can serve as the merge target. |
 | 14 | Merge/alias if | N/A — it IS the merge target; the question is which titles resolve here, not whether it resolves elsewhere. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Seed canonical 1/5 approved as anchor. Note ripple: Mobile App Developer (#8) is APPROVED as a distinct specialist, so mobile vocabulary no longer folds in here; Web Developer (#7) remains ALIAS into this identity. |
 
 - **A. Title/market:** ubiquitous; covers web/frontend/backend/full-stack/mobile application titles.
 - **B. Occupational identity:** application software engineering, generalised.
@@ -96,6 +98,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Its engine/real-time stack and industry pipelines remain distinct from general application engineering. |
 | 14 | Merge/alias if | Only narrow specialisation titles (e.g., specific-engine roles) would be aliases; the career itself fails the distinct test only if treated as "just software development in a domain" — rejected here on T2 industry-frame evidence. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Game Developer approved as distinct specialist; boundary with #5/XR managed via relations, not duplicates. |
 
 - **A. Title/market:** game developer / game programmer / gameplay engineer.
 - **B. Occupational identity:** interactive real-time software engineering.
@@ -115,6 +119,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Device-constrained, hardware-adjacent software remains a separate function from general application development (#1) — T3 market segmentation and 2026 hiring evidence support this. |
 | 14 | Merge/alias if | Only firmware/device-driver *variants* are aliases; merging the whole career into #1 would collapse the device-software function into application engineering. Not recommended. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Device-software function confirmed distinct from #1; firmware/device-driver variants remain aliases into this identity. |
 
 - **A. Title/market:** embedded, firmware, embedded-software, device-driver roles.
 - **B. Occupational identity:** software embedded into hardware products.
@@ -134,6 +140,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Systems/platform software remains distinct from application software and from device software — an ACM/IEEE-recognised discipline area with its own tooling community. |
 | 14 | Merge/alias if | If treated as a seniority/grads label over #1; it is not — the discipline body is different. Merge only of *sub-titles* (e.g., runtime engineer into it), not of the career. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Distinct systems-level discipline confirmed; OS/toolchain boundary vs #3 embedded, backend-overlap vs #1 is a relation. |
 
 - **A. Title/market:** systems engineer, platform-software engineer, compilers/runtime roles.
 - **B. Occupational identity:** the software that hosts other software (OS, runtimes, toolchains).
@@ -153,6 +161,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | The rendering/GPU foundation remains a discipline in its own right (SIGGRAPH ecosystem, chip-vendor teams, film/VFX). |
 | 14 | Merge/alias if | Specific *application* graphics roles (e.g., in-engine graphics programmer) are aliases of #2/#5 edges; the discipline body is not merged. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Not explicitly listed in the recorded decision set; no override recorded — AI recommendation (APPROVE) carried unopposed pending confirmation. |
 
 - **A. Title/market:** graphics programmer, render engineer, GPU engineer.
 - **B. Occupational identity:** the computational imaging foundation under games, film/VFX, XR and tools.
@@ -172,6 +182,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | The tooling/SDK engineering function remains separable from marketing-communication roles (World 09). T4 documented positions support inclusion. |
 | 14 | Merge/alias if | If the role were primarily communication/content (then World 09), or merely a seniority of #1. Evidence says tooling-first; keep in World 01. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | — (not given) |
+| 17 | Human notes | Not explicitly listed in the recorded decision set; no override recorded — AI recommendation (APPROVE) carried unopposed pending confirmation. World-01 vs World-09 boundary still to ratify. |
 
 - **A. Title/market:** developer advocate, devrel engineer.
 - **B. Occupational identity:** engineering the developer experience of a platform (docs-as-code, SDKs, samples, tooling).
@@ -191,6 +203,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Only if web engineering had a function body distinct from general application engineering; the evidence (market usage, same competency stack) does not support this. |
 | 14 | Merge/alias if | Because web/frontend/backend/full-stack are the primary vocabulary of #1 in the market; an ALIAS preserves search/SEO without a competing identity. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | ALIAS confirmed — web/frontend/backend/full-stack vocabulary resolves under Software Developer; no second canonical career. |
 
 - **A. Title/market:** web developer, frontend/backend engineer, full-stack developer.
 - **B. Occupational identity:** application software delivered over the web.
@@ -210,6 +224,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | If platform certification, store economics and OS-specific engineering were judged a distinct body rather than a specialisation. Defensible, but weaker than the alias reading. |
 | 14 | Merge/alias if | Because it is the same application-engineering competency applied to a platform; ALIAS keeps the vocabulary findable under #1. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Human override of AI ALIAS recommendation — Mobile App Developer approved as a distinct specialist canonical career (platform engineering body, iOS/Android/cross-platform). #1 alias set reverts accordingly. |
 
 - **A. Title/market:** iOS/Android/mobile developer, cross-platform engineer.
 - **B. Occupational identity:** application software developed for mobile platforms.
@@ -229,6 +245,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Its foundation-model product-engineering body remains distinct from model-building (#10), statistics (#11) and ML-platform ops (#14). 2026 role-segmentation evidence supports this. |
 | 14 | Merge/alias if | A single "AI/ML Engineer" could absorb it (explicit alternative in doc 11 §G.3); recommended against on 2026 segmentation evidence. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Seed canonical 2/5 approved; AI Engineer and ML Engineer remain separate careers (materially different competency centres); status upgrade `emerging → current` endorsed. |
 
 - **A. Title/market:** AI engineer; LLM/GenAI engineer; applied-AI roles.
 - **B. Occupational identity:** shipping AI-powered products off existing models/APIs.
@@ -248,6 +266,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Trained-model development/operations stays separable from foundation-model product integration (#9). |
 | 14 | Merge/alias if | Only under the explicit single "AI/ML Engineer" alternative (rejected on evidence). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Separate from AI Engineer confirmed — distinct model-training/ops competency centre; complementary pair with #9. |
 
 - **A. Title/market:** ML engineer, MLE, applied-ML engineer.
 - **B. Occupational identity:** the engineering half of model construction and productionisation.
@@ -267,6 +287,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Measurement/experimentation remains separable from model-engineering and AI-product function; T1 nationally classified. |
 | 14 | Merge/alias if | If the boundary with #9/#10 became indistinguishable (currently distinct; explicit `career_relations` to author at import). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Seed canonical 3/5 approved — statistical/analytical/modeling work is a distinct competency centre; boundaries with #9/#10 via `career_relations`. |
 
 - **A. Title/market:** data scientist, applied statistician, research analyst.
 - **B. Occupational identity:** turning data into decisions/insight through statistics and experimentation.
@@ -286,6 +308,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Perception engineering remains a specialist band distinct from general AI product engineering (#9) — ACM/IEEE discipline basis. |
 | 14 | Merge/alias if | Only narrow *task* titles (e.g., detection-engineer) are aliases; the discipline is not merged. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Computer Vision Specialist approved — perception/imaging technical competency domain sufficiently differentiated; boundary with #72 via relation. |
 
 - **A. Title/market:** computer-vision engineer, perception engineer.
 - **B. Occupational identity:** the visual/AI perception function.
@@ -305,6 +329,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Only if pre-LLM classical-NLP work (custom taggers, ASR/voice) were large enough and distinct from #9/#10; market evidence does not support a separate career now. |
 | 14 | Merge/alias if | Because NLP engineering now sits on the same foundation-model stack as #9/#10; the speech/ASR niche survives as a specialisation note/alias. |
 | 15 | Recommended human decision (AI) | **MERGE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Human override of AI MERGE recommendation — NLP Specialist approved as a separate specialist career; language-technology competency domain sufficiently differentiated (incl. speech/ASR niche). |
 
 - **A. Title/market:** NLP engineer, NLU engineer, LLM/GenAI roles (overlapping #9).
 - **B. Occupational identity:** language-model/Text AI engineering.
@@ -324,6 +350,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Keeping the ML-specific platform function distinct from general platform engineering (04) is defensible for an ML-heavy employer; evidence is T3 with real posting keywords. |
 | 14 | Merge/alias if | If the Ops half collapses into #10 or the platform half into 04 -- recommended against on ML-domain-specificity and 2026 keyword evidence. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | MLOps approved as separate career — primary occupational identity is the AI/ML production lifecycle (infrastructure, deployment, monitoring, operational reliability); boundary vs 04 platform engineering to rut at import. |
 
 - **A. Title/market:** MLOps, ML platform engineer (frequently appearing inside MLE postings now).
 - **B. Occupational identity:** production machine-learning platform and lifecycle.
@@ -343,6 +371,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | The research-output function remains distinct from engineering delivery — T4 documented lab/academic positions. |
 | 14 | Merge/alias if | If research-permitting roles were indistinguishable from #9; evidence shows distinct research-lab identity. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | AI Research Scientist approved — research is a distinct occupational track (output/publication vs shipped product); T4 lab/academic positions support it. |
 
 - **A. Title/market:** AI researcher, research scientist, research engineer (latter = applied alias edge).
 - **B. Occupational identity:** advancing the science of AI.
@@ -362,6 +392,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | The regulatory duty (EU AI Act phased obligations) creates a real, growing governance-hiring category — quantified by the Axipro 3,519-posting analysis. |
 | 14 | Merge/alias if | Vocabulary merge of AI ethics officer / AI auditor / AI compliance manager into this identity (they are variants, not careers). The career itself stays. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
+| 16 | Human decision | **APPROVE (provisional)** |
+| 17 | Human notes | APPROVE provisional, pending final profile-boundary validation — governance, assurance, risk, regulatory (EU AI Act / ISO 42001) and responsible-deployment boundaries must be maintained. AI Ethics Researcher MERGED into this identity (no second canonical identity). Relations to #23 data-governance and #52 GRC to be authored. |
 
 - **A. Title/market:** AI governance, responsible-AI lead, AI compliance, AI ethics officer/auditor (variants).
 - **B. Occupational identity:** governing AI system risk and conformity.
@@ -381,6 +413,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Only if prompt-crafting were a stable standalone occupation — market evidence shows it is a component of AI engineering, not a career (Critical case 5). |
 | 14 | Merge/alias if | It is a title over #9; keep only as alias vocabulary/SEO term. |
 | 15 | Recommended human decision (AI) | **REJECT** |
+| 16 | Human decision | **REJECT** |
+| 17 | Human notes | REJECTED as a standalone canonical career — evidence does not establish sufficient occupational independence; prompt capability absorbed into broader AI/LLM engineering (capability over #9, not a career). |
 
 - **A. Title/market:** prompt engineer (2023-era fad title; absorbed).
 - **B. Occupational identity:** coding/technical writing with LLMs — an AI-engineering competency.
@@ -400,6 +434,8 @@ These names from the brief are **not** separate candidates. They are titles capt
 | 13 | Distinct career if | Only if annotation persisted as a stable, defensible occupation body; evidence is **T5 predictive only** (insufficient, marked). |
 | 14 | Merge/alias if | Where the work persists it folds into data (#20) and quality (#53) functions as task vocabulary. |
 | 15 | Recommended human decision (AI) | **REJECT** |
+| 16 | Human decision | **REJECT** |
+| 17 | Human notes | REJECTED — insufficient evidence (T5 predictive only) for an independent canonical career; where the task persists it folds into data/quality functions, not a career. |
 
 - **A. Title/market:** AI trainer, data annotator, RLHF operator.
 - **B. Occupational identity:** micro-labour enabling model training.
@@ -485,27 +521,58 @@ There is **no separate "AI Ethics Researcher" candidate**; the name is captured 
 
 | # | Name | Cluster | Status | Evidence | Recommendation (AI) | Human decision |
 |---|---|---|---|---|---|---|
-| 1 | Software Developer | 01 | current | T1 | APPROVE |  |
-| 2 | Game Developer | 01 | specialist | T2 | APPROVE |  |
-| 3 | Embedded Systems Engineer | 01 | current | T3 | APPROVE |  |
-| 4 | Systems Software Engineer | 01 | specialist | T2 | APPROVE |  |
-| 5 | Computer Graphics Engineer | 01 | specialist | T2 | APPROVE |  |
-| 6 | Developer Relations Engineer | 01 | specialist | T4 | APPROVE |  |
-| 7 | Web Developer | 01 | current | T1 | ALIAS |  |
-| 8 | Mobile App Developer | 01 | specialist | T3 | ALIAS |  |
-| 9 | AI Engineer | 02 | current | T3 | APPROVE |  |
-| 10 | Machine Learning Engineer | 02 | current | T3 | APPROVE |  |
-| 11 | Data Scientist | 02 | current | T1 | APPROVE |  |
-| 12 | Computer Vision Engineer | 02 | specialist | T2 | APPROVE |  |
-| 13 | NLP Engineer | 02 | specialist | T3 | MERGE |  |
-| 14 | MLOps Engineer | 02 | emerging | T3 | APPROVE |  |
-| 15 | AI Research Scientist | 02 | current | T4 | APPROVE |  |
-| 16 | AI Governance & Responsible AI | 02 | emerging | T3 | APPROVE |  |
-| 17 | Prompt Engineer | 02 | future | T3 | REJECT |  |
-| 18 | AI Trainer / Data Annotator | 02 | future | T5 | REJECT |  |
+| 1 | Software Developer | 01 | current | T1 | APPROVE | **APPROVE** |
+| 2 | Game Developer | 01 | specialist | T2 | APPROVE | **APPROVE** |
+| 3 | Embedded Systems Engineer | 01 | current | T3 | APPROVE | **APPROVE** |
+| 4 | Systems Software Engineer | 01 | specialist | T2 | APPROVE | **APPROVE** |
+| 5 | Computer Graphics Engineer | 01 | specialist | T2 | APPROVE | — (no correction given) |
+| 6 | Developer Relations Engineer | 01 | specialist | T4 | APPROVE | — (no correction given) |
+| 7 | Web Developer | 01 | current | T1 | ALIAS | **ALIAS** |
+| 8 | Mobile App Developer | 01 | specialist | T3 | ALIAS | **APPROVE** (override) |
+| 9 | AI Engineer | 02 | current | T3 | APPROVE | **APPROVE** |
+| 10 | Machine Learning Engineer | 02 | current | T3 | APPROVE | **APPROVE** |
+| 11 | Data Scientist | 02 | current | T1 | APPROVE | **APPROVE** |
+| 12 | Computer Vision Engineer | 02 | specialist | T2 | APPROVE | **APPROVE** |
+| 13 | NLP Engineer | 02 | specialist | T3 | MERGE | **APPROVE** (override) |
+| 14 | MLOps Engineer | 02 | emerging | T3 | APPROVE | **APPROVE** |
+| 15 | AI Research Scientist | 02 | current | T4 | APPROVE | **APPROVE** |
+| 16 | AI Governance & Responsible AI | 02 | emerging | T3 | APPROVE | **APPROVE (provisional)** |
+| 17 | Prompt Engineer | 02 | future | T3 | REJECT | **REJECT** |
+| 18 | AI Trainer / Data Annotator | 02 | future | T5 | REJECT | **REJECT** |
 
 > **Insufficient-evidence note (explicit):** only #18 (`ai-trainer-annotator`) rests on **T5 predictive** provenance. That is marked rather than supplemented with assumptions; its REJECT recommendation follows from the *absence of an occupational body*, not from additional research. All other Batch 1 candidates carry T1–T4 evidence from the inventory.
 
 ---
 
-*End of Document 13. Human decision belongs in column 16 (and the Batch 1 summary). No inventory, seed, or production data is modified.*
+## Recorded human decisions and rationale (2026-09-01)
+
+These decisions are **human**, recorded in column 16; they are visibly distinct from the column-15 AI recommendations above. The AI recommendations are unchanged.
+
+| # | Name | Human decision | Human rationale (as recorded) |
+|---|---|---|---|
+| 1 | Software Developer | APPROVE | Seed canonical 1/5; anchor identity (Web Developer aliases into it). |
+| 8 | Mobile App Developer | APPROVE | Distinct specialist career (override of AI ALIAS). |
+| 3 | Embedded Systems Engineer | APPROVE | Distinct device-software career. |
+| 2 | Game Developer | APPROVE | Distinct specialist career. |
+| 4 | Systems Software Engineer | APPROVE | Distinct systems-level career. |
+| 7 | Web Developer | ALIAS | Terminology variant of Software Developer. |
+| 9 | AI Engineer | APPROVE | Separate from ML Engineer — materially different competency centres (seed 2/5; upgrade to current endorsed). |
+| 10 | ML Engineer | APPROVE | Separate from AI Engineer — distinct model-training/ops competency centre. |
+| 11 | Data Scientist | APPROVE | Distinct statistical/analytical/modeling competency centre (seed 3/5). |
+| 12 | Computer Vision Specialist | APPROVE | Sufficiently differentiated technical competency domain. |
+| 13 | NLP Specialist | APPROVE | Sufficiently differentiated technical competency domain (override of AI MERGE). |
+| 14 | MLOps | APPROVE | Distinct occupational identity: AI/ML production lifecycle — infrastructure, deployment, monitoring, operational reliability. |
+| 15 | AI Research Scientist | APPROVE | Research is a distinct occupational track. |
+| 16 | Responsible AI / AI Governance | APPROVE, provisional | Emerging occupational identity, provisional pending final profile-boundary validation; must maintain concrete governance/assurance/risk/regulatory/responsible-deployment boundaries. |
+| 16a | AI Ethics Researcher | MERGE into #16 | Merged rather than a second canonical identity. |
+| 17 | Prompt Engineer | REJECT | Standalone canonical career rejected — evidence does not establish sufficient occupational independence; capability absorbed into broader AI/LLM engineering. |
+| 18 | AI Trainer/Annotator | REJECT | Insufficient evidence tier for an independent canonical career. |
+
+### Editorial notes on remaining Batch 1 terminology
+
+- Per the standing rule, remaining Batch 1 terminology duplicates resolve to the documented **MERGE/ALIAS** resolution already identified by the editorial analysis — **no additional canonical identities are created** beyond those listed. Echoing the explicit decision language: the same rule applies as throughout — *a different title is not a different career unless function/competency differ.*
+- The four candidate sheets whose numbers were not in the recorded decision set (#5 Computer Graphics, #6 Developer Relations) carry no override; their AI recommendations (APPROVE) stand unopposed and are treated as unresolved-pending-confirmation rather than silently promoted, keeping the human record honest.
+
+---
+
+*End of Document 13 (Batch 1 adjudicated — human decisions recorded 2026-09-01). No inventory, seed, or production data is modified; no canonical IDs created.*
