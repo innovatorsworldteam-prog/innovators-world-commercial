@@ -90,8 +90,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the seed canonical home for product-management vocabulary; receivers of PO (#63), TPM-variant (#61) and AI-PM (#62) aliases. |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver. The question is whether PO (#63) / Technical PM (#61) / AI-PM (#62) stay ALIAS (no career multiplication) — see Critical cases 1–2. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Product Manager is the canonical product occupational identity. Receives Technical Product Manager (#61), Product Owner (#63) and AI Product Manager (#62) as aliases/specializations — no career multiplication per technicality. |
 
 - **A. Title/market:** product manager, AI product manager (relative), PM (broad).
 - **B. Occupational identity:** product ownership and strategy (outcome).
@@ -112,8 +112,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Technical programme execution remains distinct from product (#57, outcome) and from project delivery (#59, project level) — see Critical case 3. |
 | 14 | Merge/alias if | Not merged; the TPM-vs-PM-vs-IT-PM question is about programme/project/product levels, all distinct functions. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Technical Program Manager retained as distinct — technical programme leadership has a competency centre different from product (#57) and from project delivery (#59). Not a seniority variant of either. |
 
 - **A. Title/market:** technical program manager, TPM, technical delivery lead.
 - **B. Occupational identity:** executing technical programmes across teams.
@@ -134,8 +134,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Project-level delivery remains distinct from programme (#58) and product (#57) — the project/programme/product level split (Critical case 3). |
 | 14 | Merge/alias if | Not merged; project vs programme is a level distinction, both distinct functions. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | IT Project Manager retained as distinct — project-management responsibility and technical programme leadership have different competency centres. Not a seniority/grade variant. |
 
 - **A. Title/market:** IT project manager, project manager (IT/delivery).
 - **B. Occupational identity:** scoped IT/delivery project management.
@@ -156,8 +156,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Requirements/process-analysis remains distinct from data analysis (#20) and delivery management (#59) — T1 classification. |
 | 14 | Merge/alias if | Not merged; boundary is with #20 (function differs) and #59 (requirements vs delivery) — relations, not merges. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | IT Business Analyst retained as distinct — requirements/process-analysis function, distinct from data analysis (#20) and delivery management (#59); T1 classified. |
 
 - **A. Title/market:** IT business analyst, systems analyst, business analyst (IT).
 - **B. Occupational identity:** requirements/process analysis for IT change.
@@ -178,8 +178,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if technical-flavoured PM had a function body distinct from #57 — T3 usage shows an adjective over product management, not a distinct occupation (Critical case 1). |
 | 14 | Merge/alias if | Because Technical PM is the technical-flavoured vocabulary of #57; ALIAS keeps the term findable without multiplying a product career per technicality. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Technical Product Manager is a specialization/alias of Product Manager (#57) — remains valid market terminology, but does not become a separate canonical career absent a materially distinct occupational identity. |
 
 - **A. Title/market:** technical product manager, PM (technical platforms).
 - **B. Occupational identity:** product management for technical products — a variant of #57.
@@ -200,8 +200,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if AI-product management had a function body distinct from #57; the no-multiplication-per-technology rule argues ALIAS (Critical case 1). |
 | 14 | Merge/alias if | Because AI-PM is a domain-adjective over product management; ALIAS keeps it findable without a per-technology product career. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | AI Product Manager is a specialization/alias of Product Manager (#57) — AI-domain product management vocabulary over the canonical product identity; no separate career. |
 
 - **A. Title/market:** AI product manager, PM for AI/ML products.
 - **B. Occupational identity:** product management for AI products — a variant of #57.
@@ -222,8 +222,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if the Scrum PO had a distinct function body from product management — it is a team-level delivery role of #57 (Critical case 2). |
 | 14 | Merge/alias if | Because PO is the agile team-level vocabulary of #57; ALIAS keeps it findable without a second product career. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Product Owner is treated as market terminology/specialization rather than a separate canonical career at this stage — a team-level manifestation of Product Manager (#57). |
 
 - **A. Title/market:** product owner, Scrum PO.
 - **B. Occupational identity:** team-level product ownership within agile — a manifestation of #57.
@@ -244,8 +244,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if product analytics had a distinct function body from data analysis (#20) — it is an applied analysis remit with a data home. |
 | 14 | Merge/alias if | Because product analysis is the product-analytics vocabulary over #20 data-analyst; ALIAS keeps it findable without a per-domain analyst career. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Product Analyst is an applied analysis remit whose canonical home is data analysis (#20); product-analytics vocabulary, not a distinct product/analysis career. |
 
 - **A. Title/market:** product analyst, product-analytics analyst.
 - **B. Occupational identity:** product-analytics analysis — an applied analysis remit.
@@ -266,8 +266,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the canonical design identity receiving #68/#69; relationships to #26 (cloud) and #22 (data) authored, not merged. |
 | 14 | Merge/alias if | It does NOT merge; it is a receiver. The question is whether #68/#69 stay ALIAS into it (Critical case 4). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Solutions Architect retained as the distinct architecture-oriented career — the canonical design identity; receives Software Architect (#68) and Enterprise Architect (#69) as aliases/specializations. |
 
 - **A. Title/market:** solutions architect, solution architect (broad), architecture roles.
 - **B. Occupational identity:** end-to-end solution design.
@@ -288,8 +288,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | It remains the single management-track career, distinct from IC careers; the question is its eventual Career World home (08 vs 09 vs cross-World) — see Critical case 6/7. |
 | 14 | Merge/alias if | It does NOT merge into IC engineering (management is a distinct track). Seniority/executive titles (#70) are NOT careers and stay excluded (Critical case 6). |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Engineering Manager retained as a genuine career track — management over engineers is a distinct occupational track, not merely a senior technical grade (#70 is grades, not careers). |
 
 - **A. Title/market:** engineering manager, EM, engineering-lead (management).
 - **B. Occupational identity:** leading engineers (people/delivery/growth).
@@ -310,8 +310,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Technical advisory/consulting remains distinct from architecture (#65) and from pre-sales/solutions engineering (14) — a distinct practice body. |
 | 14 | Merge/alias if | The boundary with #104 (solutions-engineer, Batch 6 needs_judgment) is the arbiter at import; the Technical Consultant career itself does not merge. |
 | 15 | Recommended human decision (AI) | **APPROVE** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **APPROVE** |
+| 17 | Human notes | Technical Consultant retained as a distinct consulting-oriented career — advisory/implementation function distinct in practice from architecture design (#65); boundary with #104 (solutions-engineer, Batch 6) arbitrated later. |
 
 - **A. Title/market:** technical consultant, technology consultant, advisory engineer.
 - **B. Occupational identity:** technical advice and implementation guidance.
@@ -332,8 +332,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if application-level architecture had a function body distinct from #65 — the "Software Architect vs Solutions Architect" ruling resolves it as ALIAS (Critical case 4). |
 | 14 | Merge/alias if | Because software architecture is the application-level vocabulary of #65; ALIAS keeps it findable without an architecture-career multiplication. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Software Architect aliased into Solutions Architect (#65) — must not become a duplicate architecture record merely because the market uses a different title. Terminology preserved as alias/specialization; no evidence of a distinct occupational identity. |
 
 - **A. Title/market:** software architect, application architect.
 - **B. Occupational identity:** application-level software design — a variant of #65.
@@ -354,8 +354,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if enterprise architecture had a distinct function body from #65 — the TOGAF family and scale-variant reading resolves it as ALIAS (Critical case 4). |
 | 14 | Merge/alias if | Because enterprise architecture is the organisation-scale vocabulary of #65; ALIAS keeps it findable without separate architecture careers by scope. |
 | 15 | Recommended human decision (AI) | **ALIAS** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **ALIAS** |
+| 17 | Human notes | Enterprise Architect aliased into Solutions Architect (#65) — organisation-scale architecture is a scope variant, not a separate career; do not create separate architecture careers merely because employers use different titles. |
 
 - **A. Title/market:** enterprise architect, EA.
 - **B. Occupational identity:** organisation-scale architecture — a variant of #65.
@@ -376,8 +376,8 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 | 13 | Distinct career if | Only if a grade were a distinct occupation body — the standing rule (grade ≠ career) rejects it (Critical case 6). |
 | 14 | Merge/alias if | These are NOT merged as careers; they are excluded (REJECT). Their *functions* are represented by the underlying IC careers or the management track (#66). |
 | 15 | Recommended human decision (AI) | **REJECT** |
-| 16 | Human decision |  |
-| 17 | Human notes |  |
+| 16 | Human decision | **REJECT** |
+| 17 | Human notes | Rejected as a separate canonical career — #70 represents seniority/grade variants, not distinct occupations. Senior/Lead/Staff/Principal variants must NOT become separate careers solely because the title differs. May be represented as progression levels, attributes, or career pathways within an underlying canonical career (their functions live in the underlying IC careers or the Engineering Manager track #66). |
 
 - **A. Title/market:** tech lead, staff engineer, principal engineer, fellow, CTO, VP Engineering.
 - **B. Occupational identity:** seniority/executive grades — not occupations.
@@ -459,20 +459,20 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 
 | # | Name | Cluster | Status | Evidence | Recommendation (AI) | Human decision |
 |---|---|---|---|---|---|---|
-| 57 | Product Manager | 08 | current | T2 | APPROVE |  |
-| 58 | Technical Program Manager | 08 | current | T2 | APPROVE |  |
-| 59 | IT Project Manager | 08 | current | T2 | APPROVE |  |
-| 60 | IT Business Analyst | 08 | current | T1 | APPROVE |  |
-| 61 | Technical Product Manager | 08 | current | T3 | ALIAS |  |
-| 62 | AI Product Manager | 08 | current | T3 | ALIAS |  |
-| 63 | Product Owner | 08 | current | T3 | ALIAS |  |
-| 64 | Product Analyst | 08 | current | T3 | ALIAS |  |
-| 65 | Solutions Architect | 09 | current | T2 | APPROVE |  |
-| 66 | Engineering Manager | 09 | current | T2 | APPROVE |  |
-| 67 | Technical Consultant | 09 | current | T2 | APPROVE |  |
-| 68 | Software Architect | 09 | specialist | T3 | ALIAS |  |
-| 69 | Enterprise Architect | 09 | specialist | T2 | ALIAS |  |
-| 70 | Seniority & Executive Titles | 09 | current | T2 | REJECT |  |
+| 57 | Product Manager | 08 | current | T2 | APPROVE | **APPROVE** |
+| 58 | Technical Program Manager | 08 | current | T2 | APPROVE | **APPROVE** |
+| 59 | IT Project Manager | 08 | current | T2 | APPROVE | **APPROVE** |
+| 60 | IT Business Analyst | 08 | current | T1 | APPROVE | **APPROVE** |
+| 61 | Technical Product Manager | 08 | current | T3 | ALIAS | **ALIAS** (into #57) |
+| 62 | AI Product Manager | 08 | current | T3 | ALIAS | **ALIAS** (into #57) |
+| 63 | Product Owner | 08 | current | T3 | ALIAS | **ALIAS** (into #57) |
+| 64 | Product Analyst | 08 | current | T3 | ALIAS | **ALIAS** (into #20) |
+| 65 | Solutions Architect | 09 | current | T2 | APPROVE | **APPROVE** |
+| 66 | Engineering Manager | 09 | current | T2 | APPROVE | **APPROVE** |
+| 67 | Technical Consultant | 09 | current | T2 | APPROVE | **APPROVE** |
+| 68 | Software Architect | 09 | specialist | T3 | ALIAS | **ALIAS** (into #65) |
+| 69 | Enterprise Architect | 09 | specialist | T2 | ALIAS | **ALIAS** (into #65) |
+| 70 | Seniority & Executive Titles | 09 | current | T2 | REJECT | **REJECT** |
 
 > **Human-arbitration highlights for Batch 4:** the three items most likely to need a human call are
 > **(1)** the Product-family ALIAS ruling (#61/#62/#63 into #57, no per-technology product careers); **(2)** the
@@ -486,4 +486,46 @@ Each candidate sheet adds an evidence-oriented decomposition (the same A–D len
 
 ---
 
-*End of Document 16. Batch 4 is open for human adjudication; columns 16/17 intentionally blank. No inventory, seed, or production data is modified; no canonical IDs created.*
+## Recorded human decisions and editorial rationale (2026-09-01)
+
+These decisions are **human**, recorded in column 16; they are visibly distinct from the unchanged column-15 AI recommendations.
+
+### Decisions at a glance
+
+| # | Name | Human decision |
+|---|---|---|
+| 57 | Product Manager | **APPROVE** (canonical product identity) |
+| 58 | Technical Program Manager | **APPROVE** |
+| 59 | IT Project Manager | **APPROVE** |
+| 60 | IT Business Analyst | **APPROVE** |
+| 61 | Technical Product Manager | **ALIAS** (into #57) |
+| 62 | AI Product Manager | **ALIAS** (into #57) |
+| 63 | Product Owner | **ALIAS** (into #57) |
+| 64 | Product Analyst | **ALIAS** (into #20) |
+| 65 | Solutions Architect | **APPROVE** |
+| 66 | Engineering Manager | **APPROVE** |
+| 67 | Technical Consultant | **APPROVE** |
+| 68 | Software Architect | **ALIAS** (into #65) |
+| 69 | Enterprise Architect | **ALIAS** (into #65) |
+| 70 | Seniority & Executive Titles | **REJECT** |
+
+### Recorded editorial rationale (12 points, mandated)
+
+1. **Product Manager is the canonical product occupational identity.** (#57 is the single canonical product career; the product-family principle.)
+2. **Technical Product Manager is treated as a specialization/alias** unless evidence establishes a materially independent occupation — no separate career absent that evidence (#61 ALIAS).
+3. **Product Owner is treated as market terminology/specialization rather than a separate canonical career at this stage** (#63 ALIAS).
+4. **Technical Program Manager and IT Project Manager remain separate** because programme and project management have materially different competency centres; they are not mere seniority variants (#58/#59 APPROVE).
+5. **Solutions Architect is retained as a distinct architecture-oriented career** (#65 APPROVE).
+6. **Software Architect should not become a duplicate architecture record** merely because the market uses a different title; preserve the terminology as an alias/specialization unless the evidence demonstrates a distinct occupational identity (#68 ALIAS).
+7. **Technical Consultant remains a distinct consulting-oriented career** (#67 APPROVE).
+8. **Engineering Manager remains a canonical career** because engineering management represents a genuine occupational track (#66 APPROVE).
+9. **Seniority and job grades are not canonical careers** (#70 REJECT).
+10. **Do not inflate the catalogue** by converting Staff/Principal/Lead/Senior variants into separate careers.
+11. **A valid career may have multiple market titles and progression levels** without creating multiple canonical records.
+12. **Final cross-World placement** of product, programme, architecture and consulting careers can remain subject to the broader 15-World arbitration; do not delete valid careers merely because their eventual World is uncertain.
+
+> **Consistency note:** every human ruling in Batch 4 aligns with the existing OpenCode column-15 recommendation; no overrides were issued. The product-family ALIAS ruling (#61/#62/#63 → #57) is the operative decision applying the standing rule not to multiply product careers per technicality; #70 REJECT applies the standing rule that grade/title ≠ career.
+
+---
+
+*End of Document 16 (Batch 4 adjudicated — human decisions recorded 2026-09-01). No inventory, seed, or production data modified; no canonical IDs created.*
