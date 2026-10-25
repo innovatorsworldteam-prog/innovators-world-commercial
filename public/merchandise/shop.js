@@ -27,5 +27,7 @@ function openList(){renderList();$('list').showModal();}
 $('open-list').addEventListener('click',openList);$('bulk-list').addEventListener('click',openList);
 $('list-items').addEventListener('click',e=>{const b=e.target.closest('[data-remove]');if(b){delete selected[b.dataset.remove];save();renderList();}});
 $('list-items').addEventListener('change',e=>{if(e.target.dataset.qty){const v=Number(e.target.value);if(!Number.isInteger(v)||v<1||v>999){e.target.value=selected[e.target.dataset.qty];return;}selected[e.target.dataset.qty]=v;save();}});
+$('list-items').addEventListener('input',e=>{if(e.target.dataset.qty){const v=Number(e.target.value);if(Number.isInteger(v)&&v>=1&&v<=999){selected[e.target.dataset.qty]=v;save();}}});
 $('download').addEventListener('click',()=>{const lines=['INNOVATORS WORLD — MERCHANDISE ENQUIRY','This is a request for a quote, not an order. Prices, availability, materials and delivery require confirmation.','',...catalogue.filter(p=>selected[p.id]).map(p=>`${p.id} | ${p.name} | Quantity: ${selected[p.id]} | ${p.variants}`),'','Notes:',$('notes').value,'','Share this file with your Innovators World contact. No enquiry has been submitted automatically.'];const url=URL.createObjectURL(new Blob([lines.join('\n')],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='innovators-world-merchandise-enquiry.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 save();render();
+
