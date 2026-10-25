@@ -1,156 +1,245 @@
-# Innovators World merchandise — current-reference collection
+# Innovators World — The Gear They Use
 
-Updated 26 October 2026.
+Collection revision: 26 October 2026.
 
-## Artwork sources
+## Direction
 
-The user supplied these two references after rejecting the repository v3.0 artwork:
+Useful products inspired by the actual belongings in the user-supplied Kiivo and Leera references. Product branding uses the globe-lightbulb emblem, navy, teal and gold. Character portraits introduce the collections; they are not printed across these products.
 
+Direct reference-inspired items: Kiivo’s white tee, navy zip hoodie, navy backpack and hardback notebook; Leera’s navy tee, teal explorer jacket, navy backpack and gold-spiral journal. Extended companion items: pencil case, writing set, innovation toolkit and refill, laptop and phone skins, padded device sleeve.
+
+Current sources:
 - Leera: ChatGPT Image Oct 26, 2026, 01_28_10 AM.png
 - Kiivo: ChatGPT Image Oct 26, 2026, 01_28_55 AM.png
 
-The merchandise page uses web-optimised copies of those exact references in its character section. Product photographs are generated interpretations based on the supplied references. Old kiivo-hero.png and leera-hero.png are not referenced by this merchandise page. Other pages retain their existing artwork.
-
-## Image generation
-
-Tool: built-in ImageGen, not the CLI/API fallback.
-
-Prompt set: premium square ecommerce product photography, warm off-white seamless background, realistic fabric and paper textures, soft directional studio light, navy/teal/gold palette and Innovators World globe-lightbulb branding. Reference image 1 is Leera; reference image 2 is Kiivo. Preserve their current faces, freckles, eyes and hair; exclude the old leaf hairclip. Photograph physical merchandise, not people wearing it.
-
-Five subject prompts:
-
-1. Chalk-white Kiivo T-shirt and navy Leera T-shirt, full-colour chest prints, “WHAT DO YOU NOTICE?” and “LOOK A LITTLE CLOSER.”
-2. Navy Kiivo full-zip hoodie with chest embroidery and teal Leera pullover with portrait print and kangaroo pocket.
-3. Navy and teal 600D-style backpacks, padded straps, zipped pockets, gold hardware and removable character patches.
-4. Navy Kiivo hardback and teal Leera spiral A5 notebooks with current character cover graphics, gold branding and a styling pencil.
-5. Flat-lay stationery collection: navy canvas pencil case, two pens, six pencils, pocket notebook and two character stickers.
-
 ## Product specifications
 
-### Kiivo “What Do You Notice?” Tee
+### Kiivo’s White Logo Tee
 
-SKU: kiivo-tee
+SKU: kiivo-logo-tee | Collection: Kiivo
 
-A chalk-white cotton tee with Kiivo’s curious expression, observation doodles and a question worth wearing.
+The white globe-bulb T-shirt beneath Kiivo’s navy hoodie. Simple, recognisable, ready for every day.
 
-Proposed: 200 gsm combed cotton jersey with ribbed neckline, reinforced shoulders and a full-colour character print.
+**Materials:** Proposed: 200 gsm combed cotton jersey, ribbed crew neck, reinforced shoulder seams and a soft screen-printed navy-and-gold globe-bulb logo.
 
-Front graphic based on the supplied current character reference, with a question-led slogan and globe-lightbulb branding. Unisex regular fit. Final garment measurements, print placement, wash performance and size chart require supplier samples.
+**Construction / included contents:** Inspired directly by Kiivo’s shirt in the supplied reference. No portrait print. Regular-fit design with the Innovators World wordmark below the emblem. Confirm garment measurements, print dimensions and wash tests during sampling.
 
-Kiivo: Chalk white · Leera: Midnight navy · Adult XS–XXL target
+**Finish:** Chalk white · Navy and gold chest print
 
-### Leera “Look a Little Closer” Tee
+**Options:** Youth S; Youth M; Youth L; Adult XS; Adult S; Adult M; Adult L; Adult XL; Adult XXL
 
-SKU: leera-tee
+### Leera’s Navy Logo Tee
 
-A navy cotton tee with Leera’s current portrait, thoughtful details and a bold everyday invitation.
+SKU: leera-logo-tee | Collection: Leera
 
-Proposed: 200 gsm combed cotton jersey with ribbed neckline, reinforced shoulders and a full-colour character print.
+The navy everyday layer from Leera’s wardrobe, finished with a small gold globe-bulb emblem.
 
-Front graphic based on the supplied current character reference, with a question-led slogan and globe-lightbulb branding. Unisex regular fit. Final garment measurements, print placement, wash performance and size chart require supplier samples.
+**Materials:** Proposed: 200 gsm combed cotton jersey, ribbed crew neck and gold-and-white screen-printed branding.
 
-Kiivo: Chalk white · Leera: Midnight navy · Adult XS–XXL target
+**Construction / included contents:** Designed to layer under the teal Explorer Jacket, as worn by Leera. A small logo and wordmark replace oversized artwork. Size charts and final fit require supplier samples.
 
-### Kiivo Signature Zip Hoodie
+**Finish:** Midnight navy · Gold and white chest print
 
-SKU: kiivo-hoodie
+**Options:** Youth S; Youth M; Youth L; Adult XS; Adult S; Adult M; Adult L; Adult XL; Adult XXL
 
-A navy full-zip layer with globe-bulb chest embroidery and a subtle Kiivo signature.
+### Kiivo’s Navy Zip Hoodie
 
-Proposed: 320 gsm cotton-rich fleece, double-layer hood, ribbed cuffs and hem; final fibre blend subject to supplier confirmation.
+SKU: kiivo-zip-hoodie | Collection: Kiivo
 
-Choose Kiivo’s navy full-zip design with chest embroidery or Leera’s teal pullover with a character print and kangaroo pocket. These are two different constructions. Adult sizes only until a separate youth specification is sampled.
+His signature navy layer: a full zip, practical pockets and a quiet gold chest emblem.
 
-Kiivo: Navy zip · Leera: Teal pullover · Adult XS–XXL target
+**Materials:** Proposed: 320 gsm cotton-rich brushed fleece, ribbed cuffs and hem, full-length metal zip and embroidered globe-bulb emblem. Final fibre blend to be confirmed.
 
-### Leera Explorer Pullover
+**Construction / included contents:** Adult design uses white drawcords and split kangaroo pockets. Youth design must be developed separately without neck drawcords. The named hoodie is the only item included.
 
-SKU: leera-hoodie
+**Finish:** Midnight navy · Gold chest embroidery
 
-A deep-teal pullover with Leera’s portrait, a generous hood and an everyday kangaroo pocket.
+**Options:** Youth S; Youth M; Youth L; Adult XS; Adult S; Adult M; Adult L; Adult XL; Adult XXL
 
-Proposed: 320 gsm cotton-rich fleece, double-layer hood, ribbed cuffs and hem; final fibre blend subject to supplier confirmation.
+### Leera’s Teal Explorer Jacket
 
-Choose Kiivo’s navy full-zip design with chest embroidery or Leera’s teal pullover with a character print and kangaroo pocket. These are two different constructions. Adult sizes only until a separate youth specification is sampled.
+SKU: leera-explorer-jacket | Collection: Leera
 
-Kiivo: Navy zip · Leera: Teal pullover · Adult XS–XXL target
+The teal jacket she explores in—collared, pocketed and made for carrying a small discovery.
 
-### Kiivo Discovery Backpack
+**Materials:** Proposed: 260–280 gsm cotton twill, shirt collar, zip front, patch pockets and gold embroidered globe-bulb emblem.
 
-SKU: kiivo-backpack
+**Construction / included contents:** Inspired by Leera’s actual jacket silhouette rather than a printed hoodie. Rollable long sleeves and practical chest pockets. Fabric weight, pocket construction, hardware and fit remain subject to sample approval.
 
-A navy everyday backpack with purposeful pockets, gold hardware and a removable Kiivo patch.
+**Finish:** Deep teal · Gold chest embroidery
 
-Proposed: 600D woven polyester, lined compartments, padded back and shoulder straps, mesh bottle pockets and gold-tone zip pulls.
+**Options:** Youth S; Youth M; Youth L; Adult XS; Adult S; Adult M; Adult L; Adult XL; Adult XXL
 
-Target 20 L capacity with a padded laptop sleeve, front zipped pocket and removable character patch. Laptop fit, load limits, durability and patch attachment require supplier verification. Bottle shown is styling only and is not included.
+### Kiivo’s Discovery Backpack
 
-Kiivo: Navy · Leera: Teal · 20 L target
+SKU: kiivo-backpack | Collection: Kiivo
 
-### Leera Explorer Backpack
+A navy backpack for his notebook, pencils and the things he notices along the way.
 
-SKU: leera-backpack
+**Materials:** Proposed: 600D woven polyester outer, polyester lining, padded shoulder straps and back panel, mesh side pockets and gold-tone zip pulls.
 
-A deep-teal companion for your notebook, your next question and everything in between.
+**Construction / included contents:** Target capacity 18–20 L. Main compartment, front organiser pocket and bottle pockets with embroidered globe-bulb branding. No portrait patches. Load capacity, strap durability and device fit must be confirmed by sampling; no waterproof claim.
 
-Proposed: 600D woven polyester, lined compartments, padded back and shoulder straps, mesh bottle pockets and gold-tone zip pulls.
+**Finish:** Midnight navy · Gold embroidery
 
-Target 20 L capacity with a padded laptop sleeve, front zipped pocket and removable character patch. Laptop fit, load limits, durability and patch attachment require supplier verification. Bottle shown is styling only and is not included.
+**Options:** 18–20 L target
 
-Kiivo: Navy · Leera: Teal · 20 L target
+### Leera’s Explorer Backpack
 
-### Kiivo Idea Notebook
+SKU: leera-backpack | Collection: Leera
 
-SKU: kiivo-notebook
+A practical navy-and-teal companion for a journal, measuring tools and a better question.
 
-A navy A5 hardback for observations, sketches and ideas worth coming back to.
+**Materials:** Proposed: 600D woven polyester outer, polyester lining, padded adjustable straps, mesh bottle pockets and reinforced grab handle.
 
-Proposed: A5 hardback, 160 pages of 100 gsm uncoated paper, cloth-textured cover and full-colour character artwork.
+**Construction / included contents:** Target capacity 18–20 L, navy base with subtle teal panels or strap details. Small gold globe-bulb branding, practical zipped compartments and no character portrait. Supplier must verify capacity, construction and load performance.
 
-Kiivo edition uses a bound hardback format; Leera edition uses gold-tone spiral binding inspired by the supplied reference. Choose ruled or dot-grid pages. Cover finish, print alignment and paper performance require sampling. Pencil shown is not included.
+**Finish:** Navy with teal details · Gold embroidery
 
-Kiivo: Navy hardback · Leera: Teal spiral · A5
+**Options:** 18–20 L target
 
-### Leera Reflection Notebook
+### Kiivo’s Idea Notebook
 
-SKU: leera-notebook
+SKU: kiivo-notebook | Collection: Kiivo
 
-A teal A5 spiral notebook that gives your questions room to become something more.
+The navy notebook he carries, with a gold globe-bulb cover and pages for the next possibility.
 
-Proposed: A5 hardback, 160 pages of 100 gsm uncoated paper, cloth-textured cover and full-colour character artwork.
+**Materials:** Proposed: A5 cloth-covered hardback, 160 pages of 100 gsm uncoated paper, sewn binding, ribbon marker and elastic closure.
 
-Kiivo edition uses a bound hardback format; Leera edition uses gold-tone spiral binding inspired by the supplied reference. Choose ruled or dot-grid pages. Cover finish, print alignment and paper performance require sampling. Pencil shown is not included.
+**Construction / included contents:** Navy cover with restrained gold emblem and small white Innovators World wordmark. Ruled, dot-grid or plain page options. Pencil in the collection image is not included.
 
-Kiivo: Navy hardback · Leera: Teal spiral · A5
+**Finish:** Navy hardback · Gold and white cover branding
 
-### The Studio Pencil Case
+**Options:** Ruled; Dot grid; Plain
 
-SKU: pencil-case
+### Leera’s Explorer Journal
 
-A navy canvas zip pouch with gold globe-bulb branding. A useful home for your everyday thinking tools.
+SKU: leera-notebook | Collection: Leera
 
-Proposed: navy cotton canvas outer, lined interior and gold-tone metal zip.
+Her navy spiral journal, ready to open flat when a small observation becomes a bigger idea.
 
-Target size 21 × 8 × 5 cm with a small gold globe-lightbulb emblem. The stationery group photograph shows companion items; this SKU includes only the pencil case.
+**Materials:** Proposed: A5 rigid navy cover, gold-tone spiral wire, 160 pages of 100 gsm uncoated paper and gold-and-white cover branding.
 
-Navy · Pencil case only
+**Construction / included contents:** Matches the gold-spiral notebook held in Leera’s reference. Choose dot-grid, ruled or a guided Observe / Question / Reflect layout. Mechanical pencil shown alongside is sold separately.
 
-### The Kiivo & Leera Stationery Set
+**Finish:** Navy spiral cover · Gold binding
 
-SKU: stationery-set
+**Options:** Dot grid; Ruled; Observe / Question / Reflect
 
-A coordinated pencil case, pen duo, six pencils, pocket notebook and two character stickers.
+### Innovators World Pencil Case
 
-Proposed: canvas zip pencil case, two aluminium click pens, six wood-cased graphite pencils, A6 pocket notebook and two die-cut character stickers.
+SKU: pencil-case | Collection: Both
 
-A coordinated everyday stationery set using the current Kiivo and Leera references. Final pack contents, ink and refill compatibility, pencil grades and material composition require supplier confirmation.
+A compact navy pouch for the tools they reach for every day.
 
-Navy + teal · 12 pieces across 5 product types
+**Materials:** Proposed: cotton canvas outer, polyester lining, gold-tone zip and gold embroidered or printed emblem.
 
-## Sales readiness
+**Construction / included contents:** Target size 21 × 8 × 5 cm. Quote and sale unit is the pencil case only; notebooks, pens and ruler in the group photo are companion products.
 
-The page supports product discovery and a locally saved, downloadable quote enquiry. It does not submit orders, take payments or claim stock. Before sales launch, confirm supplier samples, final print files, size charts, prices, inventory, payment provider, shipping and returns. Generated mockups are not supplier proofs or print-ready artwork.
+**Finish:** Navy · Gold globe-bulb emblem
 
-## Validation
+**Options:** Pencil case only
 
-JavaScript syntax and git whitespace checks; browser image loading, catalogue filtering, product details, enquiry quantities and empty-list behaviour; desktop 1280px and mobile 390px overflow checks.
+### Everyday Innovation Writing Set
+
+SKU: writing-tools | Collection: Both
+
+A practical pen, pencil and ruler set for sketching, noting and measuring.
+
+**Materials:** Proposed: two aluminium-barrel refillable black-ink pens, two HB wood-cased pencils, one mechanical pencil and one 15 cm stainless-steel ruler.
+
+**Construction / included contents:** Six tools, supplied in a simple card sleeve. Navy-and-teal pen finishes with gold brand marks. Confirm refill and lead sizes with the selected supplier. Notebook and pouch are not included.
+
+**Finish:** Navy / teal / natural wood · Gold details
+
+**Options:** Six-tool set
+
+### The Innovators World Toolkit
+
+SKU: innovation-toolkit | Collection: Both
+
+Observe something. Measure it. Sketch a possibility. Build a first version. A real toolkit for working through an idea.
+
+**Materials:** Proposed: navy woven zip organiser with teal lining and elastic tool loops; handheld magnifier; 15 cm steel ruler; compact measuring tape; two HB pencils; pen; eraser; A6 sketchbook; sticky-note pad; observation cards; prototyping pack.
+
+**Construction / included contents:** The prototype pack contains cardboard tabs, paper fasteners, binder clips and wooden craft sticks. No blades, powered components or electronics. Intended as a guided workshop toolset; final age guidance and component specifications follow supplier and programme review. Photograph is a layout proposal; confirm exact pack quantities before sale.
+
+**Finish:** Navy organiser · Teal interior · Gold branding
+
+**Options:** Complete toolkit; Workshop set — request quantities
+
+### Build & Try Refill Pack
+
+SKU: prototype-refill | Collection: Both
+
+Fresh materials for the next small experiment, designed to replenish your toolkit.
+
+**Materials:** Proposed: cardboard tabs and strips, wooden craft sticks, paper fasteners, binder clips, sticky notes and blank observation cards in a kraft paper pack.
+
+**Construction / included contents:** Consumable prototyping materials only. The organiser, notebook, magnifier and measuring tools pictured with the full toolkit are not included. Supplier quantities and workshop content will be specified before sale.
+
+**Finish:** Kraft pack · Navy-and-gold label
+
+**Options:** Refill pack only
+
+### Innovators World Laptop Skin
+
+SKU: laptop-skin | Collection: Both
+
+A quiet navy-and-gold signature for the lid you open to create.
+
+**Materials:** Proposed: removable adhesive vinyl with printed navy-and-gold branding and a matte protective overlaminate.
+
+**Construction / included contents:** Lid skin only, not a laptop or a protective case. Exact device model and lid measurements are required before producing a cut template. Avoid covering vents, ports, cameras or hinges. Adhesive compatibility and removal behaviour must be tested on the intended finish; no residue-free guarantee is made.
+
+**Finish:** Midnight navy · Gold globe-bulb emblem
+
+**Options:** Model-specific cut — confirm device; Custom lid size — supply dimensions
+
+Exact device make, model and year are required in the enquiry configurator.
+
+### Innovators World Phone Skin
+
+SKU: phone-skin | Collection: Both
+
+A slim everyday brand detail, cut around your phone’s own shape.
+
+**Materials:** Proposed: printed removable adhesive vinyl with matte overlaminate and model-specific camera cutouts.
+
+**Construction / included contents:** Back skin only. Phone and protective case are not included. Supply the exact manufacturer and model before production; camera positions and dimensions are not universal. Supplier must verify finish compatibility and cut accuracy. A skin does not provide drop protection.
+
+**Finish:** Deep teal or navy · Gold emblem
+
+**Options:** Deep teal — model to confirm; Midnight navy — model to confirm
+
+Exact device make, model and year are required in the enquiry configurator.
+
+### The Everyday Ideas Laptop Sleeve
+
+SKU: laptop-sleeve | Collection: Both
+
+A useful layer between your working tools and the journey ahead.
+
+**Materials:** Proposed: navy woven polyester outer, foam padding, soft lining, zip closure and embroidered globe-bulb emblem.
+
+**Construction / included contents:** Proposed 13–14 inch and 15–16 inch formats are size families only; confirm actual internal dimensions and device fit before ordering. Laptop and adhesive skins shown are not included. No impact-protection rating is claimed.
+
+**Finish:** Navy · Gold branding
+
+**Options:** 13–14 inch format — dimensions to confirm; 15–16 inch format — dimensions to confirm
+
+## Enquiry behaviour
+
+Product sizes, page layouts, pack formats and device models are retained as separate line items. Quantities are validated between 1 and 999. The list persists in browser storage and exports to a text file. Empty lists and invalid quantities disable export. No automatic message, order or payment is submitted.
+
+## Artwork and prompt provenance
+
+Six new high-resolution product mockups were created with built-in ImageGen, not an API/CLI fallback. Exact prompt base and six subject prompts are stored in merchandise-image-prompts.json; each final prompt is the base followed by its subject prompt. Original supplied character references remain unchanged; web copies are used in the character section. Product mockups illustrate materials and layouts, not manufactured samples or final print-ready files.
+
+## Before sales launch
+
+Confirm supplier samples, final composition and dimensions, adult and youth size charts, print/embroidery artwork, toolkit pack quantities, device cut templates, prices, inventory, delivery, returns and hosted checkout. This page remains an enquiry catalogue until those operational details are implemented.
+
+## Verification
+
+JavaScript syntax and whitespace checks; browser checks for separate size lines, quantity validation, persistence after reload, export of sizes and device models, material search, guide/category filters and responsive layouts. Existing Worker APIs remain unchanged.

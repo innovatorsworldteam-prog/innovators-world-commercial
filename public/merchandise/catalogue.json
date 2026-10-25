@@ -1,0 +1,299 @@
+[
+  {
+    "id": "kiivo-logo-tee",
+    "name": "Kiivo’s White Logo Tee",
+    "category": "Clothing",
+    "guide": "Kiivo",
+    "photo": "tees",
+    "focus": "left",
+    "material": "Combed cotton · 200 gsm",
+    "description": "The white globe-bulb T-shirt beneath Kiivo’s navy hoodie. Simple, recognisable, ready for every day.",
+    "materials": "Proposed: 200 gsm combed cotton jersey, ribbed crew neck, reinforced shoulder seams and a soft screen-printed navy-and-gold globe-bulb logo.",
+    "details": "Inspired directly by Kiivo’s shirt in the supplied reference. No portrait print. Regular-fit design with the Innovators World wordmark below the emblem. Confirm garment measurements, print dimensions and wash tests during sampling.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Chalk white · Navy and gold chest print"
+  },
+  {
+    "id": "leera-logo-tee",
+    "name": "Leera’s Navy Logo Tee",
+    "category": "Clothing",
+    "guide": "Leera",
+    "photo": "tees",
+    "focus": "right",
+    "material": "Combed cotton · 200 gsm",
+    "description": "The navy everyday layer from Leera’s wardrobe, finished with a small gold globe-bulb emblem.",
+    "materials": "Proposed: 200 gsm combed cotton jersey, ribbed crew neck and gold-and-white screen-printed branding.",
+    "details": "Designed to layer under the teal Explorer Jacket, as worn by Leera. A small logo and wordmark replace oversized artwork. Size charts and final fit require supplier samples.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Midnight navy · Gold and white chest print"
+  },
+  {
+    "id": "kiivo-zip-hoodie",
+    "name": "Kiivo’s Navy Zip Hoodie",
+    "category": "Clothing",
+    "guide": "Kiivo",
+    "photo": "outerwear",
+    "focus": "left",
+    "material": "Cotton-rich fleece · 320 gsm",
+    "description": "His signature navy layer: a full zip, practical pockets and a quiet gold chest emblem.",
+    "materials": "Proposed: 320 gsm cotton-rich brushed fleece, ribbed cuffs and hem, full-length metal zip and embroidered globe-bulb emblem. Final fibre blend to be confirmed.",
+    "details": "Adult design uses white drawcords and split kangaroo pockets. Youth design must be developed separately without neck drawcords. The named hoodie is the only item included.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Midnight navy · Gold chest embroidery"
+  },
+  {
+    "id": "leera-explorer-jacket",
+    "name": "Leera’s Teal Explorer Jacket",
+    "category": "Clothing",
+    "guide": "Leera",
+    "photo": "outerwear",
+    "focus": "right",
+    "material": "Cotton twill · 260–280 gsm",
+    "description": "The teal jacket she explores in—collared, pocketed and made for carrying a small discovery.",
+    "materials": "Proposed: 260–280 gsm cotton twill, shirt collar, zip front, patch pockets and gold embroidered globe-bulb emblem.",
+    "details": "Inspired by Leera’s actual jacket silhouette rather than a printed hoodie. Rollable long sleeves and practical chest pockets. Fabric weight, pocket construction, hardware and fit remain subject to sample approval.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Deep teal · Gold chest embroidery"
+  },
+  {
+    "id": "kiivo-backpack",
+    "name": "Kiivo’s Discovery Backpack",
+    "category": "Bags & carry",
+    "guide": "Kiivo",
+    "photo": "bags",
+    "focus": "left",
+    "material": "Woven polyester · 600D target",
+    "description": "A navy backpack for his notebook, pencils and the things he notices along the way.",
+    "materials": "Proposed: 600D woven polyester outer, polyester lining, padded shoulder straps and back panel, mesh side pockets and gold-tone zip pulls.",
+    "details": "Target capacity 18–20 L. Main compartment, front organiser pocket and bottle pockets with embroidered globe-bulb branding. No portrait patches. Load capacity, strap durability and device fit must be confirmed by sampling; no waterproof claim.",
+    "options": [
+      "18–20 L target"
+    ],
+    "optionLabel": "Proposed format",
+    "finish": "Midnight navy · Gold embroidery"
+  },
+  {
+    "id": "leera-backpack",
+    "name": "Leera’s Explorer Backpack",
+    "category": "Bags & carry",
+    "guide": "Leera",
+    "photo": "bags",
+    "focus": "right",
+    "material": "Woven polyester · 600D target",
+    "description": "A practical navy-and-teal companion for a journal, measuring tools and a better question.",
+    "materials": "Proposed: 600D woven polyester outer, polyester lining, padded adjustable straps, mesh bottle pockets and reinforced grab handle.",
+    "details": "Target capacity 18–20 L, navy base with subtle teal panels or strap details. Small gold globe-bulb branding, practical zipped compartments and no character portrait. Supplier must verify capacity, construction and load performance.",
+    "options": [
+      "18–20 L target"
+    ],
+    "optionLabel": "Proposed format",
+    "finish": "Navy with teal details · Gold embroidery"
+  },
+  {
+    "id": "kiivo-notebook",
+    "name": "Kiivo’s Idea Notebook",
+    "category": "Notebooks & stationery",
+    "guide": "Kiivo",
+    "photo": "notebooks",
+    "focus": "left",
+    "material": "Cloth hardback · 100 gsm paper",
+    "description": "The navy notebook he carries, with a gold globe-bulb cover and pages for the next possibility.",
+    "materials": "Proposed: A5 cloth-covered hardback, 160 pages of 100 gsm uncoated paper, sewn binding, ribbon marker and elastic closure.",
+    "details": "Navy cover with restrained gold emblem and small white Innovators World wordmark. Ruled, dot-grid or plain page options. Pencil in the collection image is not included.",
+    "options": [
+      "Ruled",
+      "Dot grid",
+      "Plain"
+    ],
+    "optionLabel": "Page layout",
+    "finish": "Navy hardback · Gold and white cover branding"
+  },
+  {
+    "id": "leera-notebook",
+    "name": "Leera’s Explorer Journal",
+    "category": "Notebooks & stationery",
+    "guide": "Leera",
+    "photo": "notebooks",
+    "focus": "right",
+    "material": "Gold wire binding · 100 gsm paper",
+    "description": "Her navy spiral journal, ready to open flat when a small observation becomes a bigger idea.",
+    "materials": "Proposed: A5 rigid navy cover, gold-tone spiral wire, 160 pages of 100 gsm uncoated paper and gold-and-white cover branding.",
+    "details": "Matches the gold-spiral notebook held in Leera’s reference. Choose dot-grid, ruled or a guided Observe / Question / Reflect layout. Mechanical pencil shown alongside is sold separately.",
+    "options": [
+      "Dot grid",
+      "Ruled",
+      "Observe / Question / Reflect"
+    ],
+    "optionLabel": "Page layout",
+    "finish": "Navy spiral cover · Gold binding"
+  },
+  {
+    "id": "pencil-case",
+    "name": "Innovators World Pencil Case",
+    "category": "Notebooks & stationery",
+    "guide": "Both",
+    "photo": "notebooks",
+    "focus": "full",
+    "material": "Cotton canvas · Lined zip pouch",
+    "description": "A compact navy pouch for the tools they reach for every day.",
+    "materials": "Proposed: cotton canvas outer, polyester lining, gold-tone zip and gold embroidered or printed emblem.",
+    "details": "Target size 21 × 8 × 5 cm. Quote and sale unit is the pencil case only; notebooks, pens and ruler in the group photo are companion products.",
+    "options": [
+      "Pencil case only"
+    ],
+    "optionLabel": "Contents",
+    "finish": "Navy · Gold globe-bulb emblem"
+  },
+  {
+    "id": "writing-tools",
+    "name": "Everyday Innovation Writing Set",
+    "category": "Notebooks & stationery",
+    "guide": "Both",
+    "photo": "notebooks",
+    "focus": "full",
+    "material": "Metal pens · Wood pencils · Steel ruler",
+    "description": "A practical pen, pencil and ruler set for sketching, noting and measuring.",
+    "materials": "Proposed: two aluminium-barrel refillable black-ink pens, two HB wood-cased pencils, one mechanical pencil and one 15 cm stainless-steel ruler.",
+    "details": "Six tools, supplied in a simple card sleeve. Navy-and-teal pen finishes with gold brand marks. Confirm refill and lead sizes with the selected supplier. Notebook and pouch are not included.",
+    "options": [
+      "Six-tool set"
+    ],
+    "optionLabel": "Contents",
+    "finish": "Navy / teal / natural wood · Gold details"
+  },
+  {
+    "id": "innovation-toolkit",
+    "name": "The Innovators World Toolkit",
+    "category": "Innovation tools",
+    "guide": "Both",
+    "photo": "toolkit",
+    "focus": "full",
+    "material": "Zip organiser · Measuring & sketching tools",
+    "description": "Observe something. Measure it. Sketch a possibility. Build a first version. A real toolkit for working through an idea.",
+    "materials": "Proposed: navy woven zip organiser with teal lining and elastic tool loops; handheld magnifier; 15 cm steel ruler; compact measuring tape; two HB pencils; pen; eraser; A6 sketchbook; sticky-note pad; observation cards; prototyping pack.",
+    "details": "The prototype pack contains cardboard tabs, paper fasteners, binder clips and wooden craft sticks. No blades, powered components or electronics. Intended as a guided workshop toolset; final age guidance and component specifications follow supplier and programme review. Photograph is a layout proposal; confirm exact pack quantities before sale.",
+    "options": [
+      "Complete toolkit",
+      "Workshop set — request quantities"
+    ],
+    "optionLabel": "Pack format",
+    "finish": "Navy organiser · Teal interior · Gold branding"
+  },
+  {
+    "id": "prototype-refill",
+    "name": "Build & Try Refill Pack",
+    "category": "Innovation tools",
+    "guide": "Both",
+    "photo": "toolkit",
+    "focus": "full",
+    "material": "Cardboard · Wood · Paper fasteners",
+    "description": "Fresh materials for the next small experiment, designed to replenish your toolkit.",
+    "materials": "Proposed: cardboard tabs and strips, wooden craft sticks, paper fasteners, binder clips, sticky notes and blank observation cards in a kraft paper pack.",
+    "details": "Consumable prototyping materials only. The organiser, notebook, magnifier and measuring tools pictured with the full toolkit are not included. Supplier quantities and workshop content will be specified before sale.",
+    "options": [
+      "Refill pack only"
+    ],
+    "optionLabel": "Contents",
+    "finish": "Kraft pack · Navy-and-gold label"
+  },
+  {
+    "id": "laptop-skin",
+    "name": "Innovators World Laptop Skin",
+    "category": "Tech accessories",
+    "guide": "Both",
+    "photo": "skins",
+    "focus": "full",
+    "material": "Removable adhesive vinyl · Matte laminate",
+    "description": "A quiet navy-and-gold signature for the lid you open to create.",
+    "materials": "Proposed: removable adhesive vinyl with printed navy-and-gold branding and a matte protective overlaminate.",
+    "details": "Lid skin only, not a laptop or a protective case. Exact device model and lid measurements are required before producing a cut template. Avoid covering vents, ports, cameras or hinges. Adhesive compatibility and removal behaviour must be tested on the intended finish; no residue-free guarantee is made.",
+    "options": [
+      "Model-specific cut — confirm device",
+      "Custom lid size — supply dimensions"
+    ],
+    "optionLabel": "Cut format",
+    "finish": "Midnight navy · Gold globe-bulb emblem",
+    "needsDeviceModel": true
+  },
+  {
+    "id": "phone-skin",
+    "name": "Innovators World Phone Skin",
+    "category": "Tech accessories",
+    "guide": "Both",
+    "photo": "skins",
+    "focus": "full",
+    "material": "Removable adhesive vinyl · Matte finish",
+    "description": "A slim everyday brand detail, cut around your phone’s own shape.",
+    "materials": "Proposed: printed removable adhesive vinyl with matte overlaminate and model-specific camera cutouts.",
+    "details": "Back skin only. Phone and protective case are not included. Supply the exact manufacturer and model before production; camera positions and dimensions are not universal. Supplier must verify finish compatibility and cut accuracy. A skin does not provide drop protection.",
+    "options": [
+      "Deep teal — model to confirm",
+      "Midnight navy — model to confirm"
+    ],
+    "optionLabel": "Colour / cut",
+    "finish": "Deep teal or navy · Gold emblem",
+    "needsDeviceModel": true
+  },
+  {
+    "id": "laptop-sleeve",
+    "name": "The Everyday Ideas Laptop Sleeve",
+    "category": "Bags & carry",
+    "guide": "Both",
+    "photo": "skins",
+    "focus": "full",
+    "material": "Woven outer · Foam padding · Soft lining",
+    "description": "A useful layer between your working tools and the journey ahead.",
+    "materials": "Proposed: navy woven polyester outer, foam padding, soft lining, zip closure and embroidered globe-bulb emblem.",
+    "details": "Proposed 13–14 inch and 15–16 inch formats are size families only; confirm actual internal dimensions and device fit before ordering. Laptop and adhesive skins shown are not included. No impact-protection rating is claimed.",
+    "options": [
+      "13–14 inch format — dimensions to confirm",
+      "15–16 inch format — dimensions to confirm"
+    ],
+    "optionLabel": "Sleeve format",
+    "finish": "Navy · Gold branding"
+  }
+]

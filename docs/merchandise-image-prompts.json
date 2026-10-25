@@ -1,0 +1,34 @@
+{
+  "base": "Use case: product-mockup. Premium square ecommerce studio photograph of physical merchandise for INNOVATORS WORLD, soft side lighting, warm ivory seamless background, full objects visible with generous margins, true textile/paper/material detail, understated navy teal gold palette. References are authoritative visual sources for the gear and logo: image 1 is Leera in a teal explorer jacket carrying navy backpack and gold-spiral navy notebook; image 2 Kiivo in a navy zip hoodie over a white logo T-shirt, navy backpack, navy notebook. Reproduce the gold globe-inside-lightbulb brand emblem and exact brand name 'INNOVATORS WORLD' as seen on their belongings. NO character portraits, NO faces, NO people, NO character illustrations, NO big slogans, NO external labels or watermark. This is their own useful branded gear, not fan-art merchandise. ",
+  "jobs": [
+    [
+      "tees",
+      "Two actual everyday logo T-shirts lying flat side by side. Left Kiivo edition: chalk-white regular-fit combed cotton tee, navy globe-lightbulb chest graphic with gold globe detail and small navy 'INNOVATORS WORLD' wordmark below, matching Kiivo's white shirt in reference. Right Leera edition: navy cotton tee, smaller gold globe-lightbulb chest emblem with small white 'INNOVATORS WORLD' wordmark, matching Leera's shirt. No other prints. Real cotton weave, neck rib, seam construction and gentle folds. Complete silhouettes visible."
+    ],
+    [
+      "outerwear",
+      "Two premium full-zip garments displayed side by side on invisible mannequins: LEFT Kiivo's midnight-navy fleece zip hoodie, white drawcords, ribbed cuffs, split kangaroo pockets, gold globe-lightbulb small left-chest embroidery. RIGHT Leera's deep teal cotton-twill explorer jacket exactly inspired by reference: turn-down shirt collar, long sleeves slightly rolled, practical chest patch pockets, lower pockets, zip opening, gold globe-lightbulb small chest embroidery. Jacket has NO hood. Restrained logos, no full-colour character art. Convincing functional retail garments, correct seams and hardware, both entire garments in frame."
+    ],
+    [
+      "bags",
+      "Two backpacks upright side by side, no bottle props: LEFT Kiivo midnight navy backpack; RIGHT Leera navy backpack with subtle deep-teal panel and strap details as a companion edition. Match bags worn by the reference characters: textured woven cloth, padded straps, useful compartments, front zip pocket, bottle side pockets. Small gold globe-lightbulb embroidered front emblem and small white 'INNOVATORS WORLD' wordmark. NO portrait patches. Gold-tone metal zipper pulls, crisp construction, three-quarter product view, spacious margins."
+    ],
+    [
+      "notebooks",
+      "Premium practical stationery arranged in two distinct left-right groupings: LEFT Kiivo navy A5 cloth hardback notebook with restrained gold globe-lightbulb logo and small white 'INNOVATORS WORLD' wordmark, elastic closure, cream page edges, beside a yellow wood pencil. RIGHT Leera navy A5 spiral notebook with gold wire binding, gold globe-lightbulb logo and small white 'INNOVATORS WORLD' wordmark exactly inspired by notebook in her reference, beside a gold/teal mechanical pencil. A navy canvas pencil pouch, gold ruler and two navy/teal slim pens arranged subtly along lower edge. No faces or character pictures on covers. Beautiful material detail and functional stationery, not poster art."
+    ],
+    [
+      "toolkit",
+      "One saleable INNOVATORS WORLD INNOVATION TOOLKIT displayed open in overhead flat-lay. Navy zip-around rectangular organiser case with gold globe-bulb logo, teal interior and fitted elastic loops. Neatly organised simple practical tools: handheld magnifying glass, 15 cm steel ruler, compact measuring tape, wood pencils, rounded eraser, ballpoint pen, small squared sketch notebook, sticky-note pad, observation prompt cards, separate little kraft packet containing cardboard tabs, paper fasteners, binder clips and wooden craft sticks for simple prototyping. Include a simple printed insert with exact title 'OBSERVE. QUESTION. CREATE.' Distinct useful objects, no dangerous blades, no powered electronics, no toy robots, no faces. A compact complete real-world student/workshop toolkit, credible physical product, adult-guided use, premium navy/teal/gold branding."
+    ],
+    [
+      "skins",
+      "A paired premium tech accessory product photograph: LEFT a closed generic 14-inch laptop viewed from above at a slight angle, fitted with a midnight navy matte adhesive lid skin with restrained centered gold globe-lightbulb emblem and small white 'INNOVATORS WORLD' wordmark, no manufacturer logo. RIGHT one generic modern smartphone face down in deep teal adhesive back skin with a smaller gold emblem at lower third, accurate uncovered camera cutout, plus a second navy phone skin on release backing to show it is an adhesive skin rather than a case. A slim navy padded laptop sleeve below the laptop. Subtle material texture, no screens, no display UI, no character portraits, no faces. Clearly useful branded personal tech gear."
+    ]
+  ],
+  "refs": [
+    "E:/Innovators World/ChatGPT Image Oct 26, 2026, 01_28_10 AM.png",
+    "E:/Innovators World/ChatGPT Image Oct 26, 2026, 01_28_55 AM.png"
+  ],
+  "tool": "built-in ImageGen"
+}
