@@ -22,7 +22,8 @@
       "Adult XXL"
     ],
     "optionLabel": "Proposed size",
-    "finish": "Chalk white · Navy and gold chest print"
+    "finish": "Chalk white · Navy and gold chest print",
+    "series": "Gear"
   },
   {
     "id": "leera-logo-tee",
@@ -47,7 +48,8 @@
       "Adult XXL"
     ],
     "optionLabel": "Proposed size",
-    "finish": "Midnight navy · Gold and white chest print"
+    "finish": "Midnight navy · Gold and white chest print",
+    "series": "Gear"
   },
   {
     "id": "kiivo-zip-hoodie",
@@ -72,7 +74,8 @@
       "Adult XXL"
     ],
     "optionLabel": "Proposed size",
-    "finish": "Midnight navy · Gold chest embroidery"
+    "finish": "Midnight navy · Gold chest embroidery",
+    "series": "Gear"
   },
   {
     "id": "leera-explorer-jacket",
@@ -97,7 +100,8 @@
       "Adult XXL"
     ],
     "optionLabel": "Proposed size",
-    "finish": "Deep teal · Gold chest embroidery"
+    "finish": "Deep teal · Gold chest embroidery",
+    "series": "Gear"
   },
   {
     "id": "kiivo-backpack",
@@ -114,7 +118,8 @@
       "18–20 L target"
     ],
     "optionLabel": "Proposed format",
-    "finish": "Midnight navy · Gold embroidery"
+    "finish": "Midnight navy · Gold embroidery",
+    "series": "Gear"
   },
   {
     "id": "leera-backpack",
@@ -131,7 +136,8 @@
       "18–20 L target"
     ],
     "optionLabel": "Proposed format",
-    "finish": "Navy with teal details · Gold embroidery"
+    "finish": "Navy with teal details · Gold embroidery",
+    "series": "Gear"
   },
   {
     "id": "kiivo-notebook",
@@ -150,7 +156,8 @@
       "Plain"
     ],
     "optionLabel": "Page layout",
-    "finish": "Navy hardback · Gold and white cover branding"
+    "finish": "Navy hardback · Gold and white cover branding",
+    "series": "Gear"
   },
   {
     "id": "leera-notebook",
@@ -169,7 +176,8 @@
       "Observe / Question / Reflect"
     ],
     "optionLabel": "Page layout",
-    "finish": "Navy spiral cover · Gold binding"
+    "finish": "Navy spiral cover · Gold binding",
+    "series": "Gear"
   },
   {
     "id": "pencil-case",
@@ -186,7 +194,8 @@
       "Pencil case only"
     ],
     "optionLabel": "Contents",
-    "finish": "Navy · Gold globe-bulb emblem"
+    "finish": "Navy · Gold globe-bulb emblem",
+    "series": "Gear"
   },
   {
     "id": "writing-tools",
@@ -203,7 +212,8 @@
       "Six-tool set"
     ],
     "optionLabel": "Contents",
-    "finish": "Navy / teal / natural wood · Gold details"
+    "finish": "Navy / teal / natural wood · Gold details",
+    "series": "Gear"
   },
   {
     "id": "innovation-toolkit",
@@ -221,7 +231,8 @@
       "Workshop set — request quantities"
     ],
     "optionLabel": "Pack format",
-    "finish": "Navy organiser · Teal interior · Gold branding"
+    "finish": "Navy organiser · Teal interior · Gold branding",
+    "series": "Gear"
   },
   {
     "id": "prototype-refill",
@@ -238,7 +249,8 @@
       "Refill pack only"
     ],
     "optionLabel": "Contents",
-    "finish": "Kraft pack · Navy-and-gold label"
+    "finish": "Kraft pack · Navy-and-gold label",
+    "series": "Gear"
   },
   {
     "id": "laptop-skin",
@@ -257,7 +269,8 @@
     ],
     "optionLabel": "Cut format",
     "finish": "Midnight navy · Gold globe-bulb emblem",
-    "needsDeviceModel": true
+    "needsDeviceModel": true,
+    "series": "Gear"
   },
   {
     "id": "phone-skin",
@@ -276,7 +289,8 @@
     ],
     "optionLabel": "Colour / cut",
     "finish": "Deep teal or navy · Gold emblem",
-    "needsDeviceModel": true
+    "needsDeviceModel": true,
+    "series": "Gear"
   },
   {
     "id": "laptop-sleeve",
@@ -294,6 +308,101 @@
       "15–16 inch format — dimensions to confirm"
     ],
     "optionLabel": "Sleeve format",
-    "finish": "Navy · Gold branding"
+    "finish": "Navy · Gold branding",
+    "series": "Gear"
+  },
+  {
+    "id": "belong-tee",
+    "name": "I am an Innovator — Statement Tee",
+    "category": "Clothing",
+    "guide": "Both",
+    "series": "Belong",
+    "photo": "belong-apparel",
+    "focus": "left",
+    "printText": "I am an Innovator ... I belong to Innovators World",
+    "material": "Combed cotton · 200 gsm",
+    "description": "Wear your place in the community: a clean white tee with a navy-and-gold statement.",
+    "materials": "Proposed: 200 gsm combed cotton jersey, ribbed crew neck, reinforced shoulders and soft navy-and-gold screen print.",
+    "details": "Front typography carries the complete tagline exactly as supplied, with Innovator as the focal word and a small globe-bulb emblem. Regular fit; final size chart, print dimensions and wash performance require supplier samples. Hoodie in the group mockup is sold separately.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Chalk white · Navy and gold statement"
+  },
+  {
+    "id": "belong-hoodie",
+    "name": "I am an Innovator — Community Hoodie",
+    "category": "Clothing",
+    "guide": "Both",
+    "series": "Belong",
+    "photo": "belong-apparel",
+    "focus": "right",
+    "printText": "I am an Innovator ... I belong to Innovators World",
+    "material": "Cotton-rich fleece · 320 gsm",
+    "description": "A navy everyday layer that says what you believe—and where you belong.",
+    "materials": "Proposed: 320 gsm cotton-rich fleece, double-layer hood, ribbed cuffs and hem, kangaroo pocket and white-and-gold screen print.",
+    "details": "Full tagline on the front with a small globe-bulb emblem. Final fibre blend, fit and print method require sampling. Youth construction must be developed separately without neck drawcords. T-shirt shown is sold separately.",
+    "options": [
+      "Youth S",
+      "Youth M",
+      "Youth L",
+      "Adult XS",
+      "Adult S",
+      "Adult M",
+      "Adult L",
+      "Adult XL",
+      "Adult XXL"
+    ],
+    "optionLabel": "Proposed size",
+    "finish": "Midnight navy · White and gold statement"
+  },
+  {
+    "id": "belong-tote",
+    "name": "I am an Innovator — Belonging Tote",
+    "category": "Bags & carry",
+    "guide": "Both",
+    "series": "Belong",
+    "photo": "belong-essentials",
+    "focus": "left",
+    "printText": "I am an Innovator ... I belong to Innovators World",
+    "material": "Cotton canvas · 340 gsm target",
+    "description": "Carry your ideas with a simple statement of belonging.",
+    "materials": "Proposed: 340 gsm natural cotton canvas, reinforced shoulder handles, internal slip pocket and navy-and-gold screen print.",
+    "details": "Full tagline on the front with a small globe-bulb emblem. Target dimensions 38 × 42 cm with a 10 cm gusset; construction, care instructions and load capacity to be confirmed through supplier samples. Notebook shown is sold separately.",
+    "options": [
+      "Natural canvas · Tote only"
+    ],
+    "optionLabel": "Format",
+    "finish": "Natural canvas · Navy and gold statement"
+  },
+  {
+    "id": "belong-notebook",
+    "name": "I am an Innovator — Ideas Notebook",
+    "category": "Notebooks & stationery",
+    "guide": "Both",
+    "series": "Belong",
+    "photo": "belong-essentials",
+    "focus": "right",
+    "printText": "I am an Innovator ... I belong to Innovators World",
+    "material": "Cloth hardback · 100 gsm paper",
+    "description": "A place for your next idea, with your community on the cover.",
+    "materials": "Proposed: A5 teal cloth-covered hardback, 160 pages of 100 gsm uncoated paper, sewn binding, gold ribbon marker and white-and-gold cover decoration.",
+    "details": "The full tagline sits on the front cover beneath a small globe-bulb emblem. Gold foil and white printing are proposed decoration methods; finish and artwork require sampling. Tote shown is sold separately.",
+    "options": [
+      "Ruled",
+      "Dot grid",
+      "Plain"
+    ],
+    "optionLabel": "Page layout",
+    "finish": "Deep teal · White and gold cover statement"
   }
 ]

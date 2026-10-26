@@ -6,6 +6,7 @@ const storageKey = 'iw-practical-gear-v1';
 let catalogue = [];
 let selections = [];
 let category = 'All';
+let series = 'All';
 let activeProduct = null;
 let toastTimer;
 
@@ -39,9 +40,10 @@ function render() {
   const query = el('search').value.trim().toLowerCase();
   const guide = el('guide').value;
   const products = catalogue.filter(p =>
+    (series === 'All' || series === p.series) &&
     (category === 'All' || category === p.category) &&
     (guide === 'All' || guide === p.guide || (guide !== 'Both' && p.guide === 'Both')) &&
-    `${p.name} ${p.category} ${p.guide} ${p.description} ${p.material} ${p.materials}`.toLowerCase().includes(query)
+    `${p.name} ${p.category} ${p.guide} ${p.description} ${p.material} ${p.materials} ${p.printText || ''}`.toLowerCase().includes(query)
   );
   el('results').textContent = `${products.length} ${products.length === 1 ? 'item' : 'items'} to explore`;
   if (!products.length) {
@@ -50,7 +52,7 @@ function render() {
   }
   el('products').innerHTML = products.map(p => `<article class="product">
     <button class="product-art" data-detail="${escapeHtml(p.id)}" aria-label="Explore ${escapeHtml(p.name)}">${photo(p)}</button>
-    <p class="meta">${escapeHtml(p.category.toUpperCase())} · ${escapeHtml(p.guide === 'Both' ? 'SHARED ESSENTIALS' : p.guide.toUpperCase())}</p>
+    <p class="meta">${escapeHtml(p.category.toUpperCase())} · ${escapeHtml(p.series === 'Belong' ? 'I AM AN INNOVATOR' : p.guide === 'Both' ? 'SHARED ESSENTIALS' : p.guide.toUpperCase())}</p>
     <h3>${escapeHtml(p.name)}</h3>
     <p class="material-tag">${escapeHtml(p.material)}</p>
     <p>${escapeHtml(p.description)}</p>
@@ -66,6 +68,7 @@ function openDetail(id) {
     <p class="eyebrow">${escapeHtml(p.guide === 'Both' ? 'INNOVATORS WORLD' : p.guide.toUpperCase() + '’S GEAR')} · DESIGN MOCKUP</p>
     <h2 id="detail-title">${escapeHtml(p.name)}</h2>
     <p>${escapeHtml(p.description)}</p>
+    ${p.printText ? `<blockquote class="product-statement">${escapeHtml(p.printText)}</blockquote>` : ''}
     <h3>Materials &amp; construction</h3><p>${escapeHtml(p.materials)}</p>
     <h3>What to know</h3><p>${escapeHtml(p.details)}</p>
     <p class="finish">${escapeHtml(p.finish)}</p>
@@ -140,6 +143,15 @@ el('filters').addEventListener('click', event => {
   render();
 });
 el('search').addEventListener('input', render);
+function selectSeries(value) {
+  series = value;
+  for (const button of el('series-filters').children) button.setAttribute('aria-pressed', String(button.dataset.series === series));
+  render();
+}
+el('series-filters').addEventListener('click', event => {
+  const button = event.target.closest('[data-series]');
+  if (button) selectSeries(button.dataset.series);
+});
 el('guide').addEventListener('change', render);
 el('notes').addEventListener('input', save);
 el('open-list').addEventListener('click', openList);
@@ -147,6 +159,14 @@ el('bulk-list').addEventListener('click', openList);
 el('download').addEventListener('click', downloadList);
 document.addEventListener('submit', addConfiguredProduct);
 document.addEventListener('click', event => {
+  const seriesLink = event.target.closest('[data-series-link]');
+  if (seriesLink) {
+    category = 'All';
+    el('search').value = '';
+    el('guide').value = 'All';
+    for (const button of el('filters').children) button.setAttribute('aria-pressed', String(button.dataset.category === 'All'));
+    selectSeries(seriesLink.dataset.seriesLink);
+  }
   const detail = event.target.closest('[data-detail]');
   if (detail) openDetail(detail.dataset.detail);
   const close = event.target.closest('[data-close]');
@@ -171,7 +191,7 @@ el('list-items').addEventListener('input', event => {
 
 (async function init() {
   try {
-    const response = await fetch('/merchandise/catalogue.json?v=4');
+    const response = await fetch('/merchandise/catalogue.json?v=5');
     if (!response.ok) throw new Error('Catalogue unavailable');
     const data = await response.json();
     if (!Array.isArray(data) || data.some(p => !p.id || !p.name || !Array.isArray(p.options) || !p.options.length || !/^[a-z-]+$/.test(p.photo))) throw new Error('Invalid catalogue');
