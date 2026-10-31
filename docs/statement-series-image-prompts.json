@@ -1,0 +1,14 @@
+{
+  "tool": "built-in ImageGen",
+  "tagline": "I am an Innovator ... I belong to Innovators World",
+  "prompts": [
+    [
+      "belong-apparel",
+      "Use case: product-mockup. Premium square ecommerce studio photograph on warm ivory background of two physical Innovators World garments, complete silhouettes in frame. LEFT: chalk-white cotton T-shirt with elegant navy-and-gold typographic chest print. RIGHT: midnight navy pullover hoodie with a warm-gold and white typographic chest print, double-layer hood and kangaroo pocket. BOTH garments carry the exact same text, preserving case and punctuation, split into intentional readable lines: 'I am an Innovator ...' and 'I belong to Innovators World'. Make 'Innovator' the large focal word. Small gold globe-inside-lightbulb emblem above or below the statement. No faces, people, character portraits, extra slogans or watermarks. Refined contemporary collegiate/editorial typography, real cotton fabric weave, seams and subtle folds, soft studio lighting, generous product margins. This is a new community belonging merchandise series coordinated with the navy teal gold Innovators World gear range."
+    ],
+    [
+      "belong-essentials",
+      "Use case: product-mockup. Premium square ecommerce studio photograph on warm ivory background: LEFT a natural heavy cotton canvas tote bag with reinforced long handles, RIGHT a deep-teal A5 cloth hardback notebook standing in three-quarter front view, with visible cream paper edge and gold ribbon. Both physical products have tasteful navy/gold or white/gold typography with this exact text, preserving case and punctuation: 'I am an Innovator ...' followed by 'I belong to Innovators World'. Readable balanced lines, 'Innovator' prominent, a small gold globe-inside-lightbulb emblem. No character portraits, faces, people, other slogans or watermark. Real canvas weave, hardback texture, gold-foil impression on notebook, believable shadows and soft studio light. Complete products visible with generous margins. Coordinated premium community belonging merchandise in navy, teal, gold and natural cream."
+    ]
+  ]
+}
