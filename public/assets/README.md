@@ -1,26 +1,23 @@
-# IW-BRAND-003 — GitHub asset handoff (NOT deployed)
+# IW-BRAND-003 — approved brand asset inventory (review branch only)
 
-Target branch: `iw-brand-003-logo-standardisation`.
+Branch: `iw-brand-003-logo-standardisation`. These assets have been uploaded to this branch, but are **not deployed or release-approved**.
 
-Approved master-derived assets are supplied in `assets/`. SHA-256 hashes in `SHA256.txt` must be checked before committing. These files are not yet uploaded to GitHub.
+## Files present
+- `public/assets/iw-logo-header-900x300.png` — approved master-derived header/footer logo (white-background raster)
+- `public/assets/iw-symbol-256.png` — approved master-derived symbol; used as PNG favicon
+- `public/assets/iw-favicon-provisional.ico` — provisional only; **not activated**
 
-## Proposed repository destinations
-- `public/assets/iw-logo-header-900x300.png`
-- `public/assets/iw-symbol-256.png`
-- `public/assets/iw-favicon-provisional.ico`
+The SHA-256 manifest in `public/assets/SHA256.txt` records the original handoff files. Its `assets/` paths refer to the extracted handoff package, not repository-relative paths.
 
-## Required review before markup changes
-1. Compare the approved white-background header image on the site's dark navigation bar. White rectangle may be visually unacceptable; do not assume suitability.
-2. Inspect the current branch's exact files and route templates. Homepage header/footer and IWDA references were observed on default branch, but may differ on target branch.
-3. Do not replace the existing favicon until small-size visual QA passes. The supplied ICO is provisional.
-4. Implement only with approved assets, then run responsive, accessibility, and regression tests. Request independent acceptance.
-5. Do not merge or deploy without separate authorisation.
+## Implemented in this branch
+- `public/index.html`: homepage header and footer use the approved lockup, with a white logo container on the dark site chrome.
+- `public/iwda/index.html`: IWDA header uses the approved lockup.
+- Both pages use the PNG symbol as favicon. The provisional ICO remains unused.
 
-## Suggested local commands
-```bash
-git switch iw-brand-003-logo-standardisation
-mkdir -p public/assets
-cp assets/* public/assets/  # run from extracted handoff directory, adapt path as necessary
-sha256sum -c SHA256.txt # run from handoff root, before copying
-# inspect and stage only reviewed files; do not deploy
-```
+## Acceptance still required
+1. Visually inspect exact rendered desktop and mobile layouts (including white-background treatment, logo legibility, navigation spacing and overflow).
+2. Verify keyboard focus, accessible names and navigation operation.
+3. Run regression checks against the actual build and routes.
+4. Obtain independent acceptance and separate owner approval before merge or deployment.
+
+No merge, deployment or release is authorised by this inventory.
