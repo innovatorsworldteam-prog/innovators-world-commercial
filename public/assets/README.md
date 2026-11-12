@@ -1,26 +1,26 @@
-# IW-BRAND-003 — GitHub asset handoff (NOT deployed)
+# IW-BRAND-003 — Approved logo asset inventory
 
-Target branch: `iw-brand-003-logo-standardisation`.
+The assets below are committed in `public/assets/` on `main` following the merge of PR #20. This inventory does **not** assert deployment or final visual acceptance.
 
-Approved master-derived assets are supplied in `assets/`. SHA-256 hashes in `SHA256.txt` must be checked before committing. These files are not yet uploaded to GitHub.
+## Approved master-derived assets
 
-## Proposed repository destinations
-- `public/assets/iw-logo-header-900x300.png`
-- `public/assets/iw-symbol-256.png`
-- `public/assets/iw-favicon-provisional.ico`
+- `iw-logo-header-900x300.png` — approved raster logo lockup; used by the homepage header/footer and IWDA header
+- `iw-symbol-256.png` — approved brand symbol; referenced as the PNG favicon
+- `iw-favicon-provisional.ico` — provisional favicon; retained but not activated
 
-## Required review before markup changes
-1. Compare the approved white-background header image on the site's dark navigation bar. White rectangle may be visually unacceptable; do not assume suitability.
-2. Inspect the current branch's exact files and route templates. Homepage header/footer and IWDA references were observed on default branch, but may differ on target branch.
-3. Do not replace the existing favicon until small-size visual QA passes. The supplied ICO is provisional.
-4. Implement only with approved assets, then run responsive, accessibility, and regression tests. Request independent acceptance.
-5. Do not merge or deploy without separate authorisation.
+`SHA256.txt` contains the original handoff hashes. Its `assets/` paths refer to the extracted handoff package, not repository-relative paths.
 
-## Suggested local commands
-```bash
-git switch iw-brand-003-logo-standardisation
-mkdir -p public/assets
-cp assets/* public/assets/  # run from extracted handoff directory, adapt path as necessary
-sha256sum -c SHA256.txt # run from handoff root, before copying
-# inspect and stage only reviewed files; do not deploy
-```
+## Current implementation
+
+- `public/index.html`: approved lockup in header/footer; white container on dark navigation
+- `public/iwda/index.html`: approved lockup in header; white container on dark navigation
+- Both pages reference `/assets/iw-symbol-256.png` as the favicon
+
+## Outstanding acceptance gates
+
+- Rendered desktop and mobile visual QA, including logo legibility and layout overflow
+- Keyboard navigation and visible focus QA
+- Actual build and route regression tests
+- Independent acceptance; separate owner approval for any deployment
+
+The presence of assets in GitHub does not establish that they are deployed to production.
